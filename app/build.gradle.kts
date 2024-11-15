@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.abdelrahman.raafat.budget.tracker"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.abdelrahman.raafat.budget.tracker"
