@@ -2,4 +2,13 @@
     <string name="app_name">Budget-Tracker</string>
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_on_boarding">OnBoardingActivity</string>
+    <string name="next">Next</string>
+    <string name="start">Start</string>
+    <string name="skip">Skip</string>
+    <string name="onboarding_title_1">"Gain total control\nof your money"</string>
+    <string name="onboarding_desc_1">"Become your own money manager\nand make every cent count"</string>
+    <string name="onboarding_title_2">"Track your expenses\nwith ease"</string>
+    <string name="onboarding_desc_2">"Know where your money goes\nand make better financial decisions"</string>
+    <string name="onboarding_title_3">Planning ahead</string>
+    <string name="onboarding_desc_3">"Setup your budget for each category\nso you in control"</string>
 </resources>

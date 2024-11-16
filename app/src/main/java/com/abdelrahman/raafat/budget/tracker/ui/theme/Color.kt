@@ -2,43 +2,38 @@ package com.abdelrahman.raafat.budget.tracker.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
+val GreenPrimary = Color(0xFF00796B) // Green for primary (finance color)
+val BluePrimary = Color(0xFF1976D2) // Blue for primary (finance color)
+val OrangeAccent = Color(0xFFFF9800) // Accent color for buttons
+val YellowAccent = Color(0xFFFFEB3B) // Accent for notifications
 
-val GreenPrimary = Color(0xFF00796B)  // Green for primary (finance color)
-val BluePrimary = Color(0xFF1976D2)   // Blue for primary (finance color)
-val OrangeAccent = Color(0xFFFF9800)  // Accent color for buttons
-val YellowAccent = Color(0xFFFFEB3B)  // Accent for notifications
-
-val LightBackground = Color(0xFFF5F5F5)  // Light background color
-val LightCardBackground = Color(0xFFFFFFFF)  // Card background color
-val LightText = Color(0xFF212121)  // Primary text color
+val LightBackground = Color(0xFFF5F5F5) // Light background color
+val LightCardBackground = Color(0xFFFFFFFF) // Card background color
+val LightText = Color(0xFF212121) // Primary text color
 
 // Dark theme colors
-val DarkPrimary = Color(0xFF0288D1)  // Dark primary for dark mode
-val DarkBackground = Color(0xFF121212)  // Dark background color
-val DarkText = Color(0xFFFFFFFF)  // Text color for dark mode
-val DarkCardBackground = Color(0xFF1E1E1E)  // Card background for dark mode
-
-
+val DarkPrimary = Color(0xFF0288D1) // Dark primary for dark mode
+val DarkBackground = Color(0xFF121212) // Dark background color
+val DarkText = Color(0xFFFFFFFF) // Text color for dark mode
+val DarkCardBackground = Color(0xFF1E1E1E) // Card background for dark mode
 
 val TealPrimary = Color(0xFF00796B)
 
-
-
 // Primary Colors
-val Teal500 = Color(0xFF00796B)  // Trust, Calm, Fresh
-val LightBlue = Color(0xFF64B5F6)  // Calm, Friendly
-val SoftGreen = Color(0xFF81C784)  // Prosperity, Balance
+val Teal500 = Color(0xFF00796B) // Trust, Calm, Fresh
+val LightBlue = Color(0xFF64B5F6) // Calm, Friendly
+val SoftGreen = Color(0xFF81C784) // Prosperity, Balance
 
 // Accent Colors
-val SoftYellow = Color(0xFFFFF59D)  // Optimism, Energy
-val WarmCoral = Color(0xFFFF8A65)  // Friendly, Inviting
-val MutedLavender = Color(0xFFB39DDB)  // Subtle Elegance
+val SoftYellow = Color(0xFFFFF59D) // Optimism, Energy
+val WarmCoral = Color(0xFFFF8A65) // Friendly, Inviting
+val MutedLavender = Color(0xFFB39DDB) // Subtle Elegance
 
 // Neutral Colors
-val BackgroundLight = Color(0xFFFAFAFA)  // Clean, Minimalistic
-val BackgroundDark = Color(0xFF121212)  // Balanced for dark mode
-val TextPrimary = Color(0xFF212121)  // Clear, Readable
-val TextSecondary = Color(0xFF757575)  // Subtle, Secondary text
+val BackgroundLight = Color(0xFFFAFAFA) // Clean, Minimalistic
+val BackgroundDark = Color(0xFF121212) // Balanced for dark mode
+val TextPrimary = Color(0xFF212121) // Clear, Readable
+val TextSecondary = Color(0xFF757575) // Subtle, Secondary text
 
 // High Contrast Colors (for buttons, icons)
-val DeepBlue = Color(0xFF1976D2)  // Security, Professionalism
+val DeepBlue = Color(0xFF1976D2) // Security, Professionalism

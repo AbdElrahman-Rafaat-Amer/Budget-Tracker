@@ -22,12 +22,12 @@ class SplashActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BudgetTrackerTheme {
-
-                val preloaderLottieCompositionResult = rememberLottieComposition(
-                    LottieCompositionSpec.RawRes(
-                        R.raw.splash_icon
+                val preloaderLottieCompositionResult =
+                    rememberLottieComposition(
+                        LottieCompositionSpec.RawRes(
+                            R.raw.splash_icon,
+                        ),
                     )
-                )
 
                 val progress by animateLottieCompositionAsState(preloaderLottieCompositionResult.value)
 
@@ -43,8 +43,6 @@ class SplashActivity : ComponentActivity() {
         }
     }
 }
-
-
 
 @Preview(showBackground = true)
 @Composable
