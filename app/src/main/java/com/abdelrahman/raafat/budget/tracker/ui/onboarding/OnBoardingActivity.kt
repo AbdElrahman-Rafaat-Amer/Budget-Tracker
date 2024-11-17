@@ -18,7 +18,7 @@ class OnBoardingActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             BudgetTrackerTheme {
-                OnboardingScreen(viewModel.onboardingList) {
+                OnboardingScreen(viewModel) {
                     startActivity(Intent(this, MainActivity::class.java))
                     finish()
                 }

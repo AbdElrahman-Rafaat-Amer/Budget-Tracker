@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">Budget-Tracker</string>
-    <string name="title_activity_splash">SplashActivity</string>
-    <string name="title_activity_on_boarding">OnBoardingActivity</string>
+    <string name="app_name">Budget Tracker</string>
     <string name="next">Next</string>
     <string name="start">Start</string>
     <string name="skip">Skip</string>
@@ -11,4 +9,5 @@
     <string name="onboarding_desc_2">"Know where your money goes\nand make better financial decisions"</string>
     <string name="onboarding_title_3">Planning ahead</string>
     <string name="onboarding_desc_3">"Setup your budget for each category\nso you in control"</string>
+    <string name="show_onboarding">Show onboarding next time?</string>
 </resources>
