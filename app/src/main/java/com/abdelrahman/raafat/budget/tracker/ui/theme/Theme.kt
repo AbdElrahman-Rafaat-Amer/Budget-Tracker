@@ -8,62 +8,61 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 // Light color scheme
 val LightColorScheme =
     lightColorScheme(
-        primary = GreenPrimary,
-        secondary = BluePrimary,
-        tertiary = OrangeAccent,
-        background = LightBackground,
-        surface = LightCardBackground,
-        onPrimary = Color.White,
-        onSecondary = Color.Black,
-        onBackground = LightText,
-        onSurface = LightText,
+        primary = AppColors.GreenPrimary,
+        secondary = AppColors.BluePrimary,
+        tertiary = AppColors.OrangeAccent,
+        background = AppColors.LightBackground,
+        surface = AppColors.LightCardBackground,
+        onPrimary = AppColors.White,
+        onSecondary = AppColors.Black,
+        onBackground = AppColors.LightText,
+        onSurface = AppColors.LightText,
     )
 
 // Dark color scheme
 val DarkColorScheme =
     darkColorScheme(
-        primary = DarkPrimary,
-        secondary = BluePrimary,
-        tertiary = YellowAccent,
-        background = DarkBackground,
-        surface = DarkCardBackground,
-        onPrimary = Color.White,
-        onSecondary = Color.Black,
-        onBackground = DarkText,
-        onSurface = DarkText,
+        primary = AppColors.DarkPrimary,
+        secondary = AppColors.BluePrimary,
+        tertiary = AppColors.YellowAccent,
+        background = AppColors.DarkBackground,
+        surface = AppColors.DarkCardBackground,
+        onPrimary = AppColors.White,
+        onSecondary = AppColors.Black,
+        onBackground = AppColors.DarkText,
+        onSurface = AppColors.DarkText,
     )
 
 val OnboardingLightColorScheme =
     lightColorScheme(
-        primary = Teal500,
-        secondary = LightBlue,
-        tertiary = SoftGreen,
-        background = BackgroundLight,
-        surface = BackgroundLight,
-        onPrimary = Color.White,
-        onSecondary = TextPrimary,
-        onBackground = TextPrimary,
-        onSurface = TextPrimary,
+        primary = AppColors.Teal500,
+        secondary = AppColors.LightBlue,
+        tertiary = AppColors.SoftGreen,
+        background = AppColors.BackgroundLight,
+        surface = AppColors.BackgroundLight,
+        onPrimary = AppColors.White,
+        onSecondary = AppColors.TextPrimary,
+        onBackground = AppColors.TextPrimary,
+        onSurface = AppColors.TextPrimary,
     )
 
 // Dark Color Scheme
 val OnboardingDarkColorScheme =
     darkColorScheme(
-        primary = Teal500,
-        secondary = LightBlue,
-        tertiary = MutedLavender,
-        background = BackgroundDark,
-        surface = BackgroundDark,
-        onPrimary = Color.White,
-        onSecondary = TextPrimary,
-        onBackground = Color.White,
-        onSurface = Color.White,
+        primary = AppColors.Teal500,
+        secondary = AppColors.LightBlue,
+        tertiary = AppColors.MutedLavender,
+        background = AppColors.BackgroundDark,
+        surface = AppColors.BackgroundDark,
+        onPrimary = AppColors.White,
+        onSecondary = AppColors.TextPrimary,
+        onBackground = AppColors.White,
+        onSurface = AppColors.White,
     )
 
 @Composable

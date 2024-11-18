@@ -2,38 +2,53 @@ package com.abdelrahman.raafat.budget.tracker.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val GreenPrimary = Color(0xFF00796B) // Green for primary (finance color)
-val BluePrimary = Color(0xFF1976D2) // Blue for primary (finance color)
-val OrangeAccent = Color(0xFFFF9800) // Accent color for buttons
-val YellowAccent = Color(0xFFFFEB3B) // Accent for notifications
+object AppColors {
+    val White = Color.White
+    val Black = Color.Black
+    val Transparent = Color.Transparent
 
-val LightBackground = Color(0xFFF5F5F5) // Light background color
-val LightCardBackground = Color(0xFFFFFFFF) // Card background color
-val LightText = Color(0xFF212121) // Primary text color
+    val GreenPrimary = Color(0xFF00796B) // Green for primary (finance color)
+    val BluePrimary = Color(0xFF1976D2) // Blue for primary (finance color)
+    val OrangeAccent = Color(0xFFFF9800) // Accent color for buttons
+    val YellowAccent = Color(0xFFFFEB3B) // Accent for notifications
 
-// Dark theme colors
-val DarkPrimary = Color(0xFF0288D1) // Dark primary for dark mode
-val DarkBackground = Color(0xFF121212) // Dark background color
-val DarkText = Color(0xFFFFFFFF) // Text color for dark mode
-val DarkCardBackground = Color(0xFF1E1E1E) // Card background for dark mode
+    val LightBackground = Color(0xFFF5F5F5) // Light background color
+    val LightCardBackground = Color(0xFFFFFFFF) // Card background color
+    val LightText = Color(0xFF212121) // Primary text color
 
-val TealPrimary = Color(0xFF00796B)
+    // Dark theme colors
+    val DarkPrimary = Color(0xFF0288D1) // Dark primary for dark mode
+    val DarkBackground = Color(0xFF121212) // Dark background color
+    val DarkText = Color(0xFFFFFFFF) // Text color for dark mode
+    val DarkCardBackground = Color(0xFF1E1E1E) // Card background for dark mode
 
-// Primary Colors
-val Teal500 = Color(0xFF00796B) // Trust, Calm, Fresh
-val LightBlue = Color(0xFF64B5F6) // Calm, Friendly
-val SoftGreen = Color(0xFF81C784) // Prosperity, Balance
+    val TealPrimary = Color(0xFF00796B)
 
-// Accent Colors
-val SoftYellow = Color(0xFFFFF59D) // Optimism, Energy
-val WarmCoral = Color(0xFFFF8A65) // Friendly, Inviting
-val MutedLavender = Color(0xFFB39DDB) // Subtle Elegance
+    // Primary Colors
+    val Teal500 = Color(0xFF00796B) // Trust, Calm, Fresh
+    val LightBlue = Color(0xFF64B5F6) // Calm, Friendly
+    val SoftGreen = Color(0xFF81C784) // Prosperity, Balance
 
-// Neutral Colors
-val BackgroundLight = Color(0xFFFAFAFA) // Clean, Minimalistic
-val BackgroundDark = Color(0xFF121212) // Balanced for dark mode
-val TextPrimary = Color(0xFF212121) // Clear, Readable
-val TextSecondary = Color(0xFF757575) // Subtle, Secondary text
+    // Accent Colors
+    val SoftYellow = Color(0xFFFFF59D) // Optimism, Energy
+    val WarmCoral = Color(0xFFFF8A65) // Friendly, Inviting
+    val MutedLavender = Color(0xFFB39DDB) // Subtle Elegance
 
-// High Contrast Colors (for buttons, icons)
-val DeepBlue = Color(0xFF1976D2) // Security, Professionalism
+    // Neutral Colors
+    val BackgroundLight = Color(0xFFFAFAFA) // Clean, Minimalistic
+    val BackgroundDark = Color(0xFF121212) // Balanced for dark mode
+    val TextPrimary = Color(0xFF212121) // Clear, Readable
+    val TextSecondary = Color(0xFF757575) // Subtle, Secondary text
+
+    // High Contrast Colors (for buttons, icons)
+    val DeepBlue = Color(0xFF1976D2) // Security, Professionalism
+
+    val BillsUtilitiesColor = Color(0xFF008EE4)
+    val FoodColor = Color(0xFFD5EDFF)
+    val PersonalColor = Color(0xFFFEE274)
+    val HealthcareColor = Color(0xFFF0B035)
+    val EducationColor = Color(0xFF0CBF71)
+    val TransportColor = Color(0xFF75E8C5)
+    val InvestmentColor = Color(0xFFFFBFCA)
+    val OthersColor = Color(0xFFF73649)
+}
