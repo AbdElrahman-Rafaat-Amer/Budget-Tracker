@@ -9,6 +9,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.DashboardItems
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget.BudgetExpenseSection
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget.CategoryWiseExpensesSection
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget.ExpenseDistributionSection
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget.GreetingSection
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget.RecentTransactionsSection
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget.UpcomingExpensesSection
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
 @Composable
@@ -17,26 +23,33 @@ fun DashboardScreen(dashboardViewModel: DashboardViewModel) {
         items(dashboardViewModel.items) { item ->
             when (item) {
                 is DashboardItems.UserInfoItem -> {
+                    GreetingSection()
                 }
 
                 is DashboardItems.BudgetExpenseItem -> {
+                    BudgetExpenseSection()
                 }
 
                 is DashboardItems.ExpenseDistributionItem -> {
+                    ExpenseDistributionSection()
                 }
 
                 is DashboardItems.CategoryWiseExpenses -> {
+                    CategoryWiseExpensesSection()
                 }
 
                 is DashboardItems.UpcomingExpensesItem -> {
+                    UpcomingExpensesSection()
                 }
 
                 is DashboardItems.RecentTransactionsItem -> {
+                    RecentTransactionsSection()
                 }
             }
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable

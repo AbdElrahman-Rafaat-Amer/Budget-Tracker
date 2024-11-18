@@ -10,4 +10,5 @@
     <string name="onboarding_title_3">Planning ahead</string>
     <string name="onboarding_desc_3">"Setup your budget for each category\nso you in control"</string>
     <string name="show_onboarding">Show onboarding next time?</string>
+    <string name="good_morning">Good Morning,</string>
 </resources>

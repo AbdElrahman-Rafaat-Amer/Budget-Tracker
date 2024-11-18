@@ -17,9 +17,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.ui.onboarding.item.OnboardingItem
+import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerOnBoardingTheme
-import com.abdelrahman.raafat.budget.tracker.ui.theme.TextPrimary
-import com.abdelrahman.raafat.budget.tracker.ui.theme.TextSecondary
 
 @Composable
 fun OnboardingContent(
@@ -40,7 +39,7 @@ fun OnboardingContent(
         Text(
             text = onboardingItem.headline,
             style = MaterialTheme.typography.headlineMedium,
-            color = TextPrimary,
+            color = AppColors.TextPrimary,
             fontWeight = FontWeight.Bold,
             fontSize = 32.sp,
             textAlign = TextAlign.Center,
@@ -50,7 +49,7 @@ fun OnboardingContent(
 
         Text(
             text = onboardingItem.description,
-            color = TextSecondary,
+            color = AppColors.TextSecondary,
             fontWeight = FontWeight.Medium,
             fontSize = 16.sp,
             lineHeight = 20.sp,

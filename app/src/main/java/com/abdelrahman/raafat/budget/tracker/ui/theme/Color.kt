@@ -42,12 +42,14 @@ object AppColors {
 
     // High Contrast Colors (for buttons, icons)
     val DeepBlue = Color(0xFF1976D2) // Security, Professionalism
+    val Green = Color(0xFF0CBF71)
+    val OceanBlue = Color(0xFF008EE4)
 
-    val BillsUtilitiesColor = Color(0xFF008EE4)
+    val BillsUtilitiesColor = OceanBlue
     val FoodColor = Color(0xFFD5EDFF)
     val PersonalColor = Color(0xFFFEE274)
     val HealthcareColor = Color(0xFFF0B035)
-    val EducationColor = Color(0xFF0CBF71)
+    val EducationColor = Green
     val TransportColor = Color(0xFF75E8C5)
     val InvestmentColor = Color(0xFFFFBFCA)
     val OthersColor = Color(0xFFF73649)

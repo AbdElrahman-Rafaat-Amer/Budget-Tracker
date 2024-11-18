@@ -54,18 +54,23 @@ fun ProgressIndicator(
                 } else {
                     Color.Transparent
                 }
+            CustomIndicator(borderColor, color)
 
-            Box(
-                modifier =
-                    Modifier
-                        .padding(horizontal = 3.dp)
-                        .clip(CircleShape)
-                        .background(color)
-                        .size(10.dp)
-                        .border(1.dp, borderColor, CircleShape),
-            )
         }
     }
+}
+
+@Composable
+fun CustomIndicator(borderColor: Color, color: Color) {
+    Box(
+        modifier =
+        Modifier
+            .padding(horizontal = 3.dp)
+            .clip(CircleShape)
+            .background(color)
+            .size(10.dp)
+            .border(1.dp, borderColor, CircleShape),
+    )
 }
 
 @Preview
