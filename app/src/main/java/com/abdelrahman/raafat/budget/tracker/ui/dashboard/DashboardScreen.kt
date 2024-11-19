@@ -43,7 +43,7 @@ fun DashboardScreen(dashboardViewModel: DashboardViewModel) {
                 }
 
                 is DashboardItems.RecentTransactionsItem -> {
-                    RecentTransactionsSection()
+                    RecentTransactionsSection(item = item)
                 }
             }
         }

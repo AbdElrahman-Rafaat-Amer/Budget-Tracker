@@ -3,6 +3,7 @@ package com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -37,7 +38,10 @@ fun GreetingSection() {
             color = AppColors.Black,
         )
 
-        Text("Remaining Days:")
+        Text(
+            "Remaining Days:",
+            style = MaterialTheme.typography.displayLarge
+        )
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -49,7 +53,8 @@ fun GreetingSection() {
             )
             Text(
                 "05 Weekdays",
-                color = AppColors.Black
+//                color = AppColors.Black,
+                style = MaterialTheme.typography.bodyLarge
             )
         }
         Row(
@@ -62,7 +67,8 @@ fun GreetingSection() {
             )
             Text(
                 "04 Weekends & Holidays",
-                color = AppColors.Black
+//                color = AppColors.Black,
+                style = MaterialTheme.typography.labelSmall
             )
         }
     }

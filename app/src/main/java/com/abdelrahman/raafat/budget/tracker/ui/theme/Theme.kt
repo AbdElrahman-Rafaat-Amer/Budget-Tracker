@@ -38,33 +38,6 @@ val DarkColorScheme =
         onSurface = AppColors.DarkText,
     )
 
-val OnboardingLightColorScheme =
-    lightColorScheme(
-        primary = AppColors.Teal500,
-        secondary = AppColors.LightBlue,
-        tertiary = AppColors.SoftGreen,
-        background = AppColors.BackgroundLight,
-        surface = AppColors.BackgroundLight,
-        onPrimary = AppColors.White,
-        onSecondary = AppColors.TextPrimary,
-        onBackground = AppColors.TextPrimary,
-        onSurface = AppColors.TextPrimary,
-    )
-
-// Dark Color Scheme
-val OnboardingDarkColorScheme =
-    darkColorScheme(
-        primary = AppColors.Teal500,
-        secondary = AppColors.LightBlue,
-        tertiary = AppColors.MutedLavender,
-        background = AppColors.BackgroundDark,
-        surface = AppColors.BackgroundDark,
-        onPrimary = AppColors.White,
-        onSecondary = AppColors.TextPrimary,
-        onBackground = AppColors.White,
-        onSurface = AppColors.White,
-    )
-
 @Composable
 fun BudgetTrackerTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -85,32 +58,7 @@ fun BudgetTrackerTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
-        content = content,
-    )
-}
-
-@Composable
-fun BudgetTrackerOnBoardingTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit,
-) {
-    val colorScheme =
-        when {
-            dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-                val context = LocalContext.current
-                if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-            }
-
-            darkTheme -> OnboardingDarkColorScheme
-            else -> OnboardingLightColorScheme
-        }
-
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
+        typography = BTTypography,
         content = content,
     )
 }

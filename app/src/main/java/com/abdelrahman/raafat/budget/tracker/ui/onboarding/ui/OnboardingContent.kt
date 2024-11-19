@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.sp
 import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.ui.onboarding.item.OnboardingItem
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
-import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerOnBoardingTheme
+import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
 @Composable
 fun OnboardingContent(
@@ -61,7 +61,7 @@ fun OnboardingContent(
 @Preview(showBackground = true)
 @Composable
 private fun PreviewOnboardingScreen() {
-    BudgetTrackerOnBoardingTheme {
+    BudgetTrackerTheme {
         OnboardingContent(
             onboardingItem =
                 OnboardingItem(
