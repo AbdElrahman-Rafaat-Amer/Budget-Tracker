@@ -21,6 +21,7 @@ object DatePatterns {
         "d MMMM yyyy, h:mm a" // Date and time with AM/PM (e.g., 22 August 2024, 5:45 PM)
     const val DATE_DAY_MONTH = "EEEE, d MMMM" // Format: Monday, 22 August
     const val DAY_MONTH = "d MMMM" // Format: Monday, 22 August
+    const val DATE_DAY_MONTH_YEAR = "d MMMM yyyy" // Format: 22 August 2024
 }
 
 fun LocalDate.formatToCustomPattern(pattern: String = DatePatterns.DATE_DAY_MONTH): String {

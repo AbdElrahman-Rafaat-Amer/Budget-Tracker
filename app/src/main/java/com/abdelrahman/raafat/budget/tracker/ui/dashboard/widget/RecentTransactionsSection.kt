@@ -50,7 +50,7 @@ fun RecentTransactionsSection(item: DashboardItems.RecentTransactionsItem) {
                 Text(
                     text = transition.date.toFormattedDate(DatePatterns.DAY_MONTH),
                     style =
-                        AppTextStyles.textStyle12SP.copy(
+                        AppTextStyles.textStyle12SPNormal.copy(
                             color = AppColors.LightText,
                         ),
                 )
@@ -66,7 +66,7 @@ fun RecentTransactionsSection(item: DashboardItems.RecentTransactionsItem) {
                 Spacer(Modifier.width(20.dp))
                 Text(
                     text = transition.price.formatWithCurrency(),
-                    style = AppTextStyles.textStyle16SP,
+                    style = AppTextStyles.textStyle16SPNormal,
                 )
             }
         }

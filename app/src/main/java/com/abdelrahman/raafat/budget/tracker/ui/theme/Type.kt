@@ -19,14 +19,34 @@ object AppTextStyles {
             color = AppColors.Black,
         )
 
-    val textStyle12SP =
+    val textStyle12SPNormal =
         _defaultTextStyle.copy(
             fontSize = 12.sp,
             lineHeight = 16.sp,
         )
 
-    val textStyle16SP =
+    val textStyle14SPNormal =
+        _defaultTextStyle.copy(
+            fontSize = 14.sp,
+            lineHeight = 18.sp,
+        )
+
+    val textStyle15SPMedium =
+        _defaultTextStyle.copy(
+            fontSize = 15.sp,
+            lineHeight = 18.sp,
+            fontWeight = FontWeight.Medium,
+        )
+
+    val textStyle16SPNormal =
         _defaultTextStyle.copy(
             fontSize = 16.sp,
+        )
+
+    val textStyle21SPBold =
+        _defaultTextStyle.copy(
+            fontSize = 21.sp,
+            fontWeight = FontWeight.Bold,
+            lineHeight = 25.sp,
         )
 }
