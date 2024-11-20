@@ -6,9 +6,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
 @Composable
 fun UpcomingExpensesSection() {
-
 }
-
 
 @Preview
 @Composable

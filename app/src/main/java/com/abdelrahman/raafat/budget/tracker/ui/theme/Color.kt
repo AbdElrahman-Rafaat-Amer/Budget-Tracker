@@ -14,12 +14,12 @@ object AppColors {
 
     val LightBackground = Color(0xFFF5F5F5) // Light background color
     val LightCardBackground = Color(0xFFFFFFFF) // Card background color
-    val LightText = Color(0xFF212121) // Primary text color
+    val LightOnBackground = Color(0xFF212121) // Primary text color
 
     // Dark theme colors
     val DarkPrimary = Color(0xFF0288D1) // Dark primary for dark mode
     val DarkBackground = Color(0xFF121212) // Dark background color
-    val DarkText = Color(0xFFFFFFFF) // Text color for dark mode
+    val DarkOnBackground = Color(0xFFFFFFFF) // Text color for dark mode
     val DarkCardBackground = Color(0xFF1E1E1E) // Card background for dark mode
 
     val TealPrimary = Color(0xFF00796B)
@@ -45,6 +45,10 @@ object AppColors {
     val Green = Color(0xFF0CBF71)
     val OceanBlue = Color(0xFF008EE4)
 
+    // Text Colors
+    val LightText = Color(0xFF5D5D5D)
+
+    // Category Colors
     val BillsUtilitiesColor = OceanBlue
     val FoodColor = Color(0xFFD5EDFF)
     val PersonalColor = Color(0xFFFEE274)

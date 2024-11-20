@@ -50,7 +50,6 @@ fun DashboardScreen(dashboardViewModel: DashboardViewModel) {
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
 private fun DashboardScreenPreview() {

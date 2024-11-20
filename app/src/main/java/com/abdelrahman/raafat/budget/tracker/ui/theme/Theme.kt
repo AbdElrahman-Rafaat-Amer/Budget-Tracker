@@ -9,6 +9,7 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles.BTTypography
 
 // Light color scheme
 val LightColorScheme =
@@ -20,8 +21,8 @@ val LightColorScheme =
         surface = AppColors.LightCardBackground,
         onPrimary = AppColors.White,
         onSecondary = AppColors.Black,
-        onBackground = AppColors.LightText,
-        onSurface = AppColors.LightText,
+        onBackground = AppColors.LightOnBackground,
+        onSurface = AppColors.LightOnBackground,
     )
 
 // Dark color scheme
@@ -34,8 +35,8 @@ val DarkColorScheme =
         surface = AppColors.DarkCardBackground,
         onPrimary = AppColors.White,
         onSecondary = AppColors.Black,
-        onBackground = AppColors.DarkText,
-        onSurface = AppColors.DarkText,
+        onBackground = AppColors.DarkOnBackground,
+        onSurface = AppColors.DarkOnBackground,
     )
 
 @Composable
