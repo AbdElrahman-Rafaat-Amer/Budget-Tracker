@@ -17,6 +17,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget.RecentTransacti
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget.UpcomingExpensesSection
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
+@Suppress("FunctionName")
 @Composable
 fun DashboardScreen(dashboardViewModel: DashboardViewModel) {
     LazyColumn(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
@@ -50,6 +51,7 @@ fun DashboardScreen(dashboardViewModel: DashboardViewModel) {
     }
 }
 
+@Suppress("FunctionName")
 @Preview(showBackground = true)
 @Composable
 private fun DashboardScreenPreview() {

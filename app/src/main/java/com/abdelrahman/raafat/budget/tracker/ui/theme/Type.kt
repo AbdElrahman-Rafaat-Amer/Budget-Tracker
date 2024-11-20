@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.sp
 object AppTextStyles {
     val BTTypography = Typography()
 
-    private val _defaultTextStyle =
+    private val defaultTextStyle =
         TextStyle(
             lineHeight = 20.sp,
             fontSize = 14.sp,
@@ -20,31 +20,31 @@ object AppTextStyles {
         )
 
     val textStyle12SPNormal =
-        _defaultTextStyle.copy(
+        defaultTextStyle.copy(
             fontSize = 12.sp,
             lineHeight = 16.sp,
         )
 
     val textStyle14SPNormal =
-        _defaultTextStyle.copy(
+        defaultTextStyle.copy(
             fontSize = 14.sp,
             lineHeight = 18.sp,
         )
 
     val textStyle15SPMedium =
-        _defaultTextStyle.copy(
+        defaultTextStyle.copy(
             fontSize = 15.sp,
             lineHeight = 18.sp,
             fontWeight = FontWeight.Medium,
         )
 
     val textStyle16SPNormal =
-        _defaultTextStyle.copy(
+        defaultTextStyle.copy(
             fontSize = 16.sp,
         )
 
     val textStyle21SPBold =
-        _defaultTextStyle.copy(
+        defaultTextStyle.copy(
             fontSize = 21.sp,
             fontWeight = FontWeight.Bold,
             lineHeight = 25.sp,

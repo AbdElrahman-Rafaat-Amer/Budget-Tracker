@@ -3,16 +3,17 @@ package com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -22,8 +23,10 @@ import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.UpcomingExpenses
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
+@Suppress("FunctionName")
 @Composable
 fun UpcomingExpensesSection(item: DashboardItems.UpcomingExpensesItem) {
+    val screenWidth = LocalConfiguration.current.screenWidthDp.dp
     Column(
         modifier =
             Modifier
@@ -37,26 +40,19 @@ fun UpcomingExpensesSection(item: DashboardItems.UpcomingExpensesItem) {
         Spacer(Modifier.height(17.dp))
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalAlignment = Alignment.CenterVertically,
+            verticalAlignment = Alignment.Top,
         ) {
             // Group items into pairs for the two-column layout
             items(item.items.chunked(2)) { chunk ->
                 Column(
-                    modifier = Modifier.padding(horizontal = 1.dp),
+                    modifier = Modifier.padding(horizontal = 1.dp).width(screenWidth * 0.6f),
                     verticalArrangement = Arrangement.spacedBy(10.dp),
                 ) {
                     chunk.forEach { upcomingItem ->
                         UpcomingExpensesWidget(
                             upcomingItem,
-                            modifier =
-                                Modifier
-                                    .defaultMinSize(minWidth = 250.dp),
+                            modifier = Modifier.fillMaxWidth(),
                         )
-                    }
-
-                    // Fill the gap if chunk size is less than 2 (for odd-sized lists)
-                    if (chunk.size < 2) {
-                        Spacer(modifier = Modifier.weight(1f))
                     }
                 }
             }
@@ -64,6 +60,7 @@ fun UpcomingExpensesSection(item: DashboardItems.UpcomingExpensesItem) {
     }
 }
 
+@Suppress("FunctionName")
 @Preview(showBackground = true)
 @Composable
 private fun UpcomingExpensesSectionPreview() {

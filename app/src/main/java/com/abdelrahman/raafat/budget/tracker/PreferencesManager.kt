@@ -12,18 +12,18 @@ val Context.dataStore by preferencesDataStore(name = "user_preferences")
 class PreferencesManager(
     private val context: Context,
 ) {
-    private val SHOW_ONBOARDING_KEY = booleanPreferencesKey("SHOW_ONBOARDING")
+    private val showOnboardingKey = booleanPreferencesKey("SHOW_ONBOARDING")
 
     // Function to get the 'show onboarding' value
     suspend fun getShowOnboarding(): Boolean {
         val preferences = context.dataStore.data.first()
-        return preferences[SHOW_ONBOARDING_KEY] ?: true
+        return preferences[showOnboardingKey] ?: true
     }
 
     // Function to save the 'show onboarding' value
     suspend fun saveShowOnboarding(value: Boolean) {
         context.dataStore.edit { preferences ->
-            preferences[SHOW_ONBOARDING_KEY] = value
+            preferences[showOnboardingKey] = value
         }
     }
 }

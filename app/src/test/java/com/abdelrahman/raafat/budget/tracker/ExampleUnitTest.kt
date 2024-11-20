@@ -1,6 +1,6 @@
 package com.abdelrahman.raafat.budget.tracker
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 /**

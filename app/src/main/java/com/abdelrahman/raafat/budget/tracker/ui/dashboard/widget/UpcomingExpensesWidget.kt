@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -30,6 +31,7 @@ import com.abdelrahman.raafat.budget.tracker.utils.DatePatterns
 import com.abdelrahman.raafat.budget.tracker.utils.formatWithCurrency
 import com.abdelrahman.raafat.budget.tracker.utils.toFormattedDate
 
+@Suppress("FunctionName")
 @Composable
 fun UpcomingExpensesWidget(
     item: UpcomingExpenses,
@@ -66,6 +68,8 @@ fun UpcomingExpensesWidget(
                 Text(
                     text = item.title,
                     style = AppTextStyles.textStyle15SPMedium,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                 )
 
                 Text(
@@ -77,6 +81,7 @@ fun UpcomingExpensesWidget(
     }
 }
 
+@Suppress("FunctionName")
 @Preview(showBackground = true)
 @Composable
 private fun UpcomingExpensesWidgetPreview() {
@@ -88,7 +93,7 @@ private fun UpcomingExpensesWidgetPreview() {
         ) {
             val item =
                 UpcomingExpenses(
-                    title = "LinkedIn Subscription",
+                    title = "LinkedIn Subscription - LinkedIn Subscription - LinkedIn Subscription",
                     date = System.currentTimeMillis(),
                     price = 30.0,
                     iconRes = R.drawable.ic_onboarding_1,

@@ -27,6 +27,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.custom.ProgressIndicator
 import com.abdelrahman.raafat.budget.tracker.ui.onboarding.OnboardingViewModel
 import kotlinx.coroutines.launch
 
+@Suppress("FunctionName")
 @Composable
 fun OnboardingScreen(
     viewModel: OnboardingViewModel,

@@ -17,6 +17,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 import com.abdelrahman.raafat.budget.tracker.utils.formatToCustomPattern
 import java.time.LocalDate
 
+@Suppress("FunctionName")
 @Composable
 fun GreetingSection() {
     Column(
@@ -72,6 +73,7 @@ fun GreetingSection() {
     }
 }
 
+@Suppress("FunctionName")
 @Preview
 @Composable
 private fun GreetingSectionPreview() {

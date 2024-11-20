@@ -39,6 +39,7 @@ val DarkColorScheme =
         onSurface = AppColors.DarkOnBackground,
     )
 
+@Suppress("FunctionName")
 @Composable
 fun BudgetTrackerTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),

@@ -1,3 +1,5 @@
+@file:Suppress("standard:filename")
+
 package com.abdelrahman.raafat.budget.tracker.ui.theme
 
 import androidx.compose.ui.graphics.Color

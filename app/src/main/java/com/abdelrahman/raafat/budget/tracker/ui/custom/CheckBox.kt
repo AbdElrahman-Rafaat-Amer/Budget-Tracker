@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
+@Suppress("FunctionName")
 @Composable
 fun CheckboxWithText(
     text: String,
@@ -57,6 +58,7 @@ fun CheckboxWithText(
     }
 }
 
+@Suppress("FunctionName")
 @Preview(showBackground = true)
 @Composable
 fun CheckboxWithTextPreview() {

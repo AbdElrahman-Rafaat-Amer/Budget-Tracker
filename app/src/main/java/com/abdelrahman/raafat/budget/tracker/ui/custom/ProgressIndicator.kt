@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
+@Suppress("FunctionName")
 @Composable
 fun ProgressIndicator(
     size: Int,
@@ -59,6 +60,7 @@ fun ProgressIndicator(
     }
 }
 
+@Suppress("FunctionName")
 @Composable
 fun CustomIndicator(
     borderColor: Color,
@@ -75,6 +77,7 @@ fun CustomIndicator(
     )
 }
 
+@Suppress("FunctionName")
 @Preview
 @Composable
 fun ProgressIndicatorPreview() {

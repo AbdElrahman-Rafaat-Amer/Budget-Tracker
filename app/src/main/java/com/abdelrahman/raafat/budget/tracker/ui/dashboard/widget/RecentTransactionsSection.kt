@@ -31,6 +31,7 @@ import com.abdelrahman.raafat.budget.tracker.utils.DatePatterns
 import com.abdelrahman.raafat.budget.tracker.utils.formatWithCurrency
 import com.abdelrahman.raafat.budget.tracker.utils.toFormattedDate
 
+@Suppress("FunctionName")
 @Composable
 fun RecentTransactionsSection(item: DashboardItems.RecentTransactionsItem) {
     LazyColumn(
@@ -99,6 +100,7 @@ fun setupTitle(transition: Transaction): AnnotatedString =
         }
     }
 
+@Suppress("FunctionName")
 @Preview(showBackground = true)
 @Composable
 private fun RecentTransactionsSectionPreview() {

@@ -20,6 +20,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.onboarding.item.OnboardingItem
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
+@Suppress("FunctionName")
 @Composable
 fun OnboardingContent(
     onboardingItem: OnboardingItem,
@@ -58,6 +59,7 @@ fun OnboardingContent(
     }
 }
 
+@Suppress("FunctionName")
 @Preview(showBackground = true)
 @Composable
 private fun PreviewOnboardingScreen() {

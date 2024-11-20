@@ -20,6 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
+@Suppress("FunctionName")
 @Composable
 fun PrimaryButton(
     modifier: Modifier = Modifier,
@@ -82,6 +83,7 @@ fun PrimaryButton(
     }
 }
 
+@Suppress("FunctionName")
 @Preview(showBackground = true)
 @Composable
 private fun PrimaryButtonPreview() {
