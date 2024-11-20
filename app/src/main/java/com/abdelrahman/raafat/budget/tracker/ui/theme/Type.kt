@@ -43,6 +43,13 @@ object AppTextStyles {
             fontSize = 16.sp,
         )
 
+    val textStyle21SPNormal =
+        defaultTextStyle.copy(
+            fontSize = 21.sp,
+            fontWeight = FontWeight.Normal,
+            lineHeight = 25.sp,
+        )
+
     val textStyle21SPBold =
         defaultTextStyle.copy(
             fontSize = 21.sp,

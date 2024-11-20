@@ -36,7 +36,7 @@ fun DashboardScreen(dashboardViewModel: DashboardViewModel) {
                 }
 
                 is DashboardItems.CategoryWiseExpenses -> {
-                    CategoryWiseExpensesSection()
+                    CategoryWiseExpensesSection(item)
                 }
 
                 is DashboardItems.UpcomingExpensesItem -> {

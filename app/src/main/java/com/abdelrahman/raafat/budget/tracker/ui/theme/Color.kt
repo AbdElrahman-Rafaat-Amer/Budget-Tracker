@@ -1,5 +1,3 @@
-@file:Suppress("standard:filename")
-
 package com.abdelrahman.raafat.budget.tracker.ui.theme
 
 import androidx.compose.ui.graphics.Color
@@ -42,17 +40,20 @@ object AppColors {
     val TextPrimary = Color(0xFF212121) // Clear, Readable
     val TextSecondary = Color(0xFF757575) // Subtle, Secondary text
 
+    val PaleBlue = Color(0xFFECF4F7)
+
     // High Contrast Colors (for buttons, icons)
     val DeepBlue = Color(0xFF1976D2) // Security, Professionalism
     val Green = Color(0xFF0CBF71)
     val OceanBlue = Color(0xFF008EE4)
+    val LightPrimary = Color(0xFFD5EDFF)
 
     // Text Colors
     val LightText = Color(0xFF5D5D5D)
 
     // Category Colors
     val BillsUtilitiesColor = OceanBlue
-    val FoodColor = Color(0xFFD5EDFF)
+    val FoodColor = LightPrimary
     val PersonalColor = Color(0xFFFEE274)
     val HealthcareColor = Color(0xFFF0B035)
     val EducationColor = Green
