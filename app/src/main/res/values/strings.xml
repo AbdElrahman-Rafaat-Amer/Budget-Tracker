@@ -14,4 +14,24 @@
     <string name="upcoming_expenses">Upcoming Expenses</string>
     <string name="of">of</string>
     <string name="category_wise_expenses">Category wise Expenses</string>
+    <string name="completed">Completed</string>
+    <string name="remaining">Remaining</string>
+    <string name="remaining_days">Remaining Days:</string>
+    <string name="good_afternoon">Good Afternoon!</string>
+    <string name="good_evening">Good Evening!</string>
+
+    <plurals name="remaining_days">
+        <item quantity="one">%1$d Day</item>
+        <item quantity="other">%1$d Days</item>
+    </plurals>
+
+    <plurals name="weekdays">
+        <item quantity="one">%1$d Weekday</item>
+        <item quantity="other">%1$d Weekdays</item>
+    </plurals>
+
+    <plurals name="weekends">
+        <item quantity="one">%1$d Weekend</item>
+        <item quantity="other">%1$d Weekends</item>
+    </plurals>
 </resources>

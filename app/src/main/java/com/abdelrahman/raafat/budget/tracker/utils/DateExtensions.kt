@@ -1,8 +1,10 @@
 package com.abdelrahman.raafat.budget.tracker.utils
 
+import java.time.DayOfWeek
 import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
+import java.time.YearMonth
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -27,6 +29,70 @@ object DatePatterns {
 fun LocalDate.formatToCustomPattern(pattern: String = DatePatterns.DATE_DAY_MONTH): String {
     val formatter = DateTimeFormatter.ofPattern(pattern, Locale.getDefault())
     return this.format(formatter)
+}
+
+// Extension function to get past and remaining days for the current date's month
+fun LocalDate.getPastAndRemainingDays(): Pair<Int, Int> {
+    // Get the total number of days in the current month
+    val totalDaysInMonth = YearMonth.of(this.year, this.month).lengthOfMonth()
+
+    // Calculate past and remaining days
+    val pastDays = this.dayOfMonth - 1 // Exclude today from past days
+    val remainingDays = totalDaysInMonth - this.dayOfMonth // Remaining days include today
+
+    return Pair(pastDays, remainingDays)
+}
+
+// Extension function to calculate remaining weekends in the current month
+fun LocalDate.getRemainingWeekends(
+    weekendDays: List<DayOfWeek> = listOf(
+        DayOfWeek.SATURDAY,
+        DayOfWeek.FRIDAY
+    )
+): Int {
+    // Get the last day of the current month
+    val lastDayOfMonth = YearMonth.of(this.year, this.month).atEndOfMonth()
+
+    // Start from today
+    var currentDate = this
+    var weekendCount = 0
+
+    // Iterate through the remaining days of the month
+    while (currentDate <= lastDayOfMonth) {
+        // Check if the current day is one of the weekend days
+        if (currentDate.dayOfWeek in weekendDays) {
+            weekendCount++
+        }
+        currentDate = currentDate.plusDays(1) // Move to the next day
+    }
+
+    return weekendCount
+}
+
+// Extension function to calculate remaining week days in the current month
+fun LocalDate.getRemainingWeekDays(
+    weekendDays: List<DayOfWeek> = listOf(
+        DayOfWeek.SATURDAY,
+        DayOfWeek.FRIDAY
+    )
+): Int {
+    // Get the last day of the current month
+    val lastDayOfMonth = YearMonth.of(this.year, this.month).atEndOfMonth()
+
+    // Start from today
+    var currentDate = this
+    var weekendCount = 0
+
+    // Iterate through the remaining days of the month
+    while (currentDate <= lastDayOfMonth) {
+        // Check if the current day is one of the weekend days
+        if (currentDate.dayOfWeek !in weekendDays) {
+            weekendCount++
+        }
+        currentDate = currentDate.plusDays(1) // Move to the next day
+    }
+
+    return weekendCount
 }
 
 fun Long.toFormattedDate(

@@ -39,11 +39,11 @@ object AppColors {
     val BackgroundDark = Color(0xFF121212) // Balanced for dark mode
     val TextPrimary = Color(0xFF212121) // Clear, Readable
     val TextSecondary = Color(0xFF757575) // Subtle, Secondary text
+    val DeepBlue = Color(0xFF93C9FF)
 
     val PaleBlue = Color(0xFFECF4F7)
 
     // High Contrast Colors (for buttons, icons)
-    val DeepBlue = Color(0xFF1976D2) // Security, Professionalism
     val Green = Color(0xFF0CBF71)
     val OceanBlue = Color(0xFF008EE4)
     val LightPrimary = Color(0xFFD5EDFF)

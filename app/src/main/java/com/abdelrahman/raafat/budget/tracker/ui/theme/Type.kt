@@ -2,6 +2,7 @@ package com.abdelrahman.raafat.budget.tracker.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
@@ -25,10 +26,25 @@ object AppTextStyles {
             lineHeight = 16.sp,
         )
 
+    val textStyle13SPNormal =
+        defaultTextStyle.copy(
+            fontSize = 13.sp,
+            lineHeight = 16.sp
+        )
+
+    val textStyle13SPNormalItalic = textStyle13SPNormal.copy(fontStyle = FontStyle.Italic)
+
     val textStyle14SPNormal =
         defaultTextStyle.copy(
             fontSize = 14.sp,
             lineHeight = 18.sp,
+        )
+
+
+    val textStyle14SPNormalItalic =
+        defaultTextStyle.copy(
+            lineHeight = 17.sp,
+            fontStyle = FontStyle.Italic
         )
 
     val textStyle15SPMedium =
@@ -43,6 +59,13 @@ object AppTextStyles {
             fontSize = 16.sp,
         )
 
+    val textStyle18SPNormal =
+        defaultTextStyle.copy(
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Normal,
+            lineHeight = 25.sp,
+        )
+
     val textStyle21SPNormal =
         defaultTextStyle.copy(
             fontSize = 21.sp,
@@ -54,6 +77,20 @@ object AppTextStyles {
         defaultTextStyle.copy(
             fontSize = 21.sp,
             fontWeight = FontWeight.Bold,
+            lineHeight = 25.sp,
+        )
+
+    val textStyle22SPBold =
+        defaultTextStyle.copy(
+            fontSize = 22.sp,
+            fontWeight = FontWeight.Bold,
+            lineHeight = 27.sp,
+        )
+
+    val textStyle28SPMedium =
+        defaultTextStyle.copy(
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Medium,
             lineHeight = 25.sp,
         )
 }
