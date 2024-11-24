@@ -45,10 +45,11 @@ fun LocalDate.getPastAndRemainingDays(): Pair<Int, Int> {
 
 // Extension function to calculate remaining weekends in the current month
 fun LocalDate.getRemainingWeekends(
-    weekendDays: List<DayOfWeek> = listOf(
-        DayOfWeek.SATURDAY,
-        DayOfWeek.FRIDAY
-    )
+    weekendDays: List<DayOfWeek> =
+        listOf(
+            DayOfWeek.SATURDAY,
+            DayOfWeek.FRIDAY,
+        ),
 ): Int {
     // Get the last day of the current month
     val lastDayOfMonth = YearMonth.of(this.year, this.month).atEndOfMonth()
@@ -71,10 +72,11 @@ fun LocalDate.getRemainingWeekends(
 
 // Extension function to calculate remaining week days in the current month
 fun LocalDate.getRemainingWeekDays(
-    weekendDays: List<DayOfWeek> = listOf(
-        DayOfWeek.SATURDAY,
-        DayOfWeek.FRIDAY
-    )
+    weekendDays: List<DayOfWeek> =
+        listOf(
+            DayOfWeek.SATURDAY,
+            DayOfWeek.FRIDAY,
+        ),
 ): Int {
     // Get the last day of the current month
     val lastDayOfMonth = YearMonth.of(this.year, this.month).atEndOfMonth()

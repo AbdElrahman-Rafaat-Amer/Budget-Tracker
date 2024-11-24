@@ -19,7 +19,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
 @Suppress("FunctionName")
 @Composable
-fun CheckboxWithText(
+fun BTCheckbox(
     text: String,
     isAllCaps: Boolean = false,
     onCheckedChange: (isChecked: Boolean) -> Unit,
@@ -61,9 +61,9 @@ fun CheckboxWithText(
 @Suppress("FunctionName")
 @Preview(showBackground = true)
 @Composable
-fun CheckboxWithTextPreview() {
+private fun BTCheckboxPreview() {
     BudgetTrackerTheme {
-        CheckboxWithText("check Me") {
+        BTCheckbox("check Me") {
         }
     }
 }

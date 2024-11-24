@@ -17,13 +17,13 @@ object AppTextStyles {
             fontSize = 14.sp,
             fontWeight = FontWeight.Normal,
             textAlign = TextAlign.Start,
-            color = AppColors.Black,
+            color = AppColors.Black
         )
 
     val textStyle12SPNormal =
         defaultTextStyle.copy(
             fontSize = 12.sp,
-            lineHeight = 16.sp,
+            lineHeight = 16.sp
         )
 
     val textStyle13SPNormal =
@@ -37,9 +37,8 @@ object AppTextStyles {
     val textStyle14SPNormal =
         defaultTextStyle.copy(
             fontSize = 14.sp,
-            lineHeight = 18.sp,
+            lineHeight = 18.sp
         )
-
 
     val textStyle14SPNormalItalic =
         defaultTextStyle.copy(
@@ -51,46 +50,39 @@ object AppTextStyles {
         defaultTextStyle.copy(
             fontSize = 15.sp,
             lineHeight = 18.sp,
-            fontWeight = FontWeight.Medium,
+            fontWeight = FontWeight.Medium
         )
 
     val textStyle16SPNormal =
         defaultTextStyle.copy(
-            fontSize = 16.sp,
+            fontSize = 16.sp
         )
 
     val textStyle18SPNormal =
         defaultTextStyle.copy(
             fontSize = 18.sp,
             fontWeight = FontWeight.Normal,
-            lineHeight = 25.sp,
+            lineHeight = 25.sp
         )
 
     val textStyle21SPNormal =
         defaultTextStyle.copy(
             fontSize = 21.sp,
             fontWeight = FontWeight.Normal,
-            lineHeight = 25.sp,
+            lineHeight = 25.sp
         )
 
     val textStyle21SPBold =
         defaultTextStyle.copy(
             fontSize = 21.sp,
             fontWeight = FontWeight.Bold,
-            lineHeight = 25.sp,
-        )
-
-    val textStyle22SPBold =
-        defaultTextStyle.copy(
-            fontSize = 22.sp,
-            fontWeight = FontWeight.Bold,
-            lineHeight = 27.sp,
+            lineHeight = 25.sp
         )
 
     val textStyle28SPMedium =
         defaultTextStyle.copy(
             fontSize = 28.sp,
             fontWeight = FontWeight.Medium,
-            lineHeight = 25.sp,
+            lineHeight = 25.sp
         )
 }

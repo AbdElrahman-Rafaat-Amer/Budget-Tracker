@@ -31,8 +31,8 @@ fun BTLinearProgressIndicator(
     var progress by remember { mutableFloatStateOf(currentProgress) }
     LaunchedEffect(targetProgress) {
         while (progress < targetProgress) {
-            delay(100)
-            progress = (progress + 0.01f).coerceAtMost(targetProgress)
+            delay(60)
+            progress = (progress + 0.02f).coerceAtMost(targetProgress)
         }
     }
 
@@ -46,8 +46,7 @@ fun BTLinearProgressIndicator(
                 .height(10.dp),
         strokeCap = StrokeCap.Round,
         gapSize = (-5).dp,
-        drawStopIndicator = {
-        },
+        drawStopIndicator = {},
     )
 }
 

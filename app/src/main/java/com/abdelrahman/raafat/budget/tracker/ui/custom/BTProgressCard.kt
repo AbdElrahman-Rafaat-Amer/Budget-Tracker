@@ -41,15 +41,17 @@ fun BTProgressCard(
     percentage: Int,
     remainingDays: Int,
     diagonalStriped: DiagonalStripedType = DiagonalStripedType.Vertical,
-    backGroundColor: Color = AppColors.LightPrimary
+    backGroundColor: Color = AppColors.LightPrimary,
+    modifier: Modifier = Modifier,
 ) {
     Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(70.dp)
-            .clip(RoundedCornerShape(10.dp))
-            .background(backGroundColor),
-        contentAlignment = Alignment.CenterStart
+        modifier =
+            modifier
+                .fillMaxWidth()
+                .height(70.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .background(backGroundColor),
+        contentAlignment = Alignment.CenterStart,
     ) {
         // Diagonal striped layer based on percentage
         when (diagonalStriped) {
@@ -58,18 +60,17 @@ fun BTProgressCard(
         }
 
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
-
-
             // Left text: Percentage Completed
             Text(
                 text = setupPercentageCompletedText(percentage),
-                color = Color.Black
+                color = Color.Black,
             )
 
             // Right text: Remaining Days
@@ -77,7 +78,7 @@ fun BTProgressCard(
                 text = setupRemainingDaysText(remainingDays),
                 color = Color.Black,
                 lineHeight = 25.sp,
-                textAlign = TextAlign.End
+                textAlign = TextAlign.End,
             )
         }
     }
@@ -85,34 +86,38 @@ fun BTProgressCard(
 
 @Suppress("FunctionName")
 @Composable
-private fun BuildItalicDiagonal(percentage: Int) = Canvas(modifier = Modifier.fillMaxSize()) {
-    val width = size.width * (percentage / 100f) // Dynamic width based on percentage
-    val stripeWidth = 20f // Stripe thickness
-    val stripeSpacing = 10f // Spacing between stripes
-    val stripeColor = AppColors.DeepBlue
-    val diagonalAngle = 315f // Angle of the stripes
+private fun BuildItalicDiagonal(percentage: Int) =
+    Canvas(modifier = Modifier.fillMaxSize()) {
+        val width = size.width * (percentage / 100f) // Dynamic width based on percentage
+        val stripeWidth = 20f // Stripe thickness
+        val stripeSpacing = 10f // Spacing between stripes
+        val stripeColor = AppColors.DeepBlue
+        val diagonalAngle = 315f // Angle of the stripes
 
-    // Clip the canvas to restrict drawing to the highlighted area
-    clipRect(right = width) {
-        // Rotate the canvas to draw diagonal stripes
-        rotate(degrees = diagonalAngle) {
-            // Adjust drawing bounds to cover full width and height, ensuring no gaps
-            for (x in -size.height.toInt()..(size.width + size.height).toInt() step (stripeWidth + stripeSpacing).toInt()) {
-                drawRect(
-                    color = stripeColor,
-                    topLeft = Offset(
-                        x.toFloat(),
-                        -size.height * 2
-                    ), // Offset to ensure full coverage
-                    size = Size(
-                        stripeWidth,
-                        size.height * 4
-                    ) // Extend size to cover rotation fully
-                )
+        // Clip the canvas to restrict drawing to the highlighted area
+        clipRect(right = width) {
+            // Rotate the canvas to draw diagonal stripes
+            rotate(degrees = diagonalAngle) {
+                // Adjust drawing bounds to cover full width and height, ensuring no gaps
+                for (x in -size.height.toInt()..(size.width + size.height).toInt() step (stripeWidth + stripeSpacing).toInt()) {
+                    drawRect(
+                        color = stripeColor,
+                        topLeft =
+                            Offset(
+                                x.toFloat(),
+                                -size.height * 2,
+                            ),
+                        // Offset to ensure full coverage
+                        size =
+                            Size(
+                                stripeWidth,
+                                size.height * 4,
+                            ), // Extend size to cover rotation fully
+                    )
+                }
             }
         }
     }
-}
 
 @Suppress("FunctionName")
 @Composable
@@ -127,83 +132,89 @@ private fun BuildVerticalDiagonal(percentage: Int) =
             drawRect(
                 color = stripeColor,
                 topLeft = Offset(x.toFloat(), 0f),
-                size = Size(stripeWidth, size.height)
+                size = Size(stripeWidth, size.height),
             )
         }
     }
 
 @Composable
-private fun setupPercentageCompletedText(percentage: Int) = buildAnnotatedString {
-    withStyle(
-        style = SpanStyle(
-            fontWeight = FontWeight.Bold,
-            fontSize = 22.sp
-        )
-    ) {
-        append("$percentage%")
+private fun setupPercentageCompletedText(percentage: Int) =
+    buildAnnotatedString {
+        withStyle(
+            style =
+                SpanStyle(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 22.sp,
+                ),
+        ) {
+            append("$percentage%")
+        }
+        append("\n")
+        withStyle(
+            style =
+                SpanStyle(
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 16.sp,
+                ),
+        ) {
+            append(stringResource(R.string.completed))
+        }
     }
-    append("\n")
-    withStyle(
-        style = SpanStyle(
-            fontWeight = FontWeight.Normal,
-            fontSize = 16.sp
-        )
-    ) {
-        append(stringResource(R.string.completed))
-    }
-}
-
 
 @Composable
-private fun setupRemainingDaysText(remainingDays: Int) = buildAnnotatedString {
-    withStyle(
-        style = SpanStyle(
-            fontWeight = FontWeight.Normal,
-            fontSize = 11.sp
-        )
-    ) {
-        append(stringResource(R.string.remaining))
+private fun setupRemainingDaysText(remainingDays: Int) =
+    buildAnnotatedString {
+        withStyle(
+            style =
+                SpanStyle(
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 11.sp,
+                ),
+        ) {
+            append(stringResource(R.string.remaining))
+        }
+        append("\n")
+        withStyle(
+            style =
+                SpanStyle(
+                    fontWeight = FontWeight.Normal,
+                    fontSize = 16.sp,
+                ),
+        ) {
+            val remainingDaysText =
+                pluralStringResource(
+                    id = R.plurals.remaining_days,
+                    count = remainingDays,
+                    remainingDays,
+                )
+            append(remainingDaysText)
+        }
     }
-    append("\n")
-    withStyle(
-        style = SpanStyle(
-            fontWeight = FontWeight.Normal,
-            fontSize = 16.sp
-        )
-    ) {
-        val remainingDaysText = pluralStringResource(
-            id = R.plurals.remaining_days,
-            count = remainingDays,
-            remainingDays
-        )
-        append(remainingDaysText)
-    }
-}
 
 enum class DiagonalStripedType {
     Italic,
-    Vertical
+    Vertical,
 }
 
 @Suppress("FunctionName")
 @Preview(locale = "Ar")
 @Preview(locale = "En")
 @Composable
-fun BTProgressCardPreview() {
+private fun BTProgressCardPreview() {
     BudgetTrackerTheme {
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             BTProgressCard(
                 percentage = 79,
                 remainingDays = 9,
-                diagonalStriped = DiagonalStripedType.Vertical
+                diagonalStriped = DiagonalStripedType.Vertical,
             )
 
             BTProgressCard(
                 percentage = 79,
                 remainingDays = 9,
-                diagonalStriped = DiagonalStripedType.Italic
+                diagonalStriped = DiagonalStripedType.Italic,
+                modifier = Modifier.padding(20.dp),
             )
         }
-
     }
 }

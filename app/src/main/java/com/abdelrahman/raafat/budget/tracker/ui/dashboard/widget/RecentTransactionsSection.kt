@@ -1,17 +1,20 @@
 package com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -21,6 +24,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.DashboardItems
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Transaction
@@ -34,16 +38,28 @@ import com.abdelrahman.raafat.budget.tracker.utils.toFormattedDate
 @Suppress("FunctionName")
 @Composable
 fun RecentTransactionsSection(item: DashboardItems.RecentTransactionsItem) {
-    LazyColumn(
+    Column(
         verticalArrangement = Arrangement.spacedBy(5.dp),
-        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxWidth(),
     ) {
-        items(item.items) { transition ->
+        Text(
+            text = stringResource(R.string.recent_transactions),
+            style = AppTextStyles.textStyle21SPBold,
+        )
+
+        Spacer(Modifier.height(10.dp))
+        item.items.forEachIndexed { index, transition ->
+            val backgroundColor =
+                if (index % 2 == 0) {
+                    AppColors.White
+                } else {
+                    AppColors.Transparent
+                }
             Row(
                 modifier =
                     Modifier
                         .fillMaxWidth()
+                        .background(backgroundColor)
                         .padding(horizontal = 10.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
@@ -70,11 +86,12 @@ fun RecentTransactionsSection(item: DashboardItems.RecentTransactionsItem) {
                     style = AppTextStyles.textStyle16SPNormal,
                 )
             }
+            Spacer(Modifier.height(4.dp))
         }
     }
 }
 
-fun setupTitle(transition: Transaction): AnnotatedString =
+private fun setupTitle(transition: Transaction): AnnotatedString =
     buildAnnotatedString {
         withStyle(
             style =
