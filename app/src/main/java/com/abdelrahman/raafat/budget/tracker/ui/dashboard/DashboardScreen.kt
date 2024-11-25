@@ -34,7 +34,7 @@ fun DashboardScreen(dashboardViewModel: DashboardViewModel) {
             when (item) {
                 is DashboardItems.UserInfoItem -> {
                     GreetingSection(
-                        userName = "Abdoooooo",
+                        userInfoItem = item,
                         modifier = Modifier.background(AppColors.BackgroundLight),
                     )
                 }
@@ -44,7 +44,7 @@ fun DashboardScreen(dashboardViewModel: DashboardViewModel) {
                 }
 
                 is DashboardItems.ExpenseDistributionItem -> {
-                    ExpenseDistributionSection()
+                    ExpenseDistributionSection(item)
                 }
 
                 is DashboardItems.CategoryWiseExpenses -> {

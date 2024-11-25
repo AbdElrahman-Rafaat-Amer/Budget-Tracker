@@ -22,6 +22,7 @@
     <string name="recent_transactions">Recent Transactions</string>
     <string name="budget_vs_expense">Budget Vs Expense</string>
     <string name="from">From %s - %s</string>
+    <string name="expense_distribution">Expense Distribution</string>
 
     <plurals name="remaining_days">
         <item quantity="one">%1$d Day</item>

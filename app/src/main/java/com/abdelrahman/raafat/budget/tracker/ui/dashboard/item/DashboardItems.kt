@@ -1,7 +1,9 @@
 package com.abdelrahman.raafat.budget.tracker.ui.dashboard.item
 
 sealed class DashboardItems {
-    data object UserInfoItem : DashboardItems()
+    data class UserInfoItem(
+        var userName: String,
+    ) : DashboardItems()
 
     data class BudgetExpenseItem(
         var item: BudgetExpense,

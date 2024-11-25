@@ -2,7 +2,6 @@ package com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -20,8 +19,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.abdelrahman.raafat.budget.tracker.R
-import com.abdelrahman.raafat.budget.tracker.ui.custom.BTCustomIndicator
+import com.abdelrahman.raafat.budget.tracker.ui.custom.BTIndicatorRow
 import com.abdelrahman.raafat.budget.tracker.ui.custom.BTProgressCard
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.DashboardItems
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.RemainingDay
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
@@ -37,7 +37,7 @@ import java.time.LocalTime
 @Suppress("FunctionName")
 @Composable
 fun GreetingSection(
-    userName: String,
+    userInfoItem: DashboardItems.UserInfoItem,
     modifier: Modifier = Modifier,
 ) {
     Card(
@@ -51,25 +51,7 @@ fun GreetingSection(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.Start,
         ) {
-            Text(
-                text = LocalTime.now().getDynamicGreeting(),
-                style = AppTextStyles.textStyle18SPNormal,
-            )
-            Spacer(Modifier.height(3.dp))
-
-            Text(
-                text = userName,
-                style = AppTextStyles.textStyle28SPMedium,
-            )
-            Spacer(Modifier.height(3.dp))
-            Text(
-                text = LocalDate.now().formatToCustomPattern(),
-                style =
-                    AppTextStyles.textStyle14SPNormalItalic
-                        .copy(
-                            color = AppColors.LightText,
-                        ),
-            )
+            GreetingHeader(userInfoItem.userName)
 
             Spacer(Modifier.height(18.dp))
 
@@ -82,55 +64,78 @@ fun GreetingSection(
             )
 
             Spacer(Modifier.height(15.dp))
-            Text(
-                stringResource(R.string.remaining_days),
-                style = AppTextStyles.textStyle13SPNormalItalic,
+
+            RemainingDaysSection()
+        }
+    }
+}
+
+@Suppress("FunctionName")
+@Composable
+private fun GreetingHeader(userName: String) {
+    Text(
+        text = LocalTime.now().getDynamicGreeting(),
+        style = AppTextStyles.textStyle18SPNormal,
+    )
+    Spacer(Modifier.height(3.dp))
+
+    Text(
+        text = userName,
+        style = AppTextStyles.textStyle28SPMedium,
+    )
+    Spacer(Modifier.height(3.dp))
+    Text(
+        text = LocalDate.now().formatToCustomPattern(),
+        style =
+            AppTextStyles.textStyle14SPNormalItalic
+                .copy(
+                    color = AppColors.LightText,
+                ),
+    )
+}
+
+@Suppress("FunctionName")
+@Composable
+private fun RemainingDaysSection() {
+    Text(
+        stringResource(R.string.remaining_days),
+        style = AppTextStyles.textStyle13SPNormalItalic,
+    )
+
+    Spacer(Modifier.height(7.dp))
+
+    val remainingWeekDays = LocalDate.now().getRemainingWeekDays()
+    val remainingWeekendDays = LocalDate.now().getRemainingWeekends()
+    val remainingDaysList =
+        listOf(
+            RemainingDay(
+                days = remainingWeekDays,
+                color = AppColors.OceanBlue,
+                text =
+                    pluralStringResource(
+                        id = R.plurals.weekdays,
+                        count = remainingWeekDays,
+                        remainingWeekDays,
+                    ),
+            ),
+            RemainingDay(
+                days = remainingWeekendDays,
+                color = AppColors.Green,
+                text =
+                    pluralStringResource(
+                        id = R.plurals.weekends,
+                        count = remainingWeekendDays,
+                        remainingWeekendDays,
+                    ),
+            ),
+        )
+    Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+        remainingDaysList.forEach { item ->
+            BTIndicatorRow(
+                borderColor = item.color,
+                indicatorColor = item.color,
+                text = item.text,
             )
-
-            Spacer(Modifier.height(7.dp))
-
-            val remainingWeekDays = LocalDate.now().getRemainingWeekDays()
-            val remainingWeekendDays = LocalDate.now().getRemainingWeekends()
-            val remainingDaysList =
-                listOf(
-                    RemainingDay(
-                        days = remainingWeekDays,
-                        color = AppColors.OceanBlue,
-                        text =
-                            pluralStringResource(
-                                id = R.plurals.weekdays,
-                                count = remainingWeekDays,
-                                remainingWeekDays,
-                            ),
-                    ),
-                    RemainingDay(
-                        days = remainingWeekendDays,
-                        color = AppColors.Green,
-                        text =
-                            pluralStringResource(
-                                id = R.plurals.weekends,
-                                count = remainingWeekendDays,
-                                remainingWeekendDays,
-                            ),
-                    ),
-                )
-            Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                remainingDaysList.forEach { item ->
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(4.dp),
-                    ) {
-                        BTCustomIndicator(
-                            borderColor = item.color,
-                            color = item.color,
-                        )
-                        Text(
-                            item.text,
-                            style = AppTextStyles.textStyle13SPNormal,
-                        )
-                    }
-                }
-            }
         }
     }
 }
@@ -140,6 +145,8 @@ fun GreetingSection(
 @Composable
 private fun GreetingSectionPreview() {
     BudgetTrackerTheme {
-        GreetingSection("Abdoooooo")
+        GreetingSection(
+            DashboardItems.UserInfoItem("Abdoooooo"),
+        )
     }
 }

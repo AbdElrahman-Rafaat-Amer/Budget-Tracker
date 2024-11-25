@@ -17,7 +17,9 @@ class DashboardViewModel(
 ) : AndroidViewModel(application) {
     val items =
         listOf(
-            DashboardItems.UserInfoItem,
+            DashboardItems.UserInfoItem(
+                userName = "Abdooooooo",
+            ),
             DashboardItems.BudgetExpenseItem(
                 item =
                     BudgetExpense(
@@ -31,26 +33,42 @@ class DashboardViewModel(
                         ExpenseDistribution(
                             name = "Bills & Utilities",
                             color = AppColors.BillsUtilitiesColor,
+                            preceentge = 27f,
                         ),
                         ExpenseDistribution(
                             name = "Food",
                             color = AppColors.FoodColor,
+                            preceentge = 12f,
                         ),
                         ExpenseDistribution(
                             name = "Personal",
                             color = AppColors.PersonalColor,
+                            preceentge = 10f,
                         ),
                         ExpenseDistribution(
                             name = "Healthcare",
                             color = AppColors.HealthcareColor,
+                            preceentge = 5f,
                         ),
                         ExpenseDistribution(
                             name = "Education",
                             color = AppColors.EducationColor,
+                            preceentge = 15f,
+                        ),
+                        ExpenseDistribution(
+                            name = "Transport",
+                            color = AppColors.EducationColor,
+                            preceentge = 8f,
+                        ),
+                        ExpenseDistribution(
+                            name = "Investment",
+                            color = AppColors.EducationColor,
+                            preceentge = 9f,
                         ),
                         ExpenseDistribution(
                             name = "Others",
                             color = AppColors.OthersColor,
+                            preceentge = 10f,
                         ),
                     ),
             ),

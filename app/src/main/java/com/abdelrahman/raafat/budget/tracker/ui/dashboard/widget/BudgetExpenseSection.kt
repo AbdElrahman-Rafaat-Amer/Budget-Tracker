@@ -51,52 +51,50 @@ fun BudgetExpenseSection(
         modifier = modifier.fillMaxWidth(),
     ) {
         Column(
-            modifier = Modifier.padding(top = 7.dp, bottom = 15.dp, start = 15.dp, end = 15.dp),
+            modifier =
+                Modifier
+                    .padding(top = 7.dp, bottom = 15.dp, start = 15.dp, end = 15.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.Start,
         ) {
-            Column(
-                modifier = modifier,
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.Start,
-            ) {
-                Text(
-                    text = stringResource(R.string.budget_vs_expense),
-                    style = AppTextStyles.textStyle21SPBold,
+            Text(
+                text = stringResource(R.string.budget_vs_expense),
+                style = AppTextStyles.textStyle21SPBold,
+            )
+
+            Spacer(Modifier.height(5.dp))
+
+            val currentDate = LocalDate.now().formatToCustomPattern(DatePatterns.DAY_MONTH)
+            Text(
+                text = stringResource(R.string.from, "01", currentDate),
+                style = AppTextStyles.textStyle13SPNormalItalic,
+            )
+
+            Spacer(Modifier.height(10.dp))
+
+            Box {
+                BTArc(
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .aspectRatio(2f),
+                    angleValue = 120f,
                 )
 
-                Spacer(Modifier.height(5.dp))
-
-                val currentDate = LocalDate.now().formatToCustomPattern(DatePatterns.DAY_MONTH)
                 Text(
-                    text = stringResource(R.string.from, "01", currentDate),
-                    style = AppTextStyles.textStyle13SPNormalItalic,
+                    text =
+                        setupBudgetText(
+                            budgetExpenseItem.item.price,
+                            budgetExpenseItem.item.totalPrice,
+                        ),
+                    lineHeight = 30.sp,
+                    color = AppColors.LightText,
+                    textAlign = TextAlign.Center,
+                    modifier =
+                        Modifier
+                            .align(Alignment.BottomCenter)
+                            .padding(bottom = 20.dp),
                 )
-
-                Spacer(Modifier.height(10.dp))
-
-                Box {
-                    BTArc(
-                        modifier =
-                            Modifier
-                                .fillMaxWidth()
-                                .aspectRatio(2f),
-                        angleValue = 120f,
-                    )
-
-                    Text(
-                        text =
-                            setupBudgetText(
-                                budgetExpenseItem.item.price,
-                                budgetExpenseItem.item.totalPrice,
-                            ),
-                        lineHeight = 30.sp,
-                        color = AppColors.LightText,
-                        textAlign = TextAlign.Center,
-                        modifier =
-                            Modifier
-                                .align(Alignment.BottomCenter)
-                                .padding(bottom = 20.dp),
-                    )
-                }
             }
         }
     }
