@@ -31,3 +31,9 @@ fun Number.formatWithCurrency(currency: String = "\$"): String {
         }
     return formattedPrice
 }
+
+val Float.degreeToRadian
+    get() = (this * Math.PI / 180f).toFloat()
+
+val Float.asAngle: Float
+    get() = this * 360f / 100f

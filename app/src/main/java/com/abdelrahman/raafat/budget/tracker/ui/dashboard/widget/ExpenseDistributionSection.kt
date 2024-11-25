@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.ui.custom.BTChart
 import com.abdelrahman.raafat.budget.tracker.ui.custom.BTIndicatorRow
+import com.abdelrahman.raafat.budget.tracker.ui.custom.ChartData
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.DashboardItems
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.ExpenseDistribution
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
@@ -88,10 +89,10 @@ fun ExpenseDistributionSection(
                 // Chart View
                 val expensesList =
                     expenseDistributionItem.items.map { item ->
-                        item.preceentge to item.color
+                        ChartData(color = item.color, data = item.percentage)
                     }
                 BTChart(
-                    expenses = expensesList,
+                    chartDataList = expensesList,
                     modifier =
                         Modifier
                             .weight(1f)
@@ -114,42 +115,42 @@ fun ExpenseDistributionSectionPreview() {
                         ExpenseDistribution(
                             name = "Bills & Utilities",
                             color = AppColors.BillsUtilitiesColor,
-                            preceentge = 27f,
+                            percentage = 27f,
                         ),
                         ExpenseDistribution(
                             name = "Food",
                             color = AppColors.FoodColor,
-                            preceentge = 12f,
+                            percentage = 12f,
                         ),
                         ExpenseDistribution(
                             name = "Personal",
                             color = AppColors.PersonalColor,
-                            preceentge = 10f,
+                            percentage = 11f,
                         ),
                         ExpenseDistribution(
                             name = "Healthcare",
                             color = AppColors.HealthcareColor,
-                            preceentge = 5f,
+                            percentage = 5f,
                         ),
                         ExpenseDistribution(
                             name = "Education",
                             color = AppColors.EducationColor,
-                            preceentge = 15f,
+                            percentage = 15f,
                         ),
                         ExpenseDistribution(
                             name = "Transport",
-                            color = AppColors.EducationColor,
-                            preceentge = 8f,
+                            color = AppColors.TransportColor,
+                            percentage = 8f,
                         ),
                         ExpenseDistribution(
                             name = "Investment",
-                            color = AppColors.EducationColor,
-                            preceentge = 9f,
+                            color = AppColors.InvestmentColor,
+                            percentage = 12f,
                         ),
                         ExpenseDistribution(
                             name = "Others",
                             color = AppColors.OthersColor,
-                            preceentge = 10f,
+                            percentage = 10f,
                         ),
                     ),
             )
