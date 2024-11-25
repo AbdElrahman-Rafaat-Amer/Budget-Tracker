@@ -21,12 +21,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.abdelrahman.raafat.budget.tracker.R
-import com.abdelrahman.raafat.budget.tracker.ui.custom.CheckboxWithText
-import com.abdelrahman.raafat.budget.tracker.ui.custom.PrimaryButton
-import com.abdelrahman.raafat.budget.tracker.ui.custom.ProgressIndicator
+import com.abdelrahman.raafat.budget.tracker.ui.custom.BTCheckbox
+import com.abdelrahman.raafat.budget.tracker.ui.custom.BTPrimaryButton
+import com.abdelrahman.raafat.budget.tracker.ui.custom.BTProgressIndicator
 import com.abdelrahman.raafat.budget.tracker.ui.onboarding.OnboardingViewModel
 import kotlinx.coroutines.launch
 
+@Suppress("FunctionName")
 @Composable
 fun OnboardingScreen(
     viewModel: OnboardingViewModel,
@@ -85,7 +86,7 @@ fun OnboardingScreen(
 
         Spacer(Modifier.height(15.dp))
 
-        ProgressIndicator(
+        BTProgressIndicator(
             pagerState = pagerState,
             size = 3,
             currentPage = 0,
@@ -93,7 +94,7 @@ fun OnboardingScreen(
 
         Spacer(Modifier.height(15.dp))
 
-        PrimaryButton(
+        BTPrimaryButton(
             text = primaryButtonText.value,
             modifier = Modifier.padding(horizontal = 20.dp),
         ) {
@@ -110,11 +111,11 @@ fun OnboardingScreen(
         }
         Spacer(Modifier.height(5.dp))
         if (isLastItem) {
-            CheckboxWithText(stringResource(R.string.show_onboarding)) {
+            BTCheckbox(stringResource(R.string.show_onboarding)) {
                 viewModel.saveShowOnboarding(it)
             }
         } else {
-            PrimaryButton(
+            BTPrimaryButton(
                 text = stringResource(R.string.skip),
                 isTextButton = true,
                 modifier = Modifier.padding(horizontal = 20.dp),

@@ -60,6 +60,7 @@ class SplashActivity : ComponentActivity() {
     }
 }
 
+@Suppress("FunctionName")
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview2() {

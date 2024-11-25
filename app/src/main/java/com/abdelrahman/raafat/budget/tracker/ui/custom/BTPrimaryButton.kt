@@ -20,8 +20,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
+@Suppress("FunctionName")
 @Composable
-fun PrimaryButton(
+fun BTPrimaryButton(
     modifier: Modifier = Modifier,
     text: String,
     isAllCaps: Boolean = true,
@@ -82,19 +83,20 @@ fun PrimaryButton(
     }
 }
 
+@Suppress("FunctionName")
 @Preview(showBackground = true)
 @Composable
-private fun PrimaryButtonPreview() {
+private fun BTPrimaryButtonPreview() {
     BudgetTrackerTheme {
         Column {
-            PrimaryButton(
+            BTPrimaryButton(
                 text = "Next",
                 onButtonClicked = {},
             )
 
             Spacer(Modifier.height(20.dp))
 
-            PrimaryButton(
+            BTPrimaryButton(
                 text = "Skip",
                 isTextButton = true,
                 onButtonClicked = {},
