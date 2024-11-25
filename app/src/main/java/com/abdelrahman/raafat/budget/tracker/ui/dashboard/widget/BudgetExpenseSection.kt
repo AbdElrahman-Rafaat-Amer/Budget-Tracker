@@ -78,7 +78,7 @@ fun BudgetExpenseSection(
                         Modifier
                             .fillMaxWidth()
                             .aspectRatio(2f),
-                    angleValue = 120f,
+                    angleValue = budgetExpenseItem.item.angleValue,
                 )
 
                 Text(
@@ -139,8 +139,8 @@ private fun BudgetExpenseSectionPreview() {
             DashboardItems.BudgetExpenseItem(
                 item =
                     BudgetExpense(
-                        price = 8630.0,
-                        totalPrice = 12000.0,
+                        price = -20.0,
+                        totalPrice = 160.0,
                     ),
             )
         BudgetExpenseSection(item)
