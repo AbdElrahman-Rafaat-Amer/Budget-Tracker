@@ -26,20 +26,7 @@ class SplashActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BudgetTrackerTheme {
-                val preloaderLottieCompositionResult =
-                    rememberLottieComposition(
-                        LottieCompositionSpec.RawRes(
-                            R.raw.splash_icon,
-                        ),
-                    )
-
-                val progress by animateLottieCompositionAsState(preloaderLottieCompositionResult.value)
-
-                LottieAnimation(
-                    composition = preloaderLottieCompositionResult.value,
-                )
-
-                if (progress == 1.0f) {
+                SplashScreen{
                     navigateToNextScreen()
                 }
             }
@@ -61,10 +48,35 @@ class SplashActivity : ComponentActivity() {
 }
 
 @Suppress("FunctionName")
+@Composable
+fun SplashScreen(
+    animationFinished : () -> Unit
+) {
+    val preloaderLottieCompositionResult =
+        rememberLottieComposition(
+            LottieCompositionSpec.RawRes(
+                R.raw.splash_icon,
+            ),
+        )
+
+    val progress by animateLottieCompositionAsState(preloaderLottieCompositionResult.value)
+
+    LottieAnimation(
+        composition = preloaderLottieCompositionResult.value,
+    )
+
+    if (progress == 1.0f) {
+        animationFinished()
+    }
+}
+
+
+
+@Suppress("FunctionName")
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview2() {
+private fun SplashScreenPreview() {
     BudgetTrackerTheme {
-        SplashActivity()
+        SplashScreen{}
     }
 }
