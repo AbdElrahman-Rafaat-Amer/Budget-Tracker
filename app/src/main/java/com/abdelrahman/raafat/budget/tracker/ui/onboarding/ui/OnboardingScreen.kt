@@ -1,5 +1,6 @@
 package com.abdelrahman.raafat.budget.tracker.ui.onboarding.ui
 
+import android.app.Application
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -19,12 +20,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.ui.custom.BTCheckbox
 import com.abdelrahman.raafat.budget.tracker.ui.custom.BTPrimaryButton
 import com.abdelrahman.raafat.budget.tracker.ui.custom.BTProgressIndicator
 import com.abdelrahman.raafat.budget.tracker.ui.onboarding.OnboardingViewModel
+import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 import kotlinx.coroutines.launch
 
 @Suppress("FunctionName")
@@ -120,7 +123,24 @@ fun OnboardingScreen(
                 isTextButton = true,
                 modifier = Modifier.padding(horizontal = 20.dp),
             ) {
-                onNextPage.invoke()
+                coroutineScope.launch {
+                    val nextPage = onboardingList.size - 1
+                    pagerState.animateScrollToPage(nextPage)
+                }
+            }
+        }
+    }
+}
+
+@Suppress("FunctionName")
+@Preview(showBackground = true)
+@Composable
+private fun OnboardingScreenPreview() {
+    BudgetTrackerTheme {
+        val onboardingViewModel = OnboardingViewModel(Application())
+        BudgetTrackerTheme {
+            OnboardingScreen(onboardingViewModel){
+
             }
         }
     }

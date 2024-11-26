@@ -22,9 +22,10 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 fun BTCheckbox(
     text: String,
     isAllCaps: Boolean = false,
+    isChecked: Boolean = true,
     onCheckedChange: (isChecked: Boolean) -> Unit,
 ) {
-    var checked by remember { mutableStateOf(false) }
+    var checked by remember { mutableStateOf(isChecked) }
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
