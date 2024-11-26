@@ -34,11 +34,12 @@ import androidx.compose.ui.unit.sp
 import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
+import com.abdelrahman.raafat.budget.tracker.utils.formatWithCurrency
 
 @Suppress("FunctionName")
 @Composable
 fun BTProgressCard(
-    percentage: Int,
+    percentage: Float,
     remainingDays: Int,
     diagonalStriped: DiagonalStripedType = DiagonalStripedType.Vertical,
     backGroundColor: Color = AppColors.LightPrimary,
@@ -69,7 +70,14 @@ fun BTProgressCard(
         ) {
             // Left text: Percentage Completed
             Text(
-                text = setupPercentageCompletedText(percentage),
+                text =
+                    setupPercentageCompletedText(
+                        percentage.formatWithCurrency(
+                            "%",
+                            isBefore = false,
+                            maxFraction = 1,
+                        ),
+                    ),
                 color = Color.Black,
             )
 
@@ -86,7 +94,7 @@ fun BTProgressCard(
 
 @Suppress("FunctionName")
 @Composable
-private fun BuildItalicDiagonal(percentage: Int) =
+private fun BuildItalicDiagonal(percentage: Float) =
     Canvas(modifier = Modifier.fillMaxSize()) {
         val width = size.width * (percentage / 100f) // Dynamic width based on percentage
         val stripeWidth = 20f // Stripe thickness
@@ -121,7 +129,7 @@ private fun BuildItalicDiagonal(percentage: Int) =
 
 @Suppress("FunctionName")
 @Composable
-private fun BuildVerticalDiagonal(percentage: Int) =
+private fun BuildVerticalDiagonal(percentage: Float) =
     Canvas(modifier = Modifier.fillMaxSize()) {
         val width = size.width * (percentage / 100f)
         val stripeWidth = 20f
@@ -138,7 +146,7 @@ private fun BuildVerticalDiagonal(percentage: Int) =
     }
 
 @Composable
-private fun setupPercentageCompletedText(percentage: Int) =
+private fun setupPercentageCompletedText(percentage: String) =
     buildAnnotatedString {
         withStyle(
             style =
@@ -147,7 +155,7 @@ private fun setupPercentageCompletedText(percentage: Int) =
                     fontSize = 22.sp,
                 ),
         ) {
-            append("$percentage%")
+            append(percentage)
         }
         append("\n")
         withStyle(
@@ -197,20 +205,19 @@ enum class DiagonalStripedType {
 }
 
 @Suppress("FunctionName")
-@Preview(locale = "Ar")
-@Preview(locale = "En")
+@Preview
 @Composable
 private fun BTProgressCardPreview() {
     BudgetTrackerTheme {
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             BTProgressCard(
-                percentage = 79,
+                percentage = 9f,
                 remainingDays = 9,
                 diagonalStriped = DiagonalStripedType.Vertical,
             )
 
             BTProgressCard(
-                percentage = 79,
+                percentage = 79.943f,
                 remainingDays = 9,
                 diagonalStriped = DiagonalStripedType.Italic,
                 modifier = Modifier.padding(20.dp),

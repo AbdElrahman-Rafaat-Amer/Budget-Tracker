@@ -12,7 +12,9 @@ import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Transaction
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.UpcomingExpenses
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 
-class DashboardViewModel(application: Application, ) : AndroidViewModel(application) {
+class DashboardViewModel(
+    application: Application,
+) : AndroidViewModel(application) {
     val items =
         listOf(
             DashboardItems.UserInfoItem(

@@ -26,7 +26,7 @@ class SplashActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BudgetTrackerTheme {
-                SplashScreen{
+                SplashScreen {
                     navigateToNextScreen()
                 }
             }
@@ -49,9 +49,7 @@ class SplashActivity : ComponentActivity() {
 
 @Suppress("FunctionName")
 @Composable
-fun SplashScreen(
-    animationFinished : () -> Unit
-) {
+fun SplashScreen(animationFinished: () -> Unit) {
     val preloaderLottieCompositionResult =
         rememberLottieComposition(
             LottieCompositionSpec.RawRes(
@@ -70,13 +68,11 @@ fun SplashScreen(
     }
 }
 
-
-
 @Suppress("FunctionName")
 @Preview(showBackground = true)
 @Composable
 private fun SplashScreenPreview() {
     BudgetTrackerTheme {
-        SplashScreen{}
+        SplashScreen {}
     }
 }

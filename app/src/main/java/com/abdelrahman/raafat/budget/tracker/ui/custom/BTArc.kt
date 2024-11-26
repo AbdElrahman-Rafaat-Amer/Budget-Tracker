@@ -1,5 +1,7 @@
 package com.abdelrahman.raafat.budget.tracker.ui.custom
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
@@ -7,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -40,6 +43,21 @@ fun BTArc(
 ) {
     val strokeWidth = 20.dp
 
+    val startAngle = 180f
+    val sweepAngle = 180f
+    val animatable = remember { Animatable(0f) }
+
+    LaunchedEffect(Unit) {
+        animatable.animateTo(
+            targetValue = angleValue,
+            animationSpec =
+                tween(
+                    delayMillis = 200,
+                    durationMillis = 5000,
+                ),
+        )
+    }
+
     var thumbPosition: Offset
 
     val measurePolicy =
@@ -68,9 +86,9 @@ fun BTArc(
                 val radius = sliderWidth / 2
 
                 val thumbX =
-                    radius + (-radius + strokeWidthPx / 2) * cos(angleValue.degreeToRadian()) - thumbWidth / 2
+                    radius + (-radius + strokeWidthPx / 2) * cos(animatable.value.degreeToRadian()) - thumbWidth / 2
                 val thumbY =
-                    sliderHeight + (-radius + strokeWidthPx / 2) * sin(angleValue.degreeToRadian()) - thumbHeight / 2
+                    sliderHeight + (-radius + strokeWidthPx / 2) * sin(animatable.value.degreeToRadian()) - thumbHeight / 2
                 thumbPosition = Offset(thumbX.toFloat(), thumbY.toFloat())
 
                 layout(sliderWidth, sliderHeight) {
@@ -109,8 +127,8 @@ fun BTArc(
                                     size.width - strokeWidthPx,
                                     (size.height - strokeWidthPx) * 2,
                                 ),
-                            startAngle = 180f,
-                            sweepAngle = 180f,
+                            startAngle = startAngle,
+                            sweepAngle = sweepAngle,
                             style =
                                 Stroke(
                                     strokeWidthPx,
@@ -126,8 +144,8 @@ fun BTArc(
                                     size.width - strokeWidthPx,
                                     (size.height - strokeWidthPx) * 2,
                                 ),
-                            startAngle = 180f,
-                            sweepAngle = angleValue,
+                            startAngle = startAngle,
+                            sweepAngle = animatable.value,
                             style =
                                 Stroke(
                                     strokeWidthPx,

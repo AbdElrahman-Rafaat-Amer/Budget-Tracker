@@ -58,13 +58,15 @@ fun GreetingSection(
             val (pastDays, remainingDays) = LocalDate.now().getPastAndRemainingDays()
             val totalDaysInMonth = pastDays + remainingDays
             BTProgressCard(
-                percentage = pastDays / totalDaysInMonth,
+                percentage = pastDays / totalDaysInMonth.toFloat() * 100,
                 remainingDays = remainingDays,
                 modifier = Modifier.padding(horizontal = 15.dp),
             )
 
             Spacer(Modifier.height(15.dp))
 
+            Text("$pastDays $remainingDays $totalDaysInMonth")
+            Text("${pastDays.toFloat() / totalDaysInMonth * 100}")
             RemainingDaysSection()
         }
     }

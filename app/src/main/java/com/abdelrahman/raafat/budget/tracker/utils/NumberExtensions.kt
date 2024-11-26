@@ -19,15 +19,23 @@ fun Number.degreeToRadian(): Double = Math.toRadians(this.toDouble())
  * @param currency The optional currency symbol to prefix the formatted number. Defaults to an empty string.
  * @return A [String] representation of the formatted number with commas, decimal places, and optional currency symbol.
  */
-fun Number.formatWithCurrency(currency: String = "\$"): String {
+fun Number.formatWithCurrency(
+    currency: String = "\$",
+    isBefore: Boolean = true,
+    maxFraction: Int = 2,
+): String {
     val numberFormat = NumberFormat.getNumberInstance(Locale.US)
-    numberFormat.maximumFractionDigits = 2 // Limit to 2 decimal places
+    numberFormat.maximumFractionDigits = maxFraction // Limit to 2 decimal places
     val formattedNumber = numberFormat.format(this)
     val formattedPrice =
         if (currency.trim().isEmpty()) {
             formattedNumber
         } else {
-            "$currency$formattedNumber"
+            if (isBefore) {
+                "$currency$formattedNumber"
+            } else {
+                "$formattedNumber$currency"
+            }
         }
     return formattedPrice
 }
