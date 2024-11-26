@@ -1,5 +1,7 @@
 package com.abdelrahman.raafat.budget.tracker.ui.custom
 
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -13,6 +15,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -45,6 +51,22 @@ fun BTProgressCard(
     backGroundColor: Color = AppColors.LightPrimary,
     modifier: Modifier = Modifier,
 ) {
+    val stripeWidth = 20f // Stripe thickness
+    val stripeSpacing = 10f // Spacing between stripes
+
+    val animatable = remember { Animatable(0f) }
+
+    LaunchedEffect(Unit) {
+        animatable.animateTo(
+            targetValue = percentage,
+            animationSpec =
+                tween(
+                    delayMillis = 200,
+                    durationMillis = 5000,
+                ),
+        )
+    }
+
     Box(
         modifier =
             modifier
@@ -56,8 +78,8 @@ fun BTProgressCard(
     ) {
         // Diagonal striped layer based on percentage
         when (diagonalStriped) {
-            DiagonalStripedType.Italic -> BuildItalicDiagonal(percentage)
-            DiagonalStripedType.Vertical -> BuildVerticalDiagonal(percentage)
+            DiagonalStripedType.Italic -> BuildItalicDiagonal(animatable.value, stripeWidth, stripeSpacing)
+            DiagonalStripedType.Vertical -> BuildVerticalDiagonal(animatable.value, stripeWidth, stripeSpacing)
         }
 
         Row(
@@ -94,56 +116,55 @@ fun BTProgressCard(
 
 @Suppress("FunctionName")
 @Composable
-private fun BuildItalicDiagonal(percentage: Float) =
-    Canvas(modifier = Modifier.fillMaxSize()) {
-        val width = size.width * (percentage / 100f) // Dynamic width based on percentage
-        val stripeWidth = 20f // Stripe thickness
-        val stripeSpacing = 10f // Spacing between stripes
-        val stripeColor = AppColors.DeepBlue
-        val diagonalAngle = 315f // Angle of the stripes
+private fun BuildItalicDiagonal(
+    progress: Float,
+    stripeWidth: Float = 20f,
+    stripeSpacing: Float = 10f,
+) = Canvas(modifier = Modifier.fillMaxSize()) {
+    val width = size.width * (progress / 100f) // Dynamic width based on percentage
+    val diagonalAngle = 315f // Angle of the stripes
 
-        // Clip the canvas to restrict drawing to the highlighted area
-        clipRect(right = width) {
-            // Rotate the canvas to draw diagonal stripes
-            rotate(degrees = diagonalAngle) {
-                // Adjust drawing bounds to cover full width and height, ensuring no gaps
-                for (x in -size.height.toInt()..(size.width + size.height).toInt() step (stripeWidth + stripeSpacing).toInt()) {
-                    drawRect(
-                        color = stripeColor,
-                        topLeft =
-                            Offset(
-                                x.toFloat(),
-                                -size.height * 2,
-                            ),
-                        // Offset to ensure full coverage
-                        size =
-                            Size(
-                                stripeWidth,
-                                size.height * 4,
-                            ), // Extend size to cover rotation fully
-                    )
-                }
+    // Clip the canvas to restrict drawing to the highlighted area
+    clipRect(right = width) {
+        // Rotate the canvas to draw diagonal stripes
+        rotate(degrees = diagonalAngle) {
+            // Adjust drawing bounds to cover full width and height, ensuring no gaps
+            for (x in -size.height.toInt()..(size.width + size.height).toInt() step (stripeWidth + stripeSpacing).toInt()) {
+                drawRect(
+                    color = AppColors.DeepBlue,
+                    topLeft =
+                        Offset(
+                            x = x.toFloat(),
+                            y = -size.height * 2,
+                        ),
+                    size =
+                        Size(
+                            width = stripeWidth,
+                            height = size.height * x,
+                        ),
+                )
             }
         }
     }
+}
 
 @Suppress("FunctionName")
 @Composable
-private fun BuildVerticalDiagonal(percentage: Float) =
-    Canvas(modifier = Modifier.fillMaxSize()) {
-        val width = size.width * (percentage / 100f)
-        val stripeWidth = 20f
-        val stripeSpacing = 10f
-        val stripeColor = Color(0xFF93C9FF)
+private fun BuildVerticalDiagonal(
+    progress: Float,
+    stripeWidth: Float = 20f,
+    stripeSpacing: Float = 10f,
+) = Canvas(modifier = Modifier.fillMaxSize()) {
+    val width = size.width * (progress / 100f)
 
-        for (x in 0..width.toInt() step (stripeWidth + stripeSpacing).toInt()) {
-            drawRect(
-                color = stripeColor,
-                topLeft = Offset(x.toFloat(), 0f),
-                size = Size(stripeWidth, size.height),
-            )
-        }
+    for (x in 0..width.toInt() step (stripeWidth + stripeSpacing).toInt()) {
+        drawRect(
+            color = AppColors.DeepBlue,
+            topLeft = Offset(x.toFloat(), 0f),
+            size = Size(stripeWidth, size.height),
+        )
     }
+}
 
 @Composable
 private fun setupPercentageCompletedText(percentage: String) =
@@ -211,13 +232,13 @@ private fun BTProgressCardPreview() {
     BudgetTrackerTheme {
         Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
             BTProgressCard(
-                percentage = 9f,
+                percentage = 90f,
                 remainingDays = 9,
                 diagonalStriped = DiagonalStripedType.Vertical,
             )
 
             BTProgressCard(
-                percentage = 79.943f,
+                percentage = 90f,
                 remainingDays = 9,
                 diagonalStriped = DiagonalStripedType.Italic,
                 modifier = Modifier.padding(20.dp),
