@@ -3,6 +3,7 @@ package com.abdelrahman.raafat.budget.tracker
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.first
 
@@ -13,6 +14,7 @@ class PreferencesManager(
     private val context: Context,
 ) {
     private val showOnboardingKey = booleanPreferencesKey("SHOW_ONBOARDING")
+    private val pinKey = stringPreferencesKey("PIN_KEY")
 
     // Function to get the 'show onboarding' value
     suspend fun getShowOnboarding(): Boolean {
@@ -25,5 +27,18 @@ class PreferencesManager(
         context.dataStore.edit { preferences ->
             preferences[showOnboardingKey] = value
         }
+    }
+
+    // Function to save the 'pin' value
+    suspend fun savePin(value: String) {
+        context.dataStore.edit { preferences ->
+            preferences[pinKey] = value
+        }
+    }
+
+    // Function to get the 'pin' value
+    suspend fun getPin(): String {
+        val preferences = context.dataStore.data.first()
+        return preferences[pinKey] ?: ""
     }
 }

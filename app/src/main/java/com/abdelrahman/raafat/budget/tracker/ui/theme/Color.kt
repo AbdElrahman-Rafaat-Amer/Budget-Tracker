@@ -6,6 +6,7 @@ object AppColors {
     val White = Color.White
     val Black = Color.Black
     val Transparent = Color.Transparent
+    val Gray = Color.Gray
 
     val GreenPrimary = Color(0xFF00796B) // Green for primary (finance color)
     val BluePrimary = Color(0xFF1976D2) // Blue for primary (finance color)

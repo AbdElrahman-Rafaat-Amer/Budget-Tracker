@@ -23,6 +23,8 @@
     <string name="budget_vs_expense">Budget Vs Expense</string>
     <string name="from">From %s - %s</string>
     <string name="expense_distribution">Expense Distribution</string>
+    <string name="setup_your_pin">Let’s  setup your PIN</string>
+    <string name="delete">Delete</string>
 
     <plurals name="remaining_days">
         <item quantity="one">%1$d Day</item>
