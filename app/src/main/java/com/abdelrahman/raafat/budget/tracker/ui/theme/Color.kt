@@ -8,6 +8,10 @@ object AppColors {
     val Transparent = Color.Transparent
     val Gray = Color.Gray
 
+    // Adjusted colors for light and dark modes
+    val PrimaryLight = Color(0xFF7F3DFF) // Example lighter variant for light mode
+    val PrimaryDark = Color(0xA35B18D3) // Example darker variant for dark mode
+
     val GreenPrimary = Color(0xFF00796B) // Green for primary (finance color)
     val BluePrimary = Color(0xFF1976D2) // Blue for primary (finance color)
     val OrangeAccent = Color(0xFFFF9800) // Accent color for buttons

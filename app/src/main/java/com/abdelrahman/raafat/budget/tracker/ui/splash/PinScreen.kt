@@ -1,14 +1,10 @@
 package com.abdelrahman.raafat.budget.tracker.ui.splash
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
@@ -22,7 +18,6 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -50,26 +45,33 @@ fun PinScreen(onNextPage: () -> Unit) {
         modifier =
             Modifier
                 .fillMaxSize()
-                .padding(top = 30.dp, bottom = 50.dp),
+                .padding(vertical = 70.dp),
     ) {
-        Image(
-            painter = painterResource(R.drawable.ic_lock),
-            contentDescription = null,
-            modifier = Modifier.size(40.dp),
-        )
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(50.dp),
+        ) {
+            Image(
+                painter = painterResource(R.drawable.ic_lock),
+                contentDescription = null,
+                modifier = Modifier.size(40.dp),
+            )
 
-        // Title
-        Text(
-            text = stringResource(R.string.setup_your_pin),
-            style = AppTextStyles.textStyle18SPSemiBold,
-        )
+            // Title
+            Text(
+                text = stringResource(R.string.setup_your_pin),
+                color = MaterialTheme.colorScheme.primary,
+                style = AppTextStyles.textStyle21SPBold,
+            )
+        }
 
         // PinView
         Row(horizontalArrangement = Arrangement.spacedBy(7.dp)) {
             pinsValue.forEachIndexed { index, pinValue ->
                 BTCustomIndicator(
-                    color = AppColors.White,
-                    selectedColor = AppColors.Gray,
+                    color = AppColors.Transparent,
+                    borderColor = MaterialTheme.colorScheme.primary,
+                    selectedColor = MaterialTheme.colorScheme.primary,
                     isSelected = index == currentIndex,
                     size = 50.dp,
                     text = pinValue.value,
@@ -77,8 +79,6 @@ fun PinScreen(onNextPage: () -> Unit) {
                 )
             }
         }
-
-        Spacer(Modifier.height(20.dp))
 
         // Keyboard
         NumberPad { clickedNumber ->
@@ -104,13 +104,11 @@ fun PinScreen(onNextPage: () -> Unit) {
 }
 
 @Suppress("FunctionName")
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun PinScreenPreview() {
     BudgetTrackerTheme {
-        Box(modifier = Modifier.background(Color.Red)) {
-            PinScreen {
-            }
+        PinScreen {
         }
     }
 }
