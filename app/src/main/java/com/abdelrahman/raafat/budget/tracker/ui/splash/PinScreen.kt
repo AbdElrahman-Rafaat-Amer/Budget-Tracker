@@ -1,4 +1,4 @@
-package com.abdelrahman.raafat.budget.tracker.ui.pin
+package com.abdelrahman.raafat.budget.tracker.ui.splash
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

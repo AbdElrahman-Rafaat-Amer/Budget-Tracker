@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.text.isDigitsOnly
 import com.abdelrahman.raafat.budget.tracker.R
 
+@Suppress("FunctionName")
 @Composable
 fun NumberPad(onNumberClick: (number: String?) -> Unit) {
     val keyboardNumbers: ArrayList<String> = arrayListOf()
