@@ -138,9 +138,7 @@ fun OnboardingScreen(
 private fun OnboardingScreenPreview() {
     BudgetTrackerTheme {
         val onboardingViewModel = OnboardingViewModel(Application())
-        BudgetTrackerTheme {
-            OnboardingScreen(onboardingViewModel) {
-            }
+        OnboardingScreen(onboardingViewModel) {
         }
     }
 }

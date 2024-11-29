@@ -14,7 +14,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles.BTTypography
 // Light color scheme
 val LightColorScheme =
     lightColorScheme(
-        primary = AppColors.GreenPrimary,
+        primary = AppColors.PrimaryLight,
         secondary = AppColors.BluePrimary,
         tertiary = AppColors.OrangeAccent,
         background = AppColors.LightBackground,
@@ -28,7 +28,7 @@ val LightColorScheme =
 // Dark color scheme
 val DarkColorScheme =
     darkColorScheme(
-        primary = AppColors.DarkPrimary,
+        primary = AppColors.PrimaryDark,
         secondary = AppColors.BluePrimary,
         tertiary = AppColors.YellowAccent,
         background = AppColors.DarkBackground,
@@ -44,7 +44,7 @@ val DarkColorScheme =
 fun BudgetTrackerTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit,
 ) {
     val colorScheme =

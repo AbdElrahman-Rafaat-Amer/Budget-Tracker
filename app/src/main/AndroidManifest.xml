@@ -16,7 +16,7 @@
             android:theme="@style/Theme.BudgetTracker" />
 
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.BudgetTracker">
             <intent-filter>
