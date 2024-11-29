@@ -1,8 +1,8 @@
 package com.abdelrahman.raafat.budget.tracker.ui.dashboard
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import com.abdelrahman.raafat.budget.tracker.R
+import com.abdelrahman.raafat.budget.tracker.base.BTBaseViewModel
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.BudgetExpense
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.CategoryExpense
@@ -14,7 +14,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 
 class DashboardViewModel(
     application: Application,
-) : AndroidViewModel(application) {
+) : BTBaseViewModel(application) {
     val items =
         listOf(
             DashboardItems.UserInfoItem(

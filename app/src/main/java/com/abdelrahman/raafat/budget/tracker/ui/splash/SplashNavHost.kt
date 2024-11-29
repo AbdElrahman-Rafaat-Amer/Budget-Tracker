@@ -5,12 +5,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.abdelrahman.raafat.budget.tracker.PreferencesManager
 
 @Suppress("FunctionName")
 @Composable
 fun SplashNavHost(
-    preferencesManager: PreferencesManager,
+    viewModel: SplashViewModel,
     goToNextScreen: () -> Unit,
 ) {
     val navController = rememberNavController()
@@ -20,9 +19,10 @@ fun SplashNavHost(
             SplashScreen {
                 LaunchedEffect(Unit) {
                     // Fetch the pin value from PreferencesManager
-                    val shouldShowPin = preferencesManager.getPin().isNotEmpty()
-                    if (shouldShowPin) {
-                        navController.navigate("pin")
+                    if (viewModel.pinValue.isNotEmpty()) {
+                        navController.navigate("pin") {
+                            popUpTo("splash") { inclusive = true }
+                        }
                     } else {
                         goToNextScreen.invoke()
                     }
@@ -30,7 +30,7 @@ fun SplashNavHost(
             }
         }
         composable("pin") {
-            PinScreen {
+            PinScreen(viewModel, isFirstTime = false) {
                 goToNextScreen.invoke()
             }
         }
