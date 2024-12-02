@@ -22,6 +22,6 @@ sealed class DashboardItems {
     ) : DashboardItems()
 
     data class RecentTransactionsItem(
-        var items: List<Transaction>,
+        var items: List<RecentTransaction>,
     ) : DashboardItems()
 }

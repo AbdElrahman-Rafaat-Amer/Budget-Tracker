@@ -31,7 +31,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 import com.abdelrahman.raafat.budget.tracker.utils.DatePatterns
 import com.abdelrahman.raafat.budget.tracker.utils.formatToCustomPattern
-import java.time.LocalDate
+import java.time.LocalDateTime
 
 @Suppress("FunctionName")
 @Composable
@@ -57,7 +57,7 @@ fun ExpenseDistributionSection(
                 style = AppTextStyles.textStyle21SPBold,
             )
             Spacer(Modifier.height(5.dp))
-            val currentDate = LocalDate.now().formatToCustomPattern(DatePatterns.DAY_MONTH)
+            val currentDate = LocalDateTime.now().formatToCustomPattern(DatePatterns.DAY_MONTH)
             Text(
                 text = stringResource(R.string.from, "01", currentDate),
                 style = AppTextStyles.textStyle13SPNormalItalic,

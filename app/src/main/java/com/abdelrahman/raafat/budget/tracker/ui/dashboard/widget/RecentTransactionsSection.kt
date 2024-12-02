@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,7 +26,7 @@ import androidx.compose.ui.unit.sp
 import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.DashboardItems
-import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Transaction
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.RecentTransaction
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
@@ -91,7 +90,7 @@ fun RecentTransactionsSection(item: DashboardItems.RecentTransactionsItem) {
     }
 }
 
-private fun setupTitle(transition: Transaction): AnnotatedString =
+private fun setupTitle(transition: RecentTransaction): AnnotatedString =
     buildAnnotatedString {
         withStyle(
             style =
@@ -126,19 +125,19 @@ private fun RecentTransactionsSectionPreview() {
             DashboardItems.RecentTransactionsItem(
                 items =
                     listOf(
-                        Transaction(
+                        RecentTransaction(
                             title = "Door Handle Replacement",
                             category = Category.BILLS_UTILITIES,
                             date = System.currentTimeMillis(),
                             price = 20.0,
                         ),
-                        Transaction(
+                        RecentTransaction(
                             title = "Nike Running Shoe",
                             category = Category.PERSONAL,
                             date = System.currentTimeMillis() - 200000,
                             price = 20.0,
                         ),
-                        Transaction(
+                        RecentTransaction(
                             title = "Mutual Fund",
                             category = Category.INVESTMENT,
                             date = System.currentTimeMillis() - 100000,

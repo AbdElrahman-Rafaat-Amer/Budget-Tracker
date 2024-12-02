@@ -8,7 +8,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.CategoryExpense
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.DashboardItems
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.ExpenseDistribution
-import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Transaction
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.RecentTransaction
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.UpcomingExpenses
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 
@@ -133,19 +133,19 @@ class DashboardViewModel(
             DashboardItems.RecentTransactionsItem(
                 items =
                     listOf(
-                        Transaction(
+                        RecentTransaction(
                             title = "Door Handle Replacement",
                             category = Category.BILLS_UTILITIES,
                             date = System.currentTimeMillis(),
                             price = 20.0,
                         ),
-                        Transaction(
+                        RecentTransaction(
                             title = "Nike Running Shoe",
                             category = Category.PERSONAL,
                             date = System.currentTimeMillis() - 200000,
                             price = 20.0,
                         ),
-                        Transaction(
+                        RecentTransaction(
                             title = "Mutual Fund",
                             category = Category.INVESTMENT,
                             date = System.currentTimeMillis() - 100000,

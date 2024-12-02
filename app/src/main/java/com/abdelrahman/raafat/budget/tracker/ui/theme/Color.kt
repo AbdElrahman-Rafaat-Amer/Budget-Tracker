@@ -7,6 +7,7 @@ object AppColors {
     val Black = Color.Black
     val Transparent = Color.Transparent
     val Gray = Color.Gray
+    val Red = Color(0XFFFD3C4A)
 
     // Adjusted colors for light and dark modes
     val PrimaryLight = Color(0xFF7F3DFF) // Example lighter variant for light mode
