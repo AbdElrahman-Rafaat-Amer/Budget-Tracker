@@ -10,6 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.base.BTBaseScreen
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
 @Suppress("FunctionName")
@@ -17,11 +18,13 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 fun TransactionDetailsScreen(
     transactionsList: List<TransactionItem>,
     modifier: Modifier = Modifier,
+    onBackButtonClicked: () -> Unit,
 ) {
     BTBaseScreen(
         title = stringResource(R.string.transactions),
         verticalSpace = 30.dp,
-        modifier = modifier,
+        modifier = modifier.padding(vertical = 20.dp, horizontal = 15.dp),
+        onBackButtonClicked = onBackButtonClicked,
     ) {
         LazyColumn {
             items(transactionsList) {
@@ -46,6 +49,7 @@ private fun TransactionDetailsScreenPreview() {
                 date = System.currentTimeMillis(),
                 price = 10.0,
                 isExpense = true,
+                category = Category.BILLS_UTILITIES,
             )
 
         val transactionsList: MutableList<TransactionItem> = mutableListOf()
@@ -62,7 +66,7 @@ private fun TransactionDetailsScreenPreview() {
         }
         TransactionDetailsScreen(
             transactionsList,
-            modifier = Modifier.padding(vertical = 10.dp, horizontal = 15.dp),
-        )
+            modifier = Modifier.padding(vertical = 10.dp),
+        ) {}
     }
 }

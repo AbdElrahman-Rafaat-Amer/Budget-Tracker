@@ -1,5 +1,6 @@
 package com.abdelrahman.raafat.budget.tracker.ui.custom
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -82,6 +83,10 @@ fun BTSectionTitle(
                 shape = MaterialTheme.shapes.medium.copy(CornerSize(40.dp)),
                 colors = CardDefaults.cardColors(containerColor = AppColors.LightLavender),
                 elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+                modifier =
+                    Modifier.clickable {
+                        onSeeAllClicked()
+                    },
             ) {
                 Text(
                     text = stringResource(R.string.see_all),

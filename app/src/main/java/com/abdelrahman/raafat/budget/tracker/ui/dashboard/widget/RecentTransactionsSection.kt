@@ -31,10 +31,10 @@ import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.ui.custom.BTSectionTitle
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.DashboardItems
-import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.RecentTransaction
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
+import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionItem
 import com.abdelrahman.raafat.budget.tracker.utils.DatePatterns
 import com.abdelrahman.raafat.budget.tracker.utils.formatWithCurrency
 import com.abdelrahman.raafat.budget.tracker.utils.toFormattedDate
@@ -62,11 +62,11 @@ fun RecentTransactionsSection(
             // Section Title with "See All" Button
             BTSectionTitle(
                 title = stringResource(R.string.recent_transactions),
-                showSeeAll = item.items.size > 4,
+                showSeeAll = item.recentTransactions.size > 1,
                 onSeeAllClicked = onSeeAllClicked,
             )
             Spacer(Modifier.height(10.dp))
-            item.items.forEachIndexed { index, transaction ->
+            item.recentTransactions.forEachIndexed { index, transaction ->
                 TransactionRow(transaction = transaction, isAlternateRow = index % 2 != 0)
             }
         }
@@ -76,7 +76,7 @@ fun RecentTransactionsSection(
 @Suppress("FunctionName")
 @Composable
 fun TransactionRow(
-    transaction: RecentTransaction,
+    transaction: TransactionItem,
     isAlternateRow: Boolean,
 ) {
     val backgroundColor = if (isAlternateRow) AppColors.Transparent else AppColors.White
@@ -116,7 +116,7 @@ fun TransactionRow(
     }
 }
 
-private fun setupTitle(transition: RecentTransaction): AnnotatedString =
+private fun setupTitle(transition: TransactionItem): AnnotatedString =
     buildAnnotatedString {
         withStyle(
             style =
@@ -126,7 +126,7 @@ private fun setupTitle(transition: RecentTransaction): AnnotatedString =
                     fontSize = 15.sp,
                 ),
         ) {
-            append(transition.title)
+            append(transition.name)
         }
 
         append("\n")
@@ -147,25 +147,27 @@ private fun setupTitle(transition: RecentTransaction): AnnotatedString =
 @Composable
 private fun RecentTransactionsSectionPreview() {
     BudgetTrackerTheme {
-        val recentTransactionsItem = DashboardItems.RecentTransactionsItem(items = emptyList())
+        val recentTransactionsItem = DashboardItems.RecentTransactionsItem(recentTransactions = emptyList())
         val item =
-            RecentTransaction(
-                title = "Door Handle Replacement",
+            TransactionItem(
+                name = "Door Handle Replacement",
+                description = "Door Handle Replacement desc",
                 category = Category.BILLS_UTILITIES,
                 date = System.currentTimeMillis(),
                 price = 20.0,
+                isExpense = false,
             )
-        val listItems: MutableList<RecentTransaction> = mutableListOf()
+        val listItems: MutableList<TransactionItem> = mutableListOf()
         repeat(10) {
             listItems.add(
                 item.copy(
-                    title = "${item.title} $it",
+                    name = "${item.name} $it",
                     price = item.price * it,
                     date = item.date * it,
                 ),
             )
         }
-        recentTransactionsItem.items = listItems
+        recentTransactionsItem.recentTransactions = listItems
         RecentTransactionsSection(recentTransactionsItem) {
         }
     }

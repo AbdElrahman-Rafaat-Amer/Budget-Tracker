@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
@@ -110,6 +111,7 @@ private fun TransactionDetailsWidgetPreview() {
                     date = System.currentTimeMillis() - 10000,
                     price = 5000.0,
                     isExpense = false,
+                    category = Category.BILLS_UTILITIES,
                 ),
             )
         }

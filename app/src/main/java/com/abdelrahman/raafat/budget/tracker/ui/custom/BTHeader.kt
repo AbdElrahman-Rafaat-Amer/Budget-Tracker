@@ -1,6 +1,7 @@
 package com.abdelrahman.raafat.budget.tracker.ui.custom
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,6 +27,7 @@ fun BTHeader(
     title: String,
     iconRes: Int = R.drawable.ic_backspace,
     iconColor: Color? = null,
+    onBackButtonClicked: () -> Unit = {},
 ) {
     val colorFilter = iconColor?.let { ColorFilter.tint(iconColor) }
     Row(
@@ -40,6 +42,10 @@ fun BTHeader(
             painter = painterResource(iconRes),
             colorFilter = colorFilter,
             contentDescription = stringResource(R.string.back),
+            modifier =
+                Modifier.clickable {
+                    onBackButtonClicked()
+                },
         )
 
         Text(
@@ -57,8 +63,6 @@ fun BTHeader(
 @Composable
 private fun BTHeaderPreview() {
     BudgetTrackerTheme {
-        BTHeader(
-            title = "Transactions",
-        )
+        BTHeader(title = "Transactions")
     }
 }

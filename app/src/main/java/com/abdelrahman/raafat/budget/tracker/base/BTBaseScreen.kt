@@ -20,6 +20,7 @@ fun BTBaseScreen(
     iconColor: Color? = null,
     verticalSpace: Dp = 20.dp,
     modifier: Modifier = Modifier,
+    onBackButtonClicked: () -> Unit = {},
     content: @Composable () -> Unit,
 ) {
     Column(
@@ -31,7 +32,9 @@ fun BTBaseScreen(
             title = title,
             iconRes = iconRes,
             iconColor = iconColor,
-        )
+        ) {
+            onBackButtonClicked()
+        }
 
         // Main content
         Box(modifier = Modifier.fillMaxSize()) {

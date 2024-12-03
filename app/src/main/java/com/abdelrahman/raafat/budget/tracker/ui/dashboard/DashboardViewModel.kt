@@ -8,9 +8,9 @@ import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.CategoryExpense
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.DashboardItems
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.ExpenseDistribution
-import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.RecentTransaction
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.UpcomingExpenses
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
+import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionItem
 
 class DashboardViewModel(
     application: Application,
@@ -131,25 +131,31 @@ class DashboardViewModel(
                     ),
             ),
             DashboardItems.RecentTransactionsItem(
-                items =
+                recentTransactions =
                     listOf(
-                        RecentTransaction(
-                            title = "Door Handle Replacement",
+                        TransactionItem(
+                            name = "Door Handle Replacement",
+                            description = "Door Handle Replacement Shoe desc",
                             category = Category.BILLS_UTILITIES,
                             date = System.currentTimeMillis(),
                             price = 20.0,
+                            isExpense = false,
                         ),
-                        RecentTransaction(
-                            title = "Nike Running Shoe",
+                        TransactionItem(
+                            name = "Nike Running Shoe",
+                            description = "Nike Running Shoe desc",
                             category = Category.PERSONAL,
                             date = System.currentTimeMillis() - 200000,
                             price = 20.0,
+                            isExpense = false,
                         ),
-                        RecentTransaction(
-                            title = "Mutual Fund",
+                        TransactionItem(
+                            name = "Mutual Fund",
+                            description = "Mutual Fund desc",
                             category = Category.INVESTMENT,
                             date = System.currentTimeMillis() - 100000,
                             price = 20.0,
+                            isExpense = false,
                         ),
                     ),
             ),
