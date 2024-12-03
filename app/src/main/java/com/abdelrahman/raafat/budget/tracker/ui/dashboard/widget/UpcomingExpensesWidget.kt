@@ -1,5 +1,6 @@
 package com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -41,6 +42,7 @@ fun UpcomingExpensesWidget(
         shape = MaterialTheme.shapes.medium.copy(CornerSize(12.dp)),
         colors = CardDefaults.cardColors(containerColor = AppColors.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 3.dp),
+        border = BorderStroke(1.dp, AppColors.BorderColor),
         modifier = modifier,
     ) {
         Row(

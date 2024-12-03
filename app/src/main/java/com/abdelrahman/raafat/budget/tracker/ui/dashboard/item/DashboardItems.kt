@@ -1,5 +1,7 @@
 package com.abdelrahman.raafat.budget.tracker.ui.dashboard.item
 
+import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionItem
+
 sealed class DashboardItems {
     data class UserInfoItem(
         var userName: String,
@@ -22,6 +24,6 @@ sealed class DashboardItems {
     ) : DashboardItems()
 
     data class RecentTransactionsItem(
-        var items: List<Transaction>,
+        var recentTransactions: List<TransactionItem>,
     ) : DashboardItems()
 }

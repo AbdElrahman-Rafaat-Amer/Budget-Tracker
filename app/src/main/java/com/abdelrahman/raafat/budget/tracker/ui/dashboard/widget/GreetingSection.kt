@@ -32,6 +32,7 @@ import com.abdelrahman.raafat.budget.tracker.utils.getPastAndRemainingDays
 import com.abdelrahman.raafat.budget.tracker.utils.getRemainingWeekDays
 import com.abdelrahman.raafat.budget.tracker.utils.getRemainingWeekends
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.LocalTime
 
 @Suppress("FunctionName")
@@ -87,7 +88,7 @@ private fun GreetingHeader(userName: String) {
     )
     Spacer(Modifier.height(3.dp))
     Text(
-        text = LocalDate.now().formatToCustomPattern(),
+        text = LocalDateTime.now().formatToCustomPattern(),
         style =
             AppTextStyles.textStyle14SPNormalItalic
                 .copy(
