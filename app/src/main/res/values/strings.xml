@@ -30,6 +30,7 @@
     <string name="new_pin_error_message">New PIN cannot be the same as the current PIN</string>
     <string name="delete">Delete</string>
     <string name="back">Back</string>
+    <string name="see_all">See All</string>
 
     <plurals name="remaining_days">
         <item quantity="one">%1$d Day</item>

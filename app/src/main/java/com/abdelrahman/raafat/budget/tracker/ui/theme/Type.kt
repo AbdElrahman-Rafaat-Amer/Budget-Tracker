@@ -81,6 +81,11 @@ object AppTextStyles {
             lineHeight = 25.sp,
         )
 
+    val textStyle18SPBold =
+        textStyle18SPSemiBold.copy(
+            fontWeight = FontWeight.Bold,
+        )
+
     val textStyle21SPNormal =
         defaultTextStyle.copy(
             fontSize = 21.sp,

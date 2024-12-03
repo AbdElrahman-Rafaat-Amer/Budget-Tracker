@@ -20,6 +20,7 @@ object DatePatterns {
     const val DATE_TIME_AM_PM = "d MMMM yyyy, h:mm a" // Date and time with AM/PM (22 August 2024, 5:45 PM)
     const val DATE_DAY_MONTH = "EEEE, d MMMM" // Format: Monday, 22 August
     const val DAY_MONTH = "d MMMM" // Format: Monday, 22 August
+    const val DAY_MONTH_ABBREVIATION = "dd MMM" // Format: 22 Aug / 02 Aug
     const val DATE_DAY_MONTH_YEAR = "d MMMM yyyy" // Format: 22 August 2024
 }
 

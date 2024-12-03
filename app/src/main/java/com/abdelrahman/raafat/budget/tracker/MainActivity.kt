@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BudgetTrackerTheme {
-                DashboardScreen(dashboardViewModel)
+                DashboardScreen(dashboardViewModel.items)
             }
         }
     }

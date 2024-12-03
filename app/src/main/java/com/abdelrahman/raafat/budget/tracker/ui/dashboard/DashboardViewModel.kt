@@ -111,7 +111,7 @@ class DashboardViewModel(
                             iconRes = R.drawable.ic_onboarding_1,
                         ),
                         UpcomingExpenses(
-                            title = "Dota Plus: August",
+                            title = "Data Plus: August",
                             date = System.currentTimeMillis() - 100000,
                             price = 40.0,
                             iconRes = R.drawable.ic_onboarding_2,
