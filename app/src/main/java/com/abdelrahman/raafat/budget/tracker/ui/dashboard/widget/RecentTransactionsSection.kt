@@ -44,7 +44,6 @@ import com.abdelrahman.raafat.budget.tracker.utils.toFormattedDate
 fun RecentTransactionsSection(
     item: DashboardItems.RecentTransactionsItem,
     modifier: Modifier = Modifier,
-    onSeeAllClicked: () -> Unit,
 ) {
     Card(
         shape = MaterialTheme.shapes.medium.copy(CornerSize(12.dp)),
@@ -62,8 +61,7 @@ fun RecentTransactionsSection(
             // Section Title with "See All" Button
             BTSectionTitle(
                 title = stringResource(R.string.recent_transactions),
-                showSeeAll = item.recentTransactions.size > 1,
-                onSeeAllClicked = onSeeAllClicked,
+                showSeeAll = false,
             )
             Spacer(Modifier.height(10.dp))
             item.recentTransactions.forEachIndexed { index, transaction ->
@@ -168,7 +166,6 @@ private fun RecentTransactionsSectionPreview() {
             )
         }
         recentTransactionsItem.recentTransactions = listItems
-        RecentTransactionsSection(recentTransactionsItem) {
-        }
+        RecentTransactionsSection(recentTransactionsItem)
     }
 }

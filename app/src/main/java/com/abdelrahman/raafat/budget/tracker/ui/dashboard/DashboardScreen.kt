@@ -28,10 +28,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionItem
 
 @Suppress("FunctionName")
 @Composable
-fun DashboardScreen(
-    dashboardItems: List<DashboardItems>,
-    onNavigateToTransaction: (List<TransactionItem>) -> Unit,
-) {
+fun DashboardScreen(dashboardItems: List<DashboardItems>) {
     LazyColumn(
         modifier =
             Modifier
@@ -62,9 +59,7 @@ fun DashboardScreen(
                 }
 
                 is DashboardItems.RecentTransactionsItem -> {
-                    RecentTransactionsSection(item = item) {
-                        onNavigateToTransaction(item.recentTransactions)
-                    }
+                    RecentTransactionsSection(item = item)
                 }
             }
         }
@@ -221,7 +216,6 @@ private fun DashboardScreenPreview() {
             ),
         )
     BudgetTrackerTheme {
-        DashboardScreen(dashboardItems) {
-        }
+        DashboardScreen(dashboardItems)
     }
 }

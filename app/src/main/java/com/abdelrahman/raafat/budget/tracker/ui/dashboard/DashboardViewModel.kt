@@ -160,4 +160,9 @@ class DashboardViewModel(
                     ),
             ),
         )
+
+    val transactionsItems: List<TransactionItem> =
+        items
+            .filterIsInstance<DashboardItems.RecentTransactionsItem>()
+            .flatMap { it.recentTransactions }
 }
