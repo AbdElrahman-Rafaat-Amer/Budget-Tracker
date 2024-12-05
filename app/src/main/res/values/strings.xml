@@ -31,6 +31,11 @@
     <string name="delete">Delete</string>
     <string name="back">Back</string>
     <string name="see_all">See All</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="transaction">Transaction</string>
+    <string name="profile">Profile</string>
+    <string name="budget">Budget</string>
+    <string name="add_expense">Add Expense</string>
 
     <plurals name="remaining_days">
         <item quantity="one">%1$d Day</item>
