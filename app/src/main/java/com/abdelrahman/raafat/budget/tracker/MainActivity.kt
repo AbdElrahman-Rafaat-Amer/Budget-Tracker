@@ -4,19 +4,29 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
-import com.abdelrahman.raafat.budget.tracker.ui.dashboard.DashboardScreen
+import com.abdelrahman.raafat.budget.tracker.navigation.BottomNavGraph
+import com.abdelrahman.raafat.budget.tracker.navigation.BottomNavigationBar
+import com.abdelrahman.raafat.budget.tracker.navigation.BottomNavigationFab
+import com.abdelrahman.raafat.budget.tracker.ui.custom.BTFabMenu
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.DashboardViewModel
+import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
-import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionDetailsScreen
-import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionItem
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 
 class MainActivity : ComponentActivity() {
     private val dashboardViewModel: DashboardViewModel by viewModels()
@@ -25,7 +35,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             BudgetTrackerTheme {
-                MainNavHost(dashboardViewModel)
+                MainScreen(dashboardViewModel)
             }
         }
     }
@@ -33,30 +43,42 @@ class MainActivity : ComponentActivity() {
 
 @Suppress("FunctionName")
 @Composable
-fun MainNavHost(viewModel: DashboardViewModel) {
+private fun MainScreen(dashboardViewModel: DashboardViewModel) {
     val navController = rememberNavController()
+    var showDialog by remember { mutableStateOf(false) }
+    Scaffold(
+        bottomBar = { BottomNavigationBar(navController) },
+        containerColor = AppColors.LightPrimary,
+        floatingActionButton = {
+            BottomNavigationFab(showDialog) {
+                showDialog = showDialog.not()
+            }
+        },
+        floatingActionButtonPosition = FabPosition.Center,
+    ) { innerPadding ->
+        Box(modifier = Modifier.padding(innerPadding), contentAlignment = Alignment.BottomCenter) {
+            BottomNavGraph(navController = navController, viewModel = dashboardViewModel)
 
-    NavHost(navController = navController, startDestination = ScreensName.Dashboard.route) {
-        composable(ScreensName.Dashboard.route) {
-            DashboardScreen(
-                dashboardItems = viewModel.items,
-                onNavigateToTransaction = {
-                    val serializedList = Json.encodeToString(it)
-                    navController.navigate("${ScreensName.Transaction.route}/$serializedList")
-                },
-            )
-        }
-
-        composable(
-            route = "${ScreensName.Transaction.route}/{transactions}",
-            arguments = listOf(navArgument("transactions") { type = NavType.StringType }),
-        ) { backStackEntry ->
-            val serializedList = backStackEntry.arguments?.getString("transactions")
-            val transactionsItems = serializedList?.let { Json.decodeFromString<List<TransactionItem>>(it) }
-            transactionsItems?.let {
-                TransactionDetailsScreen(transactionsList = it) {
-                    navController.popBackStack()
-                }
+            // Overlay for showing the 3 buttons
+            AnimatedVisibility(
+                visible = showDialog,
+                enter =
+                    slideInVertically(
+                        initialOffsetY = { it }, // Start below the screen
+                        animationSpec = tween(durationMillis = 300),
+                    ),
+                exit =
+                    slideOutVertically(
+                        targetOffsetY = { it }, // Move back below the screen
+                        animationSpec = tween(durationMillis = 300),
+                    ),
+            ) {
+                BTFabMenu(
+                    onDismiss = { showDialog = false },
+                    onIncomeClick = { /* Handle income button click */ },
+                    onTransferClick = { /* Handle transfer button click */ },
+                    onExpenseClick = { /* Handle expense button click */ },
+                )
             }
         }
     }

@@ -20,6 +20,13 @@ object AppTextStyles {
             color = AppColors.Black,
         )
 
+    val textStyle10SPNormal =
+        defaultTextStyle.copy(
+            fontSize = 10.sp,
+            lineHeight = 12.sp,
+            fontWeight = FontWeight.Medium,
+        )
+
     val textStyle12SPNormal =
         defaultTextStyle.copy(
             fontSize = 12.sp,
