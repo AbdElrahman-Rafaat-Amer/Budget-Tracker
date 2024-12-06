@@ -75,9 +75,14 @@ private fun MainScreen(dashboardViewModel: DashboardViewModel) {
             ) {
                 BTFabMenu(
                     onDismiss = { showDialog = false },
-                    onIncomeClick = { /* Handle income button click */ },
-                    onTransferClick = { /* Handle transfer button click */ },
-                    onExpenseClick = { /* Handle expense button click */ },
+                    onIncomeClick = {
+                    },
+                    onTransferClick = {
+                        // TODO handle transfer case.
+                    },
+                    onExpenseClick = {
+                        // Handle expense button click
+                    },
                 )
             }
         }

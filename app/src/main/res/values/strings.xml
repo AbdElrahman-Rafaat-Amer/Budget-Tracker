@@ -39,6 +39,11 @@
     <string name="expense">Expense</string>
     <string name="transfer">Transfer</string>
     <string name="income">Income</string>
+    <string name="how_much">How much?</string>
+    <string name="save">Save</string>
+    <string name="description">Description</string>
+    <string name="category">Category</string>
+    <string name="payment_way">Payment Way</string>
 
     <plurals name="remaining_days">
         <item quantity="one">%1$d Day</item>

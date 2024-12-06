@@ -24,7 +24,6 @@ fun BTFabMenu(
     Box(
         modifier = Modifier.padding(top = 80.dp, bottom = 15.dp),
     ) {
-
         Row(
             modifier =
                 Modifier

@@ -23,8 +23,8 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 @Suppress("FunctionName")
 @Composable
 fun BTPrimaryButton(
-    modifier: Modifier = Modifier,
     text: String,
+    modifier: Modifier = Modifier,
     isAllCaps: Boolean = true,
     isTextButton: Boolean = false,
     onButtonClicked: () -> Unit,

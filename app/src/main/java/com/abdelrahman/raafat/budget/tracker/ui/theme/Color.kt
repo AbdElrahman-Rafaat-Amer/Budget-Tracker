@@ -9,7 +9,7 @@ object AppColors {
     val Gray = Color.Gray
     val Red = Color(0XFFFD3C4A)
     val Blue = Color(0XFF0077FF)
-//    val Green = Color(0XFF00A86B)
+    val PlaceholderColor = Color(0XFF91919F)
 
     // Adjusted colors for light and dark modes
     val PrimaryLight = Color(0xFF7F3DFF) // Example lighter variant for light mode
