@@ -1,5 +1,6 @@
 package com.abdelrahman.raafat.budget.tracker.navigation
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -9,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,54 +34,62 @@ fun BottomNavigationBar(navController: NavController) {
             BTBottomNavItem.Profile,
         )
 
-    NavigationBar(
-        containerColor = AppColors.BottomNavigationColor,
+    Box(
+        modifier =
+            Modifier.graphicsLayer {
+                clip = true
+                shape = BTBarShape()
+            },
     ) {
-        val currentRoute =
-            navController
-                .currentBackStackEntryAsState()
-                .value
-                ?.destination
-                ?.route ?: BTBottomNavItem.Dashboard.route
+        NavigationBar(
+            containerColor = AppColors.BottomNavigationColor,
+        ) {
+            val currentRoute =
+                navController
+                    .currentBackStackEntryAsState()
+                    .value
+                    ?.destination
+                    ?.route ?: BTBottomNavItem.Dashboard.route
 
-        items.forEach { item ->
-            NavigationBarItem(
-                icon = {
-                    Icon(
-                        painterResource(item.iconResId),
-                        contentDescription = stringResource(item.titleResId),
-                        modifier = Modifier.size(24.dp),
-                    )
-                },
-                label = {
-                    Text(
-                        text = stringResource(item.titleResId),
-                        style =
-                            AppTextStyles.textStyle10SPNormal.copy(
-                                color = Color.Unspecified,
-                            ),
-                    )
-                },
-                selected = currentRoute == item.route,
-                onClick = {
-                    navController.navigate(item.route) {
-                        popUpTo(navController.graph.startDestinationId) { saveState = true }
-                        launchSingleTop = true
-                        restoreState = true
-                    }
-                },
-                enabled = item.route != BTBottomNavItem.AddExpenses.route,
-                colors =
-                    NavigationBarItemDefaults.colors(
-                        selectedIconColor = AppColors.PrimaryLight,
-                        selectedTextColor = AppColors.PrimaryLight,
-                        unselectedIconColor = AppColors.Gray,
-                        unselectedTextColor = AppColors.Gray,
-                        disabledIconColor = AppColors.Transparent,
-                        disabledTextColor = AppColors.Transparent,
-                        indicatorColor = AppColors.Transparent,
-                    ),
-            )
+            items.forEach { item ->
+                NavigationBarItem(
+                    icon = {
+                        Icon(
+                            painterResource(item.iconResId),
+                            contentDescription = stringResource(item.titleResId),
+                            modifier = Modifier.size(24.dp),
+                        )
+                    },
+                    label = {
+                        Text(
+                            text = stringResource(item.titleResId),
+                            style =
+                                AppTextStyles.textStyle10SPNormal.copy(
+                                    color = Color.Unspecified,
+                                ),
+                        )
+                    },
+                    selected = currentRoute == item.route,
+                    onClick = {
+                        navController.navigate(item.route) {
+                            popUpTo(navController.graph.startDestinationId) { saveState = true }
+                            launchSingleTop = true
+                            restoreState = true
+                        }
+                    },
+                    enabled = item.route != BTBottomNavItem.AddExpenses.route,
+                    colors =
+                        NavigationBarItemDefaults.colors(
+                            selectedIconColor = AppColors.PrimaryLight,
+                            selectedTextColor = AppColors.PrimaryLight,
+                            unselectedIconColor = AppColors.Gray,
+                            unselectedTextColor = AppColors.Gray,
+                            disabledIconColor = AppColors.Transparent,
+                            disabledTextColor = AppColors.Transparent,
+                            indicatorColor = AppColors.Transparent,
+                        ),
+                )
+            }
         }
     }
 }

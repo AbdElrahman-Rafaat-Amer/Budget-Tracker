@@ -22,8 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.abdelrahman.raafat.budget.tracker.navigation.BottomNavGraph
 import com.abdelrahman.raafat.budget.tracker.navigation.BottomNavigationBar
-import com.abdelrahman.raafat.budget.tracker.ui.custom.BTFAB
-import com.abdelrahman.raafat.budget.tracker.ui.custom.BTFABMenu
+import com.abdelrahman.raafat.budget.tracker.navigation.BottomNavigationFab
+import com.abdelrahman.raafat.budget.tracker.ui.custom.BTFabMenu
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.DashboardViewModel
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
@@ -50,7 +50,7 @@ private fun MainScreen(dashboardViewModel: DashboardViewModel) {
         bottomBar = { BottomNavigationBar(navController) },
         containerColor = AppColors.LightPrimary,
         floatingActionButton = {
-            BTFAB(showDialog) {
+            BottomNavigationFab(showDialog) {
                 showDialog = showDialog.not()
             }
         },
@@ -73,7 +73,7 @@ private fun MainScreen(dashboardViewModel: DashboardViewModel) {
                         animationSpec = tween(durationMillis = 300),
                     ),
             ) {
-                BTFABMenu(
+                BTFabMenu(
                     onDismiss = { showDialog = false },
                     onIncomeClick = { /* Handle income button click */ },
                     onTransferClick = { /* Handle transfer button click */ },

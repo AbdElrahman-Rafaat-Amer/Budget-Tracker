@@ -1,4 +1,4 @@
-package com.abdelrahman.raafat.budget.tracker.ui.custom
+package com.abdelrahman.raafat.budget.tracker.navigation
 
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
@@ -18,7 +18,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 
 @Suppress("FunctionName")
 @Composable
-fun BTFAB(
+fun BottomNavigationFab(
     showClose: Boolean,
     onFabClick: () -> Unit,
 ) {

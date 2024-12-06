@@ -36,6 +36,9 @@
     <string name="profile">Profile</string>
     <string name="budget">Budget</string>
     <string name="add_expense">Add Expense</string>
+    <string name="expense">Expense</string>
+    <string name="transfer">Transfer</string>
+    <string name="income">Income</string>
 
     <plurals name="remaining_days">
         <item quantity="one">%1$d Day</item>
