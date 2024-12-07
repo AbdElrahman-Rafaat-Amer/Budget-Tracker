@@ -18,6 +18,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.abdelrahman.raafat.budget.tracker.R
+import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
@@ -27,12 +28,14 @@ fun BTHeader(
     title: String,
     iconRes: Int = R.drawable.ic_backspace,
     iconColor: Color? = null,
+    textColor: Color = AppColors.Black,
+    modifier: Modifier = Modifier,
     onBackButtonClicked: () -> Unit = {},
 ) {
     val colorFilter = iconColor?.let { ColorFilter.tint(iconColor) }
     Row(
         modifier =
-            Modifier
+            modifier
                 .fillMaxWidth()
                 .padding(5.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -50,7 +53,11 @@ fun BTHeader(
 
         Text(
             text = title,
-            style = AppTextStyles.textStyle18SPSemiBold.copy(textAlign = TextAlign.Center),
+            style =
+                AppTextStyles.textStyle18SPSemiBold.copy(
+                    textAlign = TextAlign.Center,
+                    color = textColor,
+                ),
             modifier =
                 Modifier
                     .weight(1f),

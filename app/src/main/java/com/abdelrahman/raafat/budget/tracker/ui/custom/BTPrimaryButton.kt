@@ -1,12 +1,12 @@
 package com.abdelrahman.raafat.budget.tracker.ui.custom
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -23,10 +23,11 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 @Suppress("FunctionName")
 @Composable
 fun BTPrimaryButton(
-    modifier: Modifier = Modifier,
     text: String,
+    modifier: Modifier = Modifier,
     isAllCaps: Boolean = true,
     isTextButton: Boolean = false,
+    isEnabled: Boolean = true,
     onButtonClicked: () -> Unit,
 ) {
     val buttonColors =
@@ -37,7 +38,7 @@ fun BTPrimaryButton(
         }
 
     val buttonBorders =
-        if (isTextButton) {
+        if (isTextButton || isEnabled.not()) {
             null
         } else {
             BorderStroke(2.dp, MaterialTheme.colorScheme.primary)
@@ -68,6 +69,7 @@ fun BTPrimaryButton(
         colors = buttonColors,
         border = buttonBorders,
         contentPadding = paddingValues,
+        enabled = isEnabled,
     ) {
         Text(
             modifier = modifier,
@@ -88,17 +90,24 @@ fun BTPrimaryButton(
 @Composable
 private fun BTPrimaryButtonPreview() {
     BudgetTrackerTheme {
-        Column {
+        Column(
+            verticalArrangement = Arrangement.spacedBy(20.dp),
+            modifier = Modifier.padding(10.dp),
+        ) {
             BTPrimaryButton(
                 text = "Next",
                 onButtonClicked = {},
             )
 
-            Spacer(Modifier.height(20.dp))
-
             BTPrimaryButton(
                 text = "Skip",
                 isTextButton = true,
+                onButtonClicked = {},
+            )
+
+            BTPrimaryButton(
+                text = "Disabled",
+                isEnabled = false,
                 onButtonClicked = {},
             )
         }

@@ -39,6 +39,42 @@
     <string name="expense">Expense</string>
     <string name="transfer">Transfer</string>
     <string name="income">Income</string>
+    <string name="how_much">How much?</string>
+    <string name="save">Save</string>
+    <string name="description">Description</string>
+    <string name="category">Category</string>
+    <string name="payment_way">Payment Way</string>
+    <string name="investment">Investment</string>
+    <string name="other">Other</string>
+    <string name="transport">Transport</string>
+    <string name="education">Education</string>
+    <string name="healthcare">Healthcare</string>
+    <string name="personal">Personal</string>
+    <string name="food">Food</string>
+    <string name="bills_utilities"><![CDATA[Bills & Utilities]]></string>
+    <string name="installments">Installments</string>
+
+
+    <!-- Income Methods -->
+    <string name="salary">Salary</string>
+    <string name="business_profit">Business Profit</string>
+    <string name="investment_profit">Investment Profit</string>
+    <string name="loan_received">Loan Received</string>
+    <string name="gift_received">Gift Received</string>
+    <string name="rental_income">Rental Income</string>
+    <string name="other_income">Other Income</string>
+
+    <!-- Expense Methods -->
+    <string name="credit_card">Credit Card</string>
+    <string name="debit_card">Debit Card</string>
+    <string name="upi">UPI (Unified Payments Interface- ex: GooglePlay)</string>
+    <string name="mobile_wallet">Mobile Wallet</string>
+    <string name="cryptocurrency">Cryptocurrency</string>
+    <string name="cash">Cash</string>
+    <string name="cheque">Cheque</string>
+    <string name="bank_transfer">Bank Transfer</string>
+    <string name="loan_payment">Loan Payment</string>
+    <string name="other_expense">Other Expense</string>
 
     <plurals name="remaining_days">
         <item quantity="one">%1$d Day</item>

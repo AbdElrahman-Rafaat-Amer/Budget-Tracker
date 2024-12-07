@@ -113,4 +113,11 @@ object AppTextStyles {
             fontWeight = FontWeight.Medium,
             lineHeight = 25.sp,
         )
+
+    val textStyle64SPSemiBold =
+        defaultTextStyle.copy(
+            fontSize = 64.sp,
+            fontWeight = FontWeight.SemiBold,
+            lineHeight = 77.sp,
+        )
 }
