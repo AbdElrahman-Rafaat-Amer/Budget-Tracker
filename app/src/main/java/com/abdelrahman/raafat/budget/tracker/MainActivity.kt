@@ -19,12 +19,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.abdelrahman.raafat.budget.tracker.navigation.BottomNavGraph
 import com.abdelrahman.raafat.budget.tracker.navigation.BottomNavigationBar
 import com.abdelrahman.raafat.budget.tracker.navigation.BottomNavigationFab
 import com.abdelrahman.raafat.budget.tracker.ui.custom.BTFabMenu
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.DashboardViewModel
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.transaction.TransactionType
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
@@ -46,12 +48,29 @@ class MainActivity : ComponentActivity() {
 private fun MainScreen(dashboardViewModel: DashboardViewModel) {
     val navController = rememberNavController()
     var showDialog by remember { mutableStateOf(false) }
+
+    val currentRoute =
+        navController
+            .currentBackStackEntryAsState()
+            .value
+            ?.destination
+            ?.route
+
+    // Routes where the bottom bar and FAB should be hidden
+    val hideBottomBarRoutes = listOf("AddTransactionScreen/{transactionType}")
+
     Scaffold(
-        bottomBar = { BottomNavigationBar(navController) },
+        bottomBar = {
+            if (currentRoute !in hideBottomBarRoutes) {
+                BottomNavigationBar(navController)
+            }
+        },
         containerColor = AppColors.LightPrimary,
         floatingActionButton = {
-            BottomNavigationFab(showDialog) {
-                showDialog = showDialog.not()
+            if (currentRoute !in hideBottomBarRoutes) {
+                BottomNavigationFab(showDialog) {
+                    showDialog = showDialog.not()
+                }
             }
         },
         floatingActionButtonPosition = FabPosition.Center,
@@ -61,7 +80,7 @@ private fun MainScreen(dashboardViewModel: DashboardViewModel) {
 
             // Overlay for showing the 3 buttons
             AnimatedVisibility(
-                visible = showDialog,
+                visible = showDialog && currentRoute !in hideBottomBarRoutes,
                 enter =
                     slideInVertically(
                         initialOffsetY = { it }, // Start below the screen
@@ -76,12 +95,13 @@ private fun MainScreen(dashboardViewModel: DashboardViewModel) {
                 BTFabMenu(
                     onDismiss = { showDialog = false },
                     onIncomeClick = {
+                        navController.navigate("AddTransactionScreen/${TransactionType.INCOME.name}")
+                    },
+                    onExpenseClick = {
+                        navController.navigate("AddTransactionScreen/${TransactionType.EXPENSE.name}")
                     },
                     onTransferClick = {
                         // TODO handle transfer case.
-                    },
-                    onExpenseClick = {
-                        // Handle expense button click
                     },
                 )
             }

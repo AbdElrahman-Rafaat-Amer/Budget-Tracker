@@ -1,7 +1,6 @@
 package com.abdelrahman.raafat.budget.tracker.ui.dashboard.transaction
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,11 +10,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
@@ -24,7 +24,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.base.BTBaseScreen
+import com.abdelrahman.raafat.budget.tracker.ui.custom.BTDropDownMenu
+import com.abdelrahman.raafat.budget.tracker.ui.custom.BTOutlinedTextField
 import com.abdelrahman.raafat.budget.tracker.ui.custom.BTPrimaryButton
+import com.abdelrahman.raafat.budget.tracker.ui.custom.transparentTextFieldColors
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
@@ -32,16 +36,26 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 @Suppress("FunctionName")
 @Composable
 fun AddTransactionScreen(
+    transactionType: TransactionType = TransactionType.INCOME,
     modifier: Modifier = Modifier,
-    transactionType: TransactionType = TransactionType.Income,
     onBackButtonClicked: () -> Unit,
 ) {
+    val amount = remember { mutableStateOf("") }
+    val category = remember { mutableStateOf("") }
+    val description = remember { mutableStateOf("") }
+    val paymentWay = remember { mutableStateOf("") }
+
     val (titleResId, backGroundColor) =
-        if (transactionType == TransactionType.Income) {
-            R.string.income to AppColors.Green
-        } else {
-            R.string.expense to AppColors.Red
+        when (transactionType) {
+            TransactionType.EXPENSE -> {
+                R.string.expense to AppColors.Red
+            }
+
+            TransactionType.INCOME -> {
+                R.string.income to AppColors.Green
+            }
         }
+
     BTBaseScreen(
         title = stringResource(titleResId),
         iconColor = AppColors.White,
@@ -58,163 +72,138 @@ fun AddTransactionScreen(
             verticalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxSize(),
         ) {
-            Text(
-                text = stringResource(R.string.how_much),
-                style =
-                    AppTextStyles.textStyle18SPSemiBold.copy(
-                        lineHeight = 21.sp,
-                        color = AppColors.BottomNavigationColor.copy(alpha = 0.64f),
-                    ),
-                modifier = Modifier.padding(start = 20.dp),
-            )
-
-            // Amount TextField
-            val textStyle =
-                AppTextStyles.textStyle64SPSemiBold.copy(
-                    color = AppColors.BottomNavigationColor,
-                )
-            TextField(
-                value = "",
-                onValueChange = {},
-                textStyle = textStyle,
-                placeholder = {
-                    Text(
-                        text = "0",
-                        style = textStyle,
-                    )
-                },
-                prefix = {
-                    Text(
-                        "$",
-                        style = textStyle,
-                    )
-                },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                colors =
-                    TextFieldDefaults.colors(
-                        unfocusedIndicatorColor = AppColors.Transparent,
-                        focusedIndicatorColor = AppColors.Transparent,
-                        unfocusedContainerColor = AppColors.Transparent,
-                        focusedContainerColor = AppColors.Transparent,
-                    ),
-            )
+            // Amount Input
+            AmountInputSection(amount)
 
             Spacer(Modifier.height(30.dp))
-            // White bottom view
-            Column(
-                modifier =
-                    Modifier
-                        .background(
-                            color = AppColors.White,
-                            shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
-                        ).weight(1f)
-                        .padding(vertical = 24.dp, horizontal = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-            ) {
-                val descriptionTextStyle =
-                    AppTextStyles.textStyle16SPNormal.copy(
-                        lineHeight = 18.sp,
-                        color = AppColors.PlaceholderColor,
-                    )
 
-                // Category
-                OutlinedTextField(
-                    modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .background(AppColors.White)
-                            .border(1.dp, AppColors.BorderColor, RoundedCornerShape(16.dp)),
-                    value = "",
-                    onValueChange = {},
-                    textStyle = descriptionTextStyle,
-                    placeholder = {
-                        Text(
-                            text = stringResource(R.string.category),
-                            style = descriptionTextStyle,
-                        )
-                    },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    colors =
-                        TextFieldDefaults.colors(
-                            unfocusedIndicatorColor = AppColors.Transparent,
-                            focusedIndicatorColor = AppColors.Transparent,
-                            unfocusedContainerColor = AppColors.Transparent,
-                            focusedContainerColor = AppColors.Transparent,
-                        ),
-                )
-
-                // Description
-                OutlinedTextField(
-                    modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .background(AppColors.White)
-                            .border(1.dp, AppColors.BorderColor, RoundedCornerShape(16.dp)),
-                    value = "",
-                    onValueChange = {},
-                    textStyle = descriptionTextStyle,
-                    placeholder = {
-                        Text(
-                            text = stringResource(R.string.description),
-                            style = descriptionTextStyle,
-                        )
-                    },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    colors =
-                        TextFieldDefaults.colors(
-                            unfocusedIndicatorColor = AppColors.Transparent,
-                            focusedIndicatorColor = AppColors.Transparent,
-                            unfocusedContainerColor = AppColors.Transparent,
-                            focusedContainerColor = AppColors.Transparent,
-                        ),
-                )
-
-                // Payment way
-                OutlinedTextField(
-                    modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .background(AppColors.White)
-                            .border(1.dp, AppColors.BorderColor, RoundedCornerShape(16.dp)),
-                    value = "",
-                    onValueChange = {},
-                    textStyle = descriptionTextStyle,
-                    placeholder = {
-                        Text(
-                            text = stringResource(R.string.payment_way),
-                            style = descriptionTextStyle,
-                        )
-                    },
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                    colors =
-                        TextFieldDefaults.colors(
-                            unfocusedIndicatorColor = AppColors.Transparent,
-                            focusedIndicatorColor = AppColors.Transparent,
-                            unfocusedContainerColor = AppColors.Transparent,
-                            focusedContainerColor = AppColors.Transparent,
-                        ),
-                )
-
-                Spacer(Modifier.weight(1f))
-                BTPrimaryButton(
-                    text = stringResource(R.string.save),
-                    isAllCaps = false,
-                ) { }
-            }
+            TransactionDetailsSection(
+                modifier = Modifier.weight(1f),
+                category = category,
+                description = description,
+                paymentMethod = paymentWay,
+                transactionType = transactionType,
+                isEnabled = amount.value.isNotEmpty() && category.value.isNotEmpty() && paymentWay.value.isNotEmpty(),
+            )
         }
     }
 }
 
-sealed class TransactionType {
-    data object Expense : TransactionType()
+@Suppress("FunctionName")
+@Composable
+private fun AmountInputSection(amount: MutableState<String>) {
+    val maxChars = 10
+    Text(
+        text = stringResource(R.string.how_much),
+        style =
+            AppTextStyles.textStyle18SPSemiBold.copy(
+                lineHeight = 21.sp,
+                color = AppColors.BottomNavigationColor.copy(alpha = 0.64f),
+            ),
+        modifier = Modifier.padding(start = 20.dp),
+    )
 
-    data object Income : TransactionType()
+    // Amount TextField
+    val textStyle =
+        AppTextStyles.textStyle64SPSemiBold.copy(
+            color = AppColors.BottomNavigationColor,
+        )
+    TextField(
+        value = amount.value,
+        onValueChange = {
+            if (it.length <= maxChars) {
+                amount.value = it
+            }
+        },
+        textStyle = textStyle,
+        placeholder = { Text(text = "0", style = textStyle) },
+        prefix = { Text("$", style = textStyle) },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        colors = transparentTextFieldColors(),
+    )
+}
+
+@Suppress("FunctionName")
+@Composable
+private fun TransactionDetailsSection(
+    modifier: Modifier,
+    category: MutableState<String>,
+    description: MutableState<String>,
+    paymentMethod: MutableState<String>,
+    isEnabled: Boolean,
+    transactionType: TransactionType,
+) {
+    Column(
+        modifier =
+            modifier
+                .background(
+                    color = AppColors.White,
+                    shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
+                ).padding(vertical = 24.dp, horizontal = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+        val textStyle =
+            AppTextStyles.textStyle16SPNormal.copy(
+                lineHeight = 18.sp,
+            )
+
+        val placeHolderTextStyle =
+            textStyle.copy(
+                color = AppColors.PlaceholderColor,
+            )
+
+        // category
+        val categories = Category.entries.map { stringResource(it.titleResId) }
+        BTDropDownMenu(
+            value = category,
+            menuItems = categories,
+            textStyle = textStyle,
+            placeHolderTextStyle = placeHolderTextStyle,
+            placeholderText = stringResource(R.string.category),
+            onItemSelected = { title ->
+                category.value = title
+            },
+        )
+
+        // payment method
+        val paymentMethods =
+            PaymentMethod.entries
+                .filter { it.type == transactionType }
+                .map { stringResource(it.titleResId) }
+        BTDropDownMenu(
+            value = paymentMethod,
+            textStyle = textStyle,
+            placeHolderTextStyle = placeHolderTextStyle,
+            menuItems = paymentMethods,
+            placeholderText = stringResource(R.string.payment_way),
+            onItemSelected = { title ->
+                paymentMethod.value = title
+            },
+        )
+        // description
+        BTOutlinedTextField(
+            value = description.value,
+            onValueChange = { description.value = it },
+            placeholderText = stringResource(R.string.description),
+            textStyle = textStyle,
+            placeholderTextStyle = placeHolderTextStyle,
+            onClick = {},
+        )
+
+        Spacer(Modifier.weight(1f))
+        BTPrimaryButton(
+            text = stringResource(R.string.save),
+            isAllCaps = false,
+            isEnabled = isEnabled,
+        ) {
+        }
+    }
 }
 
 @Suppress("FunctionName")
 @Preview
 @Composable
-fun AddTransactionScreenPreview() {
+private fun AddTransactionScreenPreview() {
     BudgetTrackerTheme {
         AddTransactionScreen {
         }
