@@ -6,23 +6,27 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.base.BTBaseScreen
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
+import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
 @Suppress("FunctionName")
 @Composable
-fun TransactionDetailsScreen(
+fun TransactionScreen(
     transactionsList: List<TransactionItem>,
     modifier: Modifier = Modifier,
     onBackButtonClicked: () -> Unit,
 ) {
     BTBaseScreen(
         title = stringResource(R.string.transactions),
-        verticalSpace = 30.dp,
+        headerTextStyle = AppTextStyles.textStyle21SPBold.copy(textAlign = TextAlign.Center),
+        removeIcon = true,
+        verticalSpace = 20.dp,
         modifier = modifier.padding(vertical = 20.dp, horizontal = 15.dp),
         onBackButtonClicked = onBackButtonClicked,
     ) {
@@ -40,7 +44,7 @@ fun TransactionDetailsScreen(
 @Suppress("FunctionName")
 @Preview(showBackground = true)
 @Composable
-private fun TransactionDetailsScreenPreview() {
+private fun TransactionScreenPreview() {
     BudgetTrackerTheme {
         val item =
             TransactionItem(
@@ -64,7 +68,7 @@ private fun TransactionDetailsScreenPreview() {
                 ),
             )
         }
-        TransactionDetailsScreen(
+        TransactionScreen(
             transactionsList,
             modifier = Modifier.padding(vertical = 10.dp),
         ) {}

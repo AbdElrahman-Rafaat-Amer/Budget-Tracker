@@ -1,5 +1,6 @@
 package com.abdelrahman.raafat.budget.tracker.ui.custom
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -14,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -26,6 +28,8 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 @Composable
 fun BTHeader(
     title: String,
+    textStyle: TextStyle = AppTextStyles.textStyle18SPSemiBold.copy(textAlign = TextAlign.Center),
+    removeIcon: Boolean = false,
     iconRes: Int = R.drawable.ic_backspace,
     iconColor: Color? = null,
     textColor: Color = AppColors.Black,
@@ -41,21 +45,21 @@ fun BTHeader(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(5.dp),
     ) {
-        Image(
-            painter = painterResource(iconRes),
-            colorFilter = colorFilter,
-            contentDescription = stringResource(R.string.back),
-            modifier =
-                Modifier.clickable {
-                    onBackButtonClicked()
-                },
-        )
-
+        AnimatedVisibility(visible = removeIcon.not()) {
+            Image(
+                painter = painterResource(iconRes),
+                colorFilter = colorFilter,
+                contentDescription = stringResource(R.string.back),
+                modifier =
+                    Modifier.clickable {
+                        onBackButtonClicked()
+                    },
+            )
+        }
         Text(
             text = title,
             style =
-                AppTextStyles.textStyle18SPSemiBold.copy(
-                    textAlign = TextAlign.Center,
+                textStyle.copy(
                     color = textColor,
                 ),
             modifier =

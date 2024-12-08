@@ -70,5 +70,6 @@ object AppColors {
     val EducationColor = Green
     val TransportColor = Color(0xFF75E8C5)
     val InvestmentColor = Color(0xFFFFBFCA)
+    val InstallmentsColor = Gray
     val OthersColor = Color(0xFFF73649)
 }

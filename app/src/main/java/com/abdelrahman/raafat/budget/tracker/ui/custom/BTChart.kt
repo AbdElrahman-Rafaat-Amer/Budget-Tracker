@@ -28,6 +28,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 import com.abdelrahman.raafat.budget.tracker.utils.asAngle
 import com.abdelrahman.raafat.budget.tracker.utils.degreeToRadian
+import com.abdelrahman.raafat.budget.tracker.utils.formatWithCurrency
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -44,7 +45,7 @@ fun BTChart(
         remember(chartDataList) {
             chartDataList.map {
                 textMeasurer.measure(
-                    text = "${it.data.toInt()}%",
+                    text = "${it.data.formatWithCurrency(currency = "", maxFraction = 1)}%",
                     style =
                         TextStyle(
                             fontSize = 16.sp,

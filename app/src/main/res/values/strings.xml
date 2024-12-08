@@ -44,15 +44,6 @@
     <string name="description">Description</string>
     <string name="category">Category</string>
     <string name="payment_way">Payment Way</string>
-    <string name="investment">Investment</string>
-    <string name="other">Other</string>
-    <string name="transport">Transport</string>
-    <string name="education">Education</string>
-    <string name="healthcare">Healthcare</string>
-    <string name="personal">Personal</string>
-    <string name="food">Food</string>
-    <string name="bills_utilities"><![CDATA[Bills & Utilities]]></string>
-    <string name="installments">Installments</string>
 
 
     <!-- Income Methods -->
@@ -75,6 +66,17 @@
     <string name="bank_transfer">Bank Transfer</string>
     <string name="loan_payment">Loan Payment</string>
     <string name="other_expense">Other Expense</string>
+
+    <!-- Categories -->
+    <string name="investment">Investment</string>
+    <string name="other">Other</string>
+    <string name="transport">Transport</string>
+    <string name="education">Education</string>
+    <string name="healthcare">Healthcare</string>
+    <string name="personal">Personal</string>
+    <string name="food">Food</string>
+    <string name="bills_utilities"><![CDATA[Bills & Utilities]]></string>
+    <string name="installments">Installments</string>
 
     <plurals name="remaining_days">
         <item quantity="one">%1$d Day</item>

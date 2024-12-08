@@ -10,18 +10,23 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.ui.custom.BTHeader
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
+import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
 @Suppress("FunctionName")
 @Composable
 fun BTBaseScreen(
     title: String,
+    headerTextStyle: TextStyle = AppTextStyles.textStyle18SPSemiBold.copy(textAlign = TextAlign.Center),
+    removeIcon: Boolean = false,
     iconRes: Int = R.drawable.ic_backspace,
     iconColor: Color? = null,
     textColor: Color = AppColors.Black,
@@ -38,6 +43,8 @@ fun BTBaseScreen(
         // Header with customizable content
         BTHeader(
             title = title,
+            textStyle = headerTextStyle,
+            removeIcon = removeIcon,
             iconRes = iconRes,
             iconColor = iconColor,
             textColor = textColor,
