@@ -65,9 +65,7 @@ fun GreetingSection(
             )
 
             Spacer(Modifier.height(15.dp))
-
-            Text("$pastDays $remainingDays $totalDaysInMonth")
-            Text("${pastDays.toFloat() / totalDaysInMonth * 100}")
+            
             RemainingDaysSection()
         }
     }
