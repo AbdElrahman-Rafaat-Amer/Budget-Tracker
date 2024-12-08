@@ -12,7 +12,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.dashboard.DashboardViewModel
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.transaction.AddTransactionScreen
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.transaction.TransactionType
 import com.abdelrahman.raafat.budget.tracker.ui.profile.ProfileScreen
-import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionDetailsScreen
+import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionScreen
 
 @Suppress("FunctionName")
 @Composable
@@ -22,10 +22,10 @@ fun BottomNavGraph(
 ) {
     NavHost(navController = navController, startDestination = BTBottomNavItem.Dashboard.route) {
         composable(BTBottomNavItem.Dashboard.route) {
-            DashboardScreen(viewModel.items)
+            DashboardScreen(viewModel.getItems())
         }
         composable(BTBottomNavItem.Transaction.route) {
-            TransactionDetailsScreen(viewModel.transactionsItems) {
+            TransactionScreen(viewModel.transactionsItems) {
             }
         }
         composable(BTBottomNavItem.Budget.route) {

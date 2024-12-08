@@ -106,10 +106,13 @@ fun TransactionRow(
         Spacer(Modifier.width(10.dp))
 
         // Price
+        val (priceColor, pricePrefix) = if (transaction.isExpense) AppColors.Red to "- " else AppColors.Green to "+ "
         Text(
-            text = transaction.price.formatWithCurrency(),
-            style = AppTextStyles.textStyle16SPNormal,
-            textAlign = TextAlign.End,
+            text = "$pricePrefix${transaction.price.formatWithCurrency()}",
+            style =
+                AppTextStyles.textStyle16SPMedium.copy(
+                    color = priceColor,
+                ),
         )
     }
 }
