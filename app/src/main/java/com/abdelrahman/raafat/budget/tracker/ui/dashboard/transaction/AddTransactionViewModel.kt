@@ -7,13 +7,11 @@ import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionItem
 import kotlinx.coroutines.launch
 
 class AddTransactionViewModel(
-    application: Application
+    application: Application,
 ) : BTBaseViewModel(application) {
-
     fun addTransaction(transactionItem: TransactionItem) {
         viewModelScope.launch {
-            db.transactionDao.insertTransaction(transactionItem)
+            repository.insertTransaction(transactionItem)
         }
     }
-
 }

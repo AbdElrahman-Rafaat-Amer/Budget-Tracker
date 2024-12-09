@@ -10,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TransactionDao {
-
     @Insert
     suspend fun insertTransaction(transactionItem: TransactionItem)
 
@@ -28,5 +27,4 @@ interface TransactionDao {
 
     @Delete
     suspend fun deleteTransaction(transactionItem: TransactionItem)
-
 }

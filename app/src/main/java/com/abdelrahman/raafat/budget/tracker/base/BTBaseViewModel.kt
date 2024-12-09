@@ -3,9 +3,9 @@ package com.abdelrahman.raafat.budget.tracker.base
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.room.Room
 import com.abdelrahman.raafat.budget.tracker.PreferencesManager
 import com.abdelrahman.raafat.budget.tracker.database.BTDatabase
+import com.abdelrahman.raafat.budget.tracker.repository.BTRepository
 import kotlinx.coroutines.launch
 
 open class BTBaseViewModel(
@@ -13,13 +13,9 @@ open class BTBaseViewModel(
 ) : AndroidViewModel(application) {
     protected val preferencesManager = PreferencesManager(application.baseContext)
 
-    val db by lazy {
-        Room.databaseBuilder(
-            context = application.applicationContext,
-            klass = BTDatabase::class.java,
-            name = "budget_tracker.db"
-        ).build()
-    }
+    private val database = BTDatabase.getInstance(application.applicationContext)
+    private val itemDao = database.transactionDao
+    val repository = BTRepository(itemDao)
 
     // Save the 'show onboarding' value
     fun saveShowOnboarding(value: Boolean) {

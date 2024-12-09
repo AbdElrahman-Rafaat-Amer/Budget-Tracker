@@ -42,7 +42,7 @@ fun AddTransactionScreen(
     modifier: Modifier = Modifier,
     onBackButtonClicked: () -> Unit,
 ) {
-    val addTransactionViewModel : AddTransactionViewModel  = viewModel()
+    val addTransactionViewModel: AddTransactionViewModel = viewModel()
     val amount = remember { mutableStateOf("") }
     val category = remember { mutableStateOf("") }
     val paymentWay = remember { mutableStateOf("") }
@@ -88,8 +88,9 @@ fun AddTransactionScreen(
                 name = name,
                 description = description,
                 transactionType = transactionType,
-                isEnabled = amount.value.isNotBlank() && category.value.isNotBlank() && paymentWay.value.isNotBlank() && name.value.isNotBlank(),
-            ){
+                isEnabled =
+                    amount.value.isNotBlank() && category.value.isNotBlank() && paymentWay.value.isNotBlank() && name.value.isNotBlank(),
+            ) {
                 addTransactionViewModel.addTransaction(
                     TransactionItem(
                         name = name.value,
@@ -98,7 +99,7 @@ fun AddTransactionScreen(
                         date = System.currentTimeMillis(),
                         amount = amount.value.toDouble(),
                         isExpense = transactionType == TransactionType.EXPENSE,
-                    )
+                    ),
                 )
             }
         }
@@ -149,7 +150,7 @@ private fun TransactionDetailsSection(
     description: MutableState<String>,
     isEnabled: Boolean,
     transactionType: TransactionType,
-    onButtonClicked : () -> Unit
+    onButtonClicked: () -> Unit,
 ) {
     Column(
         modifier =
@@ -225,7 +226,7 @@ private fun TransactionDetailsSection(
             isAllCaps = false,
             isEnabled = isEnabled,
         ) {
-            //Call viewModel to save data in Room
+            // Call viewModel to save data in Room
             onButtonClicked.invoke()
         }
     }

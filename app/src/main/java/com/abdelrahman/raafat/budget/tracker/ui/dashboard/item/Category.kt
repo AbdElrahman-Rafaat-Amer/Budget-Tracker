@@ -17,7 +17,8 @@ enum class Category(
     TRANSPORT(titleResId = R.string.transport, color = AppColors.TransportColor),
     INVESTMENT(titleResId = R.string.investment, color = AppColors.InvestmentColor),
     INSTALLMENTS(titleResId = R.string.installments, color = AppColors.InstallmentsColor),
-    OTHER(titleResId = R.string.other, color = AppColors.OthersColor);
+    OTHER(titleResId = R.string.other, color = AppColors.OthersColor),
+    ;
 
     companion object {
         fun fromType(name: String): Category = Category.entries.find { it.name == name } ?: OTHER
