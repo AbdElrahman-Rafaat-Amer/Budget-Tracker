@@ -1,6 +1,7 @@
 package com.abdelrahman.raafat.budget.tracker.ui.dashboard
 
 import android.app.Application
+import androidx.lifecycle.viewModelScope
 import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.base.BTBaseViewModel
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.BudgetExpense
@@ -10,6 +11,8 @@ import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.DashboardItems
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.ExpenseDistribution
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.UpcomingExpenses
 import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionItem
+import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.launch
 
 class DashboardViewModel(
     private val application: Application,
@@ -138,13 +141,13 @@ class DashboardViewModel(
      *  - Category B: 33.33%
      */
     private fun getExpenseDistribution(): List<ExpenseDistribution> {
-        val transactionsPrice = transactionsItems.sumOf { it.price }
+        val transactionsPrice = transactionsItems.sumOf { it.amount }
         if (transactionsPrice == 0.0) return emptyList() // Handle empty or zero-value transactions
 
         // Group transactions by category and sum their prices
         val categoriesWithPrices = transactionsItems
             .groupBy { it.category }
-            .mapValues { (_, items) -> items.sumOf { it.price } }
+            .mapValues { (_, items) -> items.sumOf { it.amount } }
             .toList()
             .sortedByDescending { it.second } // Sort by price descending
 
@@ -164,17 +167,11 @@ class DashboardViewModel(
     // TODO this function will be used to get the transaction From Database
     private fun getTransaction() {
         transactionsItems.clear()
-        repeat(20) { index ->
-            transactionsItems.add(
-                TransactionItem(
-                    name = "Door Handle Replacement $index",
-                    description = "Door Handle Replacement Shoe desc $index",
-                    category = Category.entries.random(),
-                    date = System.currentTimeMillis() - index * 10000,
-                    price = 5.0 * (index + 1),
-                    isExpense = index % 2 == 0,
-                ),
-            )
+        viewModelScope.launch {
+            db.transactionDao.getAllTransactions().collect { transactions ->
+                val x: MutableList<TransactionItem> = transactions.toMutableList()
+                transactionsItems.addAll(x)
+            }
         }
     }
 }

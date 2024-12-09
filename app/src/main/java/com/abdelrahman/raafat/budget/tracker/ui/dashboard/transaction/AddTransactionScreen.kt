@@ -22,6 +22,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.base.BTBaseScreen
 import com.abdelrahman.raafat.budget.tracker.ui.custom.BTDropDownMenu
@@ -32,6 +33,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
+import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionItem
 
 @Suppress("FunctionName")
 @Composable
@@ -40,10 +42,12 @@ fun AddTransactionScreen(
     modifier: Modifier = Modifier,
     onBackButtonClicked: () -> Unit,
 ) {
+    val addTransactionViewModel : AddTransactionViewModel  = viewModel()
     val amount = remember { mutableStateOf("") }
     val category = remember { mutableStateOf("") }
-    val description = remember { mutableStateOf("") }
     val paymentWay = remember { mutableStateOf("") }
+    val name = remember { mutableStateOf("") }
+    val description = remember { mutableStateOf("") }
 
     val (titleResId, backGroundColor) =
         when (transactionType) {
@@ -80,11 +84,23 @@ fun AddTransactionScreen(
             TransactionDetailsSection(
                 modifier = Modifier.weight(1f),
                 category = category,
-                description = description,
                 paymentMethod = paymentWay,
+                name = name,
+                description = description,
                 transactionType = transactionType,
-                isEnabled = amount.value.isNotEmpty() && category.value.isNotEmpty() && paymentWay.value.isNotEmpty(),
-            )
+                isEnabled = amount.value.isNotBlank() && category.value.isNotBlank() && paymentWay.value.isNotBlank() && name.value.isNotBlank(),
+            ){
+                addTransactionViewModel.addTransaction(
+                    TransactionItem(
+                        name = name.value,
+                        category = Category.fromType(category.value),
+                        description = description.value,
+                        date = System.currentTimeMillis(),
+                        amount = amount.value.toDouble(),
+                        isExpense = transactionType == TransactionType.EXPENSE,
+                    )
+                )
+            }
         }
     }
 }
@@ -128,10 +144,12 @@ private fun AmountInputSection(amount: MutableState<String>) {
 private fun TransactionDetailsSection(
     modifier: Modifier,
     category: MutableState<String>,
-    description: MutableState<String>,
     paymentMethod: MutableState<String>,
+    name: MutableState<String>,
+    description: MutableState<String>,
     isEnabled: Boolean,
     transactionType: TransactionType,
+    onButtonClicked : () -> Unit
 ) {
     Column(
         modifier =
@@ -161,7 +179,8 @@ private fun TransactionDetailsSection(
             placeHolderTextStyle = placeHolderTextStyle,
             placeholderText = stringResource(R.string.category),
             onItemSelected = { title ->
-                category.value = title
+                val selectedIndex = categories.indexOf(title)
+                category.value = Category.entries[selectedIndex].name
             },
         )
 
@@ -180,6 +199,16 @@ private fun TransactionDetailsSection(
                 paymentMethod.value = title
             },
         )
+        // name
+        BTOutlinedTextField(
+            value = name.value,
+            onValueChange = { name.value = it },
+            placeholderText = stringResource(R.string.name),
+            textStyle = textStyle,
+            placeholderTextStyle = placeHolderTextStyle,
+            onClick = {},
+        )
+
         // description
         BTOutlinedTextField(
             value = description.value,
@@ -196,6 +225,8 @@ private fun TransactionDetailsSection(
             isAllCaps = false,
             isEnabled = isEnabled,
         ) {
+            //Call viewModel to save data in Room
+            onButtonClicked.invoke()
         }
     }
 }

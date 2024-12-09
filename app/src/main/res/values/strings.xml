@@ -77,6 +77,7 @@
     <string name="food">Food</string>
     <string name="bills_utilities"><![CDATA[Bills & Utilities]]></string>
     <string name="installments">Installments</string>
+    <string name="name">Name</string>
 
     <plurals name="remaining_days">
         <item quantity="one">%1$d Day</item>

@@ -193,7 +193,7 @@ private fun DashboardScreenPreview() {
                             description = "Door Handle Replacement Shoedesc",
                             category = Category.BILLS_UTILITIES,
                             date = System.currentTimeMillis(),
-                            price = 20.0,
+                            amount = 20.0,
                             isExpense = false,
                         ),
                         TransactionItem(
@@ -201,7 +201,7 @@ private fun DashboardScreenPreview() {
                             description = "Nike Running Shoedesc",
                             category = Category.PERSONAL,
                             date = System.currentTimeMillis() - 200000,
-                            price = 20.0,
+                            amount = 20.0,
                             isExpense = false,
                         ),
                         TransactionItem(
@@ -209,7 +209,7 @@ private fun DashboardScreenPreview() {
                             description = "Mutual Fund desc",
                             category = Category.INVESTMENT,
                             date = System.currentTimeMillis() - 100000,
-                            price = 20.0,
+                            amount = 20.0,
                             isExpense = false,
                         ),
                     ),
