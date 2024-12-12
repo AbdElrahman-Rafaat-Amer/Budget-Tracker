@@ -44,8 +44,8 @@ fun AddTransactionScreen(
 ) {
     val addTransactionViewModel: AddTransactionViewModel = viewModel()
     val amount = remember { mutableStateOf("") }
-    val category = remember { mutableStateOf("") }
-    val paymentWay = remember { mutableStateOf("") }
+    val category = remember { mutableStateOf(Category.UNDEFINED) }
+    val paymentMethod = remember { mutableStateOf(PaymentMethod.UNDEFINED) }
     val name = remember { mutableStateOf("") }
     val description = remember { mutableStateOf("") }
 
@@ -84,23 +84,28 @@ fun AddTransactionScreen(
             TransactionDetailsSection(
                 modifier = Modifier.weight(1f),
                 category = category,
-                paymentMethod = paymentWay,
+                paymentMethod = paymentMethod,
                 name = name,
                 description = description,
                 transactionType = transactionType,
                 isEnabled =
-                    amount.value.isNotBlank() && category.value.isNotBlank() && paymentWay.value.isNotBlank() && name.value.isNotBlank(),
+                    amount.value.isNotBlank() &&
+                        category.value != Category.UNDEFINED &&
+                        paymentMethod.value != PaymentMethod.UNDEFINED &&
+                        name.value.isNotBlank(),
             ) {
                 addTransactionViewModel.addTransaction(
                     TransactionItem(
                         name = name.value,
-                        category = Category.fromType(category.value),
+                        category = category.value,
+                        paymentMethod = paymentMethod.value,
                         description = description.value,
                         date = System.currentTimeMillis(),
                         amount = amount.value.toDouble(),
                         isExpense = transactionType == TransactionType.EXPENSE,
                     ),
                 )
+                onBackButtonClicked.invoke()
             }
         }
     }
@@ -144,8 +149,8 @@ private fun AmountInputSection(amount: MutableState<String>) {
 @Composable
 private fun TransactionDetailsSection(
     modifier: Modifier,
-    category: MutableState<String>,
-    paymentMethod: MutableState<String>,
+    category: MutableState<Category>,
+    paymentMethod: MutableState<PaymentMethod>,
     name: MutableState<String>,
     description: MutableState<String>,
     isEnabled: Boolean,
@@ -172,32 +177,30 @@ private fun TransactionDetailsSection(
             )
 
         // category
-        val categories = Category.entries.map { stringResource(it.titleResId) }
+        val categories =
+            Category.entries
+                .filter { it.type == transactionType && it != Category.UNDEFINED }
         BTDropDownMenu(
-            value = category,
+//            value = stringResource(category.value.titleResId),
             menuItems = categories,
             textStyle = textStyle,
             placeHolderTextStyle = placeHolderTextStyle,
             placeholderText = stringResource(R.string.category),
-            onItemSelected = { title ->
-                val selectedIndex = categories.indexOf(title)
-                category.value = Category.entries[selectedIndex].name
+            onItemSelected = {
+                category.value = it
             },
         )
 
         // payment method
-        val paymentMethods =
-            PaymentMethod.entries
-                .filter { it.type == transactionType }
-                .map { stringResource(it.titleResId) }
+        val paymentMethods = PaymentMethod.entries.toMutableList().dropLast(1)
         BTDropDownMenu(
-            value = paymentMethod,
+//            value = paymentMethod,
             textStyle = textStyle,
             placeHolderTextStyle = placeHolderTextStyle,
             menuItems = paymentMethods,
             placeholderText = stringResource(R.string.payment_way),
-            onItemSelected = { title ->
-                paymentMethod.value = title
+            onItemSelected = {
+                paymentMethod.value = it
             },
         )
         // name
@@ -226,7 +229,6 @@ private fun TransactionDetailsSection(
             isAllCaps = false,
             isEnabled = isEnabled,
         ) {
-            // Call viewModel to save data in Room
             onButtonClicked.invoke()
         }
     }

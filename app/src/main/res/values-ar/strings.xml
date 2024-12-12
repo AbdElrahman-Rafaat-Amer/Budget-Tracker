@@ -16,7 +16,7 @@
     <string name="category_wise_expenses">"category_wise_expenses"</string>
     <string name="completed">"اكمال"</string>
     <string name="remaining">"باق"</string>
-    <plurals name="remaining_days">
+    <plurals name="remaining_days_plurals">
         <item quantity="zero">"remaining_days"</item>
         <item quantity="one">"remaining_days"</item>
         <item quantity="two">"remaining_days"</item>

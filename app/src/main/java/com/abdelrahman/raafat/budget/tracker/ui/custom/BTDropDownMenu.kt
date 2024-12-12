@@ -11,7 +11,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -20,23 +19,28 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.toSize
+import com.abdelrahman.raafat.budget.tracker.R
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.transaction.PaymentMethod
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 
 @Suppress("FunctionName")
 @Composable
-fun BTDropDownMenu(
+fun <T> BTDropDownMenu(
     textStyle: TextStyle,
     placeHolderTextStyle: TextStyle,
-    menuItems: List<String>,
+    menuItems: List<T>,
     placeholderText: String,
-    onItemSelected: (title: String) -> Unit,
-    value: MutableState<String>,
+    onItemSelected: (T) -> Unit,
+//    value: MutableState<T>,
 ) {
     var mExpanded by remember { mutableStateOf(false) }
 
     var mTextFieldSize by remember { mutableStateOf(Size.Zero) }
+    var value by remember { mutableStateOf("") }
 
     // Up Icon when expanded and down icon when collapsed
     val icon =
@@ -54,7 +58,7 @@ fun BTDropDownMenu(
                         // This value is used to assign to the DropDown the same width
                         mTextFieldSize = coordinates.size.toSize()
                     },
-            value = value.value,
+            value = value,
             onValueChange = {},
             placeholderText = placeholderText,
             textStyle = textStyle,
@@ -82,12 +86,20 @@ fun BTDropDownMenu(
             containerColor = AppColors.White,
         ) {
             menuItems.forEach { label ->
+                val text =
+                    when (label) {
+                        is PaymentMethod -> stringResource(label.titleResId)
+                        is Category -> stringResource(label.titleResId)
+                        is String -> label
+                        else -> stringResource(R.string.other)
+                    }
                 DropdownMenuItem(
                     onClick = {
                         onItemSelected(label)
+                        value = text
                         mExpanded = false
                     },
-                    text = { Text(text = label, style = textStyle) },
+                    text = { Text(text = text, style = textStyle) },
                     modifier = Modifier,
                 )
             }

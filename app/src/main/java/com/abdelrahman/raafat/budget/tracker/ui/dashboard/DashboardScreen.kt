@@ -16,6 +16,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.CategoryExpense
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.DashboardItems
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.ExpenseDistribution
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.UpcomingExpenses
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.transaction.PaymentMethod
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget.BudgetExpenseSection
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget.CategoryWiseExpensesSection
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget.ExpenseDistributionSection
@@ -191,7 +192,8 @@ private fun DashboardScreenPreview() {
                         TransactionItem(
                             name = "Door Handle Replacement",
                             description = "Door Handle Replacement Shoedesc",
-                            category = Category.BILLS_UTILITIES,
+                            category = Category.UTILITIES,
+                            paymentMethod = PaymentMethod.CASH,
                             date = System.currentTimeMillis(),
                             amount = 20.0,
                             isExpense = false,
@@ -200,6 +202,7 @@ private fun DashboardScreenPreview() {
                             name = "Nike Running Shoe",
                             description = "Nike Running Shoedesc",
                             category = Category.PERSONAL,
+                            paymentMethod = PaymentMethod.CASH,
                             date = System.currentTimeMillis() - 200000,
                             amount = 20.0,
                             isExpense = false,
@@ -208,6 +211,7 @@ private fun DashboardScreenPreview() {
                             name = "Mutual Fund",
                             description = "Mutual Fund desc",
                             category = Category.INVESTMENT,
+                            paymentMethod = PaymentMethod.CASH,
                             date = System.currentTimeMillis() - 100000,
                             amount = 20.0,
                             isExpense = false,
