@@ -210,7 +210,7 @@ private fun setupRemainingDaysText(remainingDays: Int) =
         ) {
             val remainingDaysText =
                 pluralStringResource(
-                    id = R.plurals.remaining_days,
+                    id = R.plurals.remaining_days_plurals,
                     count = remainingDays,
                     remainingDays,
                 )

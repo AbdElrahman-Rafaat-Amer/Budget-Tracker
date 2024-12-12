@@ -31,6 +31,7 @@ import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.ui.custom.BTSectionTitle
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.DashboardItems
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.transaction.PaymentMethod
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
@@ -153,7 +154,8 @@ private fun RecentTransactionsSectionPreview() {
             TransactionItem(
                 name = "Door Handle Replacement",
                 description = "Door Handle Replacement desc",
-                category = Category.BILLS_UTILITIES,
+                category = Category.UTILITIES,
+                paymentMethod = PaymentMethod.CASH,
                 date = System.currentTimeMillis(),
                 amount = 20.0,
                 isExpense = false,

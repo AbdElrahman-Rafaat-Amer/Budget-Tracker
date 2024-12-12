@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.base.BTBaseScreen
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.transaction.PaymentMethod
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
@@ -53,7 +54,8 @@ private fun TransactionScreenPreview() {
                 date = System.currentTimeMillis(),
                 amount = 10.0,
                 isExpense = true,
-                category = Category.BILLS_UTILITIES,
+                paymentMethod = PaymentMethod.CASH,
+                category = Category.UTILITIES,
             )
 
         val transactionsList: MutableList<TransactionItem> = mutableListOf()

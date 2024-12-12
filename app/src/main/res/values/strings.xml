@@ -16,7 +16,8 @@
     <string name="category_wise_expenses">"Category wise Expenses"</string>
     <string name="completed">"Completed"</string>
     <string name="remaining">"Remaining"</string>
-    <plurals name="remaining_days">
+    <string name="remaining_days">Remaining Days:</string>
+    <plurals name="remaining_days_plurals">
         <item quantity="one">"%1$d Day"</item>
         <item quantity="other">"%1$d Days"</item>
     </plurals>
@@ -94,6 +95,8 @@
     <string name="bills_utilities"><![CDATA[Bills & Utilities]]></string>
     <string name="installments">"Installments"</string>
     <string name="name">"Name"</string>
+    <string name="undefined">undefined</string>
+    <string name="direct_deposit">Direct Deposit</string>
     <plurals name="weekdays">
         <item quantity="one">"%1$d Weekday"</item>
         <item quantity="other">"%1$d Weekdays"</item>
