@@ -108,7 +108,7 @@ fun TransactionRow(
         // Price
         val (priceColor, pricePrefix) = if (transaction.isExpense) AppColors.Red to "- " else AppColors.Green to "+ "
         Text(
-            text = "$pricePrefix${transaction.price.formatWithCurrency()}",
+            text = "$pricePrefix${transaction.amount.formatWithCurrency()}",
             style =
                 AppTextStyles.textStyle16SPMedium.copy(
                     color = priceColor,
@@ -155,7 +155,7 @@ private fun RecentTransactionsSectionPreview() {
                 description = "Door Handle Replacement desc",
                 category = Category.BILLS_UTILITIES,
                 date = System.currentTimeMillis(),
-                price = 20.0,
+                amount = 20.0,
                 isExpense = false,
             )
         val listItems: MutableList<TransactionItem> = mutableListOf()
@@ -163,7 +163,7 @@ private fun RecentTransactionsSectionPreview() {
             listItems.add(
                 item.copy(
                     name = "${item.name} $it",
-                    price = item.price * it,
+                    amount = item.amount * it,
                     date = item.date * it,
                 ),
             )

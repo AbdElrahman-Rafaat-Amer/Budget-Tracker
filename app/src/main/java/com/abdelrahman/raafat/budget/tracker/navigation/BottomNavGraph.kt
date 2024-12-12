@@ -1,6 +1,7 @@
 package com.abdelrahman.raafat.budget.tracker.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -22,7 +23,8 @@ fun BottomNavGraph(
 ) {
     NavHost(navController = navController, startDestination = BTBottomNavItem.Dashboard.route) {
         composable(BTBottomNavItem.Dashboard.route) {
-            DashboardScreen(viewModel.getItems())
+            val items = viewModel.items.collectAsState()
+            DashboardScreen(items.value)
         }
         composable(BTBottomNavItem.Transaction.route) {
             TransactionScreen(viewModel.transactionsItems) {

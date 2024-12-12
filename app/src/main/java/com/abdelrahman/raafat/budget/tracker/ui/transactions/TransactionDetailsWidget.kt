@@ -65,7 +65,7 @@ fun TransactionDetailsWidget(
             ) {
                 val (priceColor, pricePrefix) = if (transactionItem.isExpense) AppColors.Red to "- " else AppColors.Green to "+ "
                 Text(
-                    text = "$pricePrefix${transactionItem.price.formatWithCurrency()}",
+                    text = "$pricePrefix${transactionItem.amount.formatWithCurrency()}",
                     style =
                         AppTextStyles.textStyle16SPMedium.copy(
                             color = priceColor,
@@ -109,7 +109,7 @@ private fun TransactionDetailsWidgetPreview() {
                     name = "Salary",
                     description = "Salary for  August",
                     date = System.currentTimeMillis() - 10000,
-                    price = 5000.0,
+                    amount = 5000.0,
                     isExpense = false,
                     category = Category.BILLS_UTILITIES,
                 ),

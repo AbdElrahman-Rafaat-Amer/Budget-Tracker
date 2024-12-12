@@ -51,7 +51,7 @@ private fun TransactionScreenPreview() {
                 name = "Shopping",
                 description = "Buy some grocery",
                 date = System.currentTimeMillis(),
-                price = 10.0,
+                amount = 10.0,
                 isExpense = true,
                 category = Category.BILLS_UTILITIES,
             )
@@ -63,7 +63,7 @@ private fun TransactionScreenPreview() {
                     name = item.name + index,
                     description = item.description + index,
                     date = item.date - index * 10000,
-                    price = item.price * index,
+                    amount = item.amount * index,
                     isExpense = index % 2 == 0,
                 ),
             )

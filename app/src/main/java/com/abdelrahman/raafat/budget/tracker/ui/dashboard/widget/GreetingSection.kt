@@ -65,7 +65,7 @@ fun GreetingSection(
             )
 
             Spacer(Modifier.height(15.dp))
-            
+
             RemainingDaysSection()
         }
     }
