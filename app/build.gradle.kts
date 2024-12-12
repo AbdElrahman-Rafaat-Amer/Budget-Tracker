@@ -4,6 +4,13 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
+    id("com.hyperdevs.poeditor")
+}
+
+poEditor {
+    apiToken.set("b2c3a64cfbceec722da5f9d991ef1381")
+    projectId.set(750474)
+    defaultLang.set("en")
 }
 
 android {
