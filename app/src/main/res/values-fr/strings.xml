@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?><resources>
+    <string name="app_name">"Suivi de Budget"</string>
+    <string name="next">"Suivant"</string>
+    <string name="start">"Commencer"</string>
+    <string name="skip">"Passer"</string>
+    <string name="onboarding_title_1">"Prenez le contrôle total
+de votre argent"</string>
+    <string name="onboarding_desc_1">"Devenez votre propre gestionnaire
+de finances et optimisez chaque centime"</string>
+    <string name="onboarding_title_2">"Suivez vos dépenses
+facilement"</string>
+    <string name="onboarding_desc_2">"Sachez où va votre argent
+et prenez de meilleures décisions financières"</string>
+    <string name="onboarding_title_3">"Planifiez à l'avance"</string>
+    <string name="onboarding_desc_3">"Préparez votre budget pour chaque catégorie
+et gardez le contrôle"</string>
+    <string name="show_onboarding">"Afficher l'introduction la prochaine fois?"</string>
+    <string name="good_morning">"Bonjour,"</string>
+    <string name="upcoming_expenses">"Dépenses à venir"</string>
+    <string name="of">"de"</string>
+    <string name="category_wise_expenses">"Dépenses par catégorie"</string>
+    <string name="completed">"Terminé"</string>
+    <string name="remaining">"Restant"</string>
+    <!-- Fuzzy -->
+    <plurals name="remaining_days_plurals">
+        <item quantity="one">"%1$d Jou"</item>
+        <item quantity="many">"%1$d Jours"</item>
+        <item quantity="other">"%1$d Jours"</item>
+    </plurals>
+    <string name="good_afternoon">"Bon après-midi!"</string>
+    <string name="good_evening">"Bonsoir!"</string>
+    <string name="recent_transactions">"Transactions récentes"</string>
+    <string name="transactions">"Transactions"</string>
+    <string name="budget_vs_expense">"Budget vs Dépense"</string>
+    <string name="from">"De %s - %s"</string>
+    <string name="expense_distribution">"Répartition des dépenses"</string>
+    <string name="setup_your_pin">"Configurez un nouveau PIN pour sécuriser votre application"</string>
+    <string name="enter_your_pin">"Entrez votre PIN pour accéder à l'application"</string>
+    <string name="incorrect_pin_error_message">"PIN incorrect, veuillez réessayer"</string>
+    <string name="new_pin_error_message">"Le nouveau PIN ne peut pas être identique au PIN actuel"</string>
+    <string name="delete">"Supprimer"</string>
+    <string name="back">"Retour"</string>
+    <string name="see_all">"Voir tout"</string>
+    <string name="dashboard">"Tableau de bord"</string>
+    <string name="transaction">"Transaction"</string>
+    <string name="profile">"Profil"</string>
+    <string name="budget">"Budget"</string>
+    <string name="add_expense">"Ajouter une dépense"</string>
+    <string name="expense">"Dépense"</string>
+    <string name="transfer">"Transfert"</string>
+    <string name="income">"Revenu"</string>
+    <string name="how_much">"Combien?"</string>
+    <string name="save">"Sauvegarder"</string>
+    <string name="description">"Description"</string>
+    <string name="category">"Catégorie"</string>
+    <string name="payment_way">"Mode de paiement"</string>
+    <string name="bonus">"Bonus"</string>
+    <string name="interest">"Intérêt"</string>
+    <string name="dividends">"Dividendes"</string>
+    <string name="freelance_work">"Travail indépendant"</string>
+    <string name="rent">"Loyer"</string>
+    <string name="mortgage">"Hypothèque"</string>
+    <string name="utilities">"Services publics"</string>
+    <string name="groceries">"Courses"</string>
+    <string name="transportation">"Transport"</string>
+    <string name="dining_out">"Sortir dîner"</string>
+    <string name="shopping">"Achats"</string>
+    <string name="entertainment">"Divertissement"</string>
+    <string name="health">"Santé"</string>
+    <string name="insurance">"Assurance"</string>
+    <string name="debt_payments">"Paiements de dettes"</string>
+    <string name="charities">"Organisations caritatives"</string>
+    <string name="other_expenses">"Autres dépenses"</string>
+    <!-- Income Methods -->
+    <string name="salary">"Salaire"</string>
+    <string name="business_profit">"Profit d'entreprise"</string>
+    <string name="investment_profit">"Profit d'investissement"</string>
+    <string name="loan_received">"Prêt reçu"</string>
+    <string name="gift_received">"Cadeau reçu"</string>
+    <string name="rental_income">"Revenu locatif"</string>
+    <string name="other_income">"Autres revenus"</string>
+    <!-- Expense Methods -->
+    <string name="credit_card">"Carte de crédit"</string>
+    <string name="debit_card">"Carte de débit"</string>
+    <string name="upi">"UPI (Interface de paiements unifiés)"</string>
+    <string name="mobile_wallet">"Portefeuille mobile"</string>
+    <string name="cryptocurrency">"Cryptomonnaie"</string>
+    <string name="cash">"Espèces"</string>
+    <string name="cheque">"Chèque"</string>
+    <string name="bank_transfer">"Virement bancaire"</string>
+    <string name="loan_payment">"Paiement de prêt"</string>
+    <string name="other_expense">"Autres dépenses"</string>
+    <!-- Categories -->
+    <string name="investment">"Investissement"</string>
+    <string name="other">"Autre"</string>
+    <string name="transport">"Transport"</string>
+    <string name="education">"Éducation"</string>
+    <string name="healthcare">"Soins de santé"</string>
+    <string name="personal">"Personnel"</string>
+    <string name="food">"Nourriture"</string>
+    <string name="bills_utilities">"Factures et services publics"</string>
+    <string name="installments">"Versements"</string>
+    <string name="name">"Nom"</string>
+    <plurals name="weekdays">
+        <item quantity="one">"%1$d Jour ouvré"</item>
+        <item quantity="many">"%1$d Jour ouvré"</item>
+        <item quantity="other">"%1$d Jours ouvrés"</item>
+    </plurals>
+    <plurals name="weekends">
+        <item quantity="one">"%1$d Week-end"</item>
+        <item quantity="many">"%1$d Week-end"</item>
+        <item quantity="other">"%1$d Week-ends"</item>
+    </plurals>
+    <string name="undefined">"Indéfini"</string>
+    <string name="direct_deposit">"Dépôt direct"</string>
+    <string name="remaining_days">"Jours restants:"</string>
+</resources>
