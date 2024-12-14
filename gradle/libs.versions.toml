@@ -11,7 +11,7 @@ lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
 composeBom = "2024.11.00"
 lottieCompose = "6.1.0"
-navigationCompose = "2.8.4"
+navigationCompose = "2.8.5"
 serialization = "1.9.10"
 ksp = "2.1.0-1.0.29"
 androidxRoom = "2.6.1"
@@ -45,5 +45,6 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "serialization" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+poeditor = { id = "com.hyperdevs.poeditor"}
 
 
