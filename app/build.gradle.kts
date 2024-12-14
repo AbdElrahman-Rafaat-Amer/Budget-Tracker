@@ -27,6 +27,12 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    externalNativeBuild {
+        cmake {
+            path("CMakeLists.txt")
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
