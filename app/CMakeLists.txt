@@ -26,7 +26,7 @@ add_library(
 # Because CMake includes system libraries in the search path by default,
 # you only need to specify the name of the public NDK library you want to add.
 # CMake verifies that the library exists before completing its build.
-
+#ff
 find_library(
         # Sets the name of the path variable.
         log-lib
