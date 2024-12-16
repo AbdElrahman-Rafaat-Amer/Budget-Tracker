@@ -31,3 +31,18 @@ google-services.json
 
 # Android Profiling
 *.hprof
+
+
+# CMake generated files
+.externalNativeBuild
+.cxx
+
+
+/app/secrets.json
+/app/src/main/cpp/common/secrets_util.cpp
+/app/src/main/cpp/common/secrets_util.hpp
+/app/src/main/cpp/common/sha256.cpp
+/app/src/main/cpp/common/sha256.hpp
+/app/src/main/cpp/CMakeLists.txt
+/app/src/main/cpp/secrets.cpp
+/app/src/main/java/com/abdelrahman/raafat/budget/tracker/MainSecrets.kt
