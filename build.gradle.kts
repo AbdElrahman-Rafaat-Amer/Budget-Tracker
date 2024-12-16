@@ -4,5 +4,6 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.compose) apply false
     alias(libs.plugins.ksp) apply false
-    id("com.hyperdevs.poeditor") version "4.2.1" apply false
+    alias(libs.plugins.poeditor) apply false
+    alias(libs.plugins.secrets.vault.plugin) apply false
 }

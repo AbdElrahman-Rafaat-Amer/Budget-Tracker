@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -5,12 +8,21 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.poeditor)
+    alias(libs.plugins.secrets.vault.plugin)
 }
 
+val keystoreProperties = Properties()
+val keystorePropertiesFile = rootProject.file("./local.properties")
+val canSignWithKeystore = keystorePropertiesFile.exists()
+if (canSignWithKeystore) {
+    keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+}
 poEditor {
-    apiToken.set("b2c3a64cfbceec722da5f9d991ef1381")
-    projectId.set(750474)
+    apiToken.set(keystoreProperties["POEDITOR_API_TOKEN"] as String)
+    projectId.set((keystoreProperties["POEDITOR_PROJECT_ID"] as String).toInt())
     defaultLang.set("en")
+    unescapeHtmlTags.set(false)
+    order.set("terms")
 }
 
 android {
@@ -29,7 +41,7 @@ android {
 
     externalNativeBuild {
         cmake {
-            path("CMakeLists.txt")
+            path("src/main/cpp/CMakeLists.txt")
         }
     }
 
