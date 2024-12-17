@@ -25,7 +25,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget.RecentTransacti
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.widget.UpcomingExpensesSection
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
-import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionItem
+import com.abdelrahman.raafat.budget.tracker.ui.transactions.Transaction
 
 @Suppress("FunctionName")
 @Composable
@@ -189,7 +189,7 @@ private fun DashboardScreenPreview() {
             DashboardItems.RecentTransactionsItem(
                 recentTransactions =
                     listOf(
-                        TransactionItem(
+                        Transaction(
                             name = "Door Handle Replacement",
                             description = "Door Handle Replacement Shoedesc",
                             category = Category.UTILITIES,
@@ -198,7 +198,7 @@ private fun DashboardScreenPreview() {
                             amount = 20.0,
                             isExpense = false,
                         ),
-                        TransactionItem(
+                        Transaction(
                             name = "Nike Running Shoe",
                             description = "Nike Running Shoedesc",
                             category = Category.PERSONAL,
@@ -207,7 +207,7 @@ private fun DashboardScreenPreview() {
                             amount = 20.0,
                             isExpense = false,
                         ),
-                        TransactionItem(
+                        Transaction(
                             name = "Mutual Fund",
                             description = "Mutual Fund desc",
                             category = Category.INVESTMENT,

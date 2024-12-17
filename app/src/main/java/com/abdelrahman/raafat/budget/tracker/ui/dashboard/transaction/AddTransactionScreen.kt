@@ -33,7 +33,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
-import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionItem
+import com.abdelrahman.raafat.budget.tracker.ui.transactions.Transaction
 
 @Suppress("FunctionName")
 @Composable
@@ -95,7 +95,7 @@ fun AddTransactionScreen(
                         name.value.isNotBlank(),
             ) {
                 addTransactionViewModel.addTransaction(
-                    TransactionItem(
+                    Transaction(
                         name = name.value,
                         category = category.value,
                         paymentMethod = paymentMethod.value,

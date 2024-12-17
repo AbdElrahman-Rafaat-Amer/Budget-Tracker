@@ -35,7 +35,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.dashboard.transaction.PaymentMet
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
-import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionItem
+import com.abdelrahman.raafat.budget.tracker.ui.transactions.Transaction
 import com.abdelrahman.raafat.budget.tracker.utils.DatePatterns
 import com.abdelrahman.raafat.budget.tracker.utils.formatWithCurrency
 import com.abdelrahman.raafat.budget.tracker.utils.toFormattedDate
@@ -75,7 +75,7 @@ fun RecentTransactionsSection(
 @Suppress("FunctionName")
 @Composable
 fun TransactionRow(
-    transaction: TransactionItem,
+    transaction: Transaction,
     isAlternateRow: Boolean,
 ) {
     val backgroundColor = if (isAlternateRow) AppColors.Transparent else AppColors.White
@@ -118,7 +118,7 @@ fun TransactionRow(
     }
 }
 
-private fun setupTitle(transition: TransactionItem): AnnotatedString =
+private fun setupTitle(transition: Transaction): AnnotatedString =
     buildAnnotatedString {
         withStyle(
             style =
@@ -151,7 +151,7 @@ private fun RecentTransactionsSectionPreview() {
     BudgetTrackerTheme {
         val recentTransactionsItem = DashboardItems.RecentTransactionsItem(recentTransactions = emptyList())
         val item =
-            TransactionItem(
+            Transaction(
                 name = "Door Handle Replacement",
                 description = "Door Handle Replacement desc",
                 category = Category.UTILITIES,
@@ -160,7 +160,7 @@ private fun RecentTransactionsSectionPreview() {
                 amount = 20.0,
                 isExpense = false,
             )
-        val listItems: MutableList<TransactionItem> = mutableListOf()
+        val listItems: MutableList<Transaction> = mutableListOf()
         repeat(10) {
             listItems.add(
                 item.copy(

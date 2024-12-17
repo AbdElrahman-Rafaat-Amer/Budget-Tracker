@@ -27,7 +27,7 @@ import com.abdelrahman.raafat.budget.tracker.utils.toFormattedDate
 @Suppress("FunctionName")
 @Composable
 fun TransactionDetailsWidget(
-    transactionItem: TransactionItem,
+    transactionItem: Transaction,
     modifier: Modifier = Modifier,
 ) {
     Card(
@@ -106,7 +106,7 @@ private fun TransactionDetailsWidgetPreview() {
 //            )
 
             TransactionDetailsWidget(
-                TransactionItem(
+                Transaction(
                     name = "Salary",
                     description = "Salary for  August",
                     date = System.currentTimeMillis() - 10000,

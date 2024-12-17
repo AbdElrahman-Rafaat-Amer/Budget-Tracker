@@ -9,7 +9,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.CategoryExpense
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.DashboardItems
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.ExpenseDistribution
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.UpcomingExpenses
-import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionItem
+import com.abdelrahman.raafat.budget.tracker.ui.transactions.Transaction
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 class DashboardViewModel(
     private val application: Application,
 ) : BTBaseViewModel(application) {
-    var transactionsItems: List<TransactionItem> = mutableListOf()
+    var transactionsItems: List<Transaction> = mutableListOf()
         private set
 
     private val _items = MutableStateFlow<List<DashboardItems>>(emptyList())

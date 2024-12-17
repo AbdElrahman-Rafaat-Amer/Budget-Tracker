@@ -6,10 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionItem
+import com.abdelrahman.raafat.budget.tracker.ui.transactions.Transaction
 
 @Database(
-    entities = [TransactionItem::class],
+    entities = [Transaction::class],
     version = 2,
 )
 abstract class BTDatabase : RoomDatabase() {

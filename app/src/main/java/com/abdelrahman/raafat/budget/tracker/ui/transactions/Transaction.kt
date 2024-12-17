@@ -6,7 +6,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.transaction.PaymentMethod
 
 @Entity(tableName = "transaction")
-data class TransactionItem(
+data class Transaction(
     var name: String,
     var category: Category,
     var paymentMethod: PaymentMethod,
