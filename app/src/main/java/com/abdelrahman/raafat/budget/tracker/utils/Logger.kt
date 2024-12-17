@@ -6,7 +6,6 @@ import com.google.firebase.ktx.Firebase
 import java.util.Locale
 
 fun logDataForFirebase(screenName: String) {
-
     val crashlytics = Firebase.crashlytics
     crashlytics.setCustomKeys {
         key("screen_name", screenName)

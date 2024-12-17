@@ -47,6 +47,15 @@ android {
         }
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("$rootDir/${keystoreProperties["PROD_STORE_FILE"] as String}")
+            storePassword = keystoreProperties["PROD_STORE_PASSWORD"] as String
+            keyAlias = keystoreProperties["PROD_KEY_ALIAS"] as String
+            keyPassword = keystoreProperties["PROD_KEY_PASSWORD"] as String
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -54,6 +63,15 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
+            signingConfig = signingConfigs.getByName("release")
+            buildConfigField("boolean", "IS_DEBUG", "false")
+        }
+
+        debug {
+            buildConfigField("boolean", "IS_DEBUG", "true")
+            applicationIdSuffix = ".debug"
+            resValue("string", "app_name", "Budget Tracker debug")
+            isDebuggable = true
         }
     }
     compileOptions {
@@ -97,7 +115,7 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
 
-    //Firebase
+    // Firebase
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.crashlytics)
     implementation(libs.firebase.analytics)
