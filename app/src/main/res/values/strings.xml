@@ -98,6 +98,10 @@
     <string name="upcoming_expenses">"Upcoming Expenses"</string>
     <string name="upi">"UPI (Unified Payments Interface- ex: GooglePlay)"</string>
     <string name="utilities">"Utilities"</string>
+    <string name="no_transactions_title">No Transactions Yet!</string>
+    <string name="no_transactions_message">Add Transaction to track expenses and manage your budget.</string>
+    <string name="welcome">Welcome!</string>
+    <string name="welcome_message">Start adding transactions to track your expenses and stay on top of your budget.</string>
     <plurals name="weekdays">
         <item quantity="one">"%1$d Weekday"</item>
         <item quantity="other">"%1$d Weekdays"</item>
