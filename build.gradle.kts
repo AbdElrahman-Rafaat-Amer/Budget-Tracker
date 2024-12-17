@@ -6,4 +6,6 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.poeditor) apply false
     alias(libs.plugins.secrets.vault.plugin) apply false
+    alias(libs.plugins.gmsgoogleservices) apply false
+    alias(libs.plugins.crashlytics) apply false
 }
