@@ -46,3 +46,4 @@ google-services.json
 /app/src/main/cpp/CMakeLists.txt
 /app/src/main/cpp/secrets.cpp
 /app/src/main/java/com/abdelrahman/raafat/budget/tracker/MainSecrets.kt
+/budget_tracker_keystore

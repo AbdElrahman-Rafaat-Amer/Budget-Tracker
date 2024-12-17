@@ -9,6 +9,8 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.poeditor)
     alias(libs.plugins.secrets.vault.plugin)
+    alias(libs.plugins.gmsgoogleservices)
+    alias(libs.plugins.crashlytics)
 }
 
 val keystoreProperties = Properties()
@@ -45,6 +47,15 @@ android {
         }
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = file("$rootDir/${keystoreProperties["PROD_STORE_FILE"] as String}")
+            storePassword = keystoreProperties["PROD_STORE_PASSWORD"] as String
+            keyAlias = keystoreProperties["PROD_KEY_ALIAS"] as String
+            keyPassword = keystoreProperties["PROD_KEY_PASSWORD"] as String
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -52,6 +63,15 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
+            signingConfig = signingConfigs.getByName("release")
+            buildConfigField("boolean", "IS_DEBUG", "false")
+        }
+
+        debug {
+            buildConfigField("boolean", "IS_DEBUG", "true")
+            applicationIdSuffix = ".debug"
+            resValue("string", "app_name", "Budget Tracker debug")
+            isDebuggable = true
         }
     }
     compileOptions {
@@ -63,6 +83,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -78,6 +99,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.lottie.compose)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.lifecycle.process)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -92,4 +114,9 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
+
+    // Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.analytics)
 }
