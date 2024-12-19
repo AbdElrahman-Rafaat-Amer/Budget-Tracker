@@ -23,10 +23,12 @@ import java.util.Locale
 class DashboardViewModel(
     private val application: Application,
 ) : BTBaseViewModel(application) {
-    private var transactionsItems: List<Transaction> = mutableListOf()
-
     private val _items = MutableStateFlow<List<DashboardItems>>(emptyList())
     val items: StateFlow<List<DashboardItems>> get() = _items
+
+    private var transactionsItems: List<Transaction> = mutableListOf()
+    private val _transactionItems = MutableStateFlow<List<TransactionItems>>(emptyList())
+    val transactionItems: StateFlow<List<TransactionItems>> get() = _transactionItems
 
     init {
         getTransaction()
@@ -180,8 +182,21 @@ class DashboardViewModel(
             repository.getAllTransactions().collect { transactions ->
                 transactionsItems = transactions.toMutableList()
                 updateItems()
+                setupTransactionsItems()
             }
         }
+    }
+
+    private fun setupTransactionsItems() {
+        val transactionItems = mutableListOf<TransactionItems>()
+
+        val groupedTransactions = groupTransactionsByDay(transactionsItems)
+        groupedTransactions.forEach { (day, transactions) ->
+            transactionItems.add(TransactionItems.DayNameItem(dayName = day))
+            transactionItems.add(TransactionItems.TransactionItem(transactions = transactions))
+        }
+
+        _transactionItems.value = transactionItems
     }
 
     private fun groupTransactionsByDay(transactions: List<Transaction>): Map<String, List<Transaction>> {
@@ -221,17 +236,5 @@ class DashboardViewModel(
     private fun getFormattedDate(date: Date): String {
         val dateFormatter = SimpleDateFormat(DatePatterns.FULL_DATE, Locale.getDefault())
         return dateFormatter.format(date)
-    }
-
-    fun getTransactions(): List<TransactionItems> {
-        val transactionItems = mutableListOf<TransactionItems>()
-
-        val groupedTransactions = groupTransactionsByDay(transactionsItems)
-        groupedTransactions.forEach { (day, transactions) ->
-            transactionItems.add(TransactionItems.DayNameItem(dayName = day))
-            transactionItems.add(TransactionItems.TransactionItem(transactions = transactions))
-        }
-
-        return transactionItems
     }
 }

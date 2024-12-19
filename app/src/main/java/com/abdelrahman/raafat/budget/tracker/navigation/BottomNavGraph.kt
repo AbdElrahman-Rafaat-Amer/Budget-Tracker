@@ -27,7 +27,8 @@ fun BottomNavGraph(
             DashboardScreen(items.value)
         }
         composable(BTBottomNavItem.Transaction.route) {
-            TransactionScreen(viewModel.getTransactions()) {
+            val transactions = viewModel.transactionItems.collectAsState()
+            TransactionScreen(transactions.value) {
             }
         }
         composable(BTBottomNavItem.Budget.route) {
