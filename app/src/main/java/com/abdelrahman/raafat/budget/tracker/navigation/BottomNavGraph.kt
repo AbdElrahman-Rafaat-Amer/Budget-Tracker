@@ -27,8 +27,8 @@ fun BottomNavGraph(
             DashboardScreen(items.value)
         }
         composable(BTBottomNavItem.Transaction.route) {
-//            TransactionScreen(viewModel.transactionsItems) {
-//            }
+            TransactionScreen(viewModel.getTransactions()) {
+            }
         }
         composable(BTBottomNavItem.Budget.route) {
             BudgetScreen()

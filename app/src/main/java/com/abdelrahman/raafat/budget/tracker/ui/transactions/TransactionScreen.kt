@@ -64,9 +64,9 @@ fun TransactionScreen(
 private fun EmptyTransactionsSection() {
     Column(
         modifier =
-        Modifier
-            .fillMaxSize()
-            .padding(bottom = 50.dp, start = 20.dp, end = 20.dp),
+            Modifier
+                .fillMaxSize()
+                .padding(bottom = 50.dp, start = 20.dp, end = 20.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
@@ -79,18 +79,18 @@ private fun EmptyTransactionsSection() {
         Text(
             text = stringResource(R.string.no_transactions_title),
             style =
-            AppTextStyles.textStyle18SPBold.copy(
-                color = MaterialTheme.colorScheme.primary,
-            ),
+                AppTextStyles.textStyle18SPBold.copy(
+                    color = MaterialTheme.colorScheme.primary,
+                ),
         )
         Spacer(modifier = Modifier.height(20.dp))
         Text(
             text = stringResource(R.string.no_transactions_message),
             style =
-            AppTextStyles.textStyle14SPNormal.copy(
-                color = MaterialTheme.colorScheme.secondary,
-                textAlign = TextAlign.Center,
-            ),
+                AppTextStyles.textStyle14SPNormal.copy(
+                    color = MaterialTheme.colorScheme.secondary,
+                    textAlign = TextAlign.Center,
+                ),
         )
     }
 }
@@ -99,25 +99,25 @@ private fun EmptyTransactionsSection() {
 @Composable
 private fun TransactionsSection(transactionsList: List<TransactionItems>) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-
-        //Finical Report
+        // Finical Report
         Card(
             shape = MaterialTheme.shapes.medium.copy(CornerSize(8.dp)),
             colors = CardDefaults.cardColors(containerColor = AppColors.LightLavender),
             elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
-            modifier = Modifier
-                .fillMaxWidth()
-                .clip(MaterialTheme.shapes.medium.copy(CornerSize(8.dp)))
-                .clickable {
-
-                },
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .clip(MaterialTheme.shapes.medium.copy(CornerSize(8.dp)))
+                    .clickable {
+                    },
         ) {
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(10.dp)
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp),
             ) {
                 Text(stringResource(R.string.see_financial_report))
 
@@ -125,7 +125,7 @@ private fun TransactionsSection(transactionsList: List<TransactionItems>) {
             }
         }
 
-        //Transactions
+        // Transactions
         LazyColumn {
             items(transactionsList) { item ->
                 when (item) {
@@ -143,11 +143,10 @@ private fun TransactionsSection(transactionsList: List<TransactionItems>) {
                         Text(
                             text = item.dayName,
                             style = AppTextStyles.textStyle18SPSemiBold,
-                            modifier = Modifier.padding(8.dp)
+                            modifier = Modifier.padding(8.dp),
                         )
                     }
                 }
-
             }
         }
     }

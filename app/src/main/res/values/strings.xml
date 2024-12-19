@@ -103,6 +103,8 @@
     <string name="welcome">Welcome!</string>
     <string name="welcome_message">Start adding transactions to track your expenses and stay on top of your budget.</string>
     <string name="see_financial_report">See your financial report</string>
+    <string name="today">Today</string>
+    <string name="yesterday">Yesterday</string>
     <plurals name="weekdays">
         <item quantity="one">"%1$d Weekday"</item>
         <item quantity="other">"%1$d Weekdays"</item>

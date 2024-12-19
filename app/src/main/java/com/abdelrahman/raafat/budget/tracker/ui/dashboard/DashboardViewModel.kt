@@ -1,6 +1,7 @@
 package com.abdelrahman.raafat.budget.tracker.ui.dashboard
 
 import android.app.Application
+import android.icu.util.Calendar
 import androidx.lifecycle.viewModelScope
 import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.base.BTBaseViewModel
@@ -10,15 +11,19 @@ import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.DashboardItems
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.ExpenseDistribution
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.UpcomingExpenses
 import com.abdelrahman.raafat.budget.tracker.ui.transactions.Transaction
+import com.abdelrahman.raafat.budget.tracker.ui.transactions.TransactionItems
+import com.abdelrahman.raafat.budget.tracker.utils.DatePatterns
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class DashboardViewModel(
     private val application: Application,
 ) : BTBaseViewModel(application) {
-    var transactionsItems: List<Transaction> = mutableListOf()
-        private set
+    private var transactionsItems: List<Transaction> = mutableListOf()
 
     private val _items = MutableStateFlow<List<DashboardItems>>(emptyList())
     val items: StateFlow<List<DashboardItems>> get() = _items
@@ -177,5 +182,56 @@ class DashboardViewModel(
                 updateItems()
             }
         }
+    }
+
+    private fun groupTransactionsByDay(transactions: List<Transaction>): Map<String, List<Transaction>> {
+        // Create a SimpleDateFormat to extract the day from the timestamp
+        val dateFormatter = SimpleDateFormat(DatePatterns.FULL_DATE, Locale.getDefault())
+
+        // Get the start of today and yesterday
+        val calendar = Calendar.getInstance()
+        val today =
+            calendar
+                .apply {
+                    set(Calendar.HOUR_OF_DAY, 0)
+                    set(Calendar.MINUTE, 0)
+                    set(Calendar.SECOND, 0)
+                    set(Calendar.MILLISECOND, 0)
+                }.time
+        val todayDate = getFormattedDate(today)
+
+        val yesterday =
+            calendar
+                .apply {
+                    add(Calendar.DAY_OF_MONTH, -1)
+                }.time
+        val yesterdayDate = getFormattedDate(yesterday)
+        // Group transactions by day
+        return transactions.groupBy { transaction ->
+
+            val transactionDate = getFormattedDate(Date(transaction.date))
+            when (transactionDate) {
+                todayDate -> application.applicationContext.getString(R.string.today)
+                yesterdayDate -> application.applicationContext.getString(R.string.yesterday)
+                else -> dateFormatter.format(Date(transaction.date))
+            }
+        }
+    }
+
+    private fun getFormattedDate(date: Date): String {
+        val dateFormatter = SimpleDateFormat(DatePatterns.FULL_DATE, Locale.getDefault())
+        return dateFormatter.format(date)
+    }
+
+    fun getTransactions(): List<TransactionItems> {
+        val transactionItems = mutableListOf<TransactionItems>()
+
+        val groupedTransactions = groupTransactionsByDay(transactionsItems)
+        groupedTransactions.forEach { (day, transactions) ->
+            transactionItems.add(TransactionItems.DayNameItem(dayName = day))
+            transactionItems.add(TransactionItems.TransactionItem(transactions = transactions))
+        }
+
+        return transactionItems
     }
 }
