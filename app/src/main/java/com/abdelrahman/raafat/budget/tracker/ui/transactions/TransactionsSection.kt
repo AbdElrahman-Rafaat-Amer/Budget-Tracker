@@ -23,31 +23,6 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 @Composable
 fun TransactionsSection(transactionsList: List<TransactionItems>) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        Row(
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            val filterList =
-                listOf(
-                    stringResource(R.string.today),
-                )
-            DropdownMenu(
-                expanded = false,
-                onDismissRequest = { },
-                modifier =
-                Modifier,
-                containerColor = AppColors.Red,
-            ) {
-                filterList.forEach { label ->
-                    DropdownMenuItem(
-                        onClick = {
-                        },
-                        text = { Text(text = label, style = AppTextStyles.textStyle14SPMedium) },
-                        modifier = Modifier,
-                    )
-                }
-            }
-        }
 
         FilterRow()
 
