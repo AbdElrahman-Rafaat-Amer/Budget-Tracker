@@ -1,46 +1,68 @@
 package com.abdelrahman.raafat.budget.tracker.ui.transactions
 
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.abdelrahman.raafat.budget.tracker.R
-import com.abdelrahman.raafat.budget.tracker.base.BTBaseScreen
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.transaction.PaymentMethod
+import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
 @Suppress("FunctionName")
 @Composable
-fun TransactionScreen(
-    transactionsList: List<TransactionItems>,
-    modifier: Modifier = Modifier,
-    onBackButtonClicked: () -> Unit,
-) {
-    BTBaseScreen(
-        title = stringResource(R.string.transactions),
-        headerTextStyle = AppTextStyles.textStyle21SPBold.copy(textAlign = TextAlign.Center),
-        removeIcon = true,
-        verticalSpace = 20.dp,
-        modifier = modifier.padding(vertical = 20.dp, horizontal = 15.dp),
-        onBackButtonClicked = onBackButtonClicked,
-    ) {
-        if (transactionsList.isEmpty()) {
-            EmptyTransactionsSection()
-        } else {
-            TransactionsSection(transactionsList)
+fun TransactionsSection(transactionsList: List<TransactionItems>) {
+    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            val filterList =
+                listOf(
+                    stringResource(R.string.today),
+                )
+            DropdownMenu(
+                expanded = false,
+                onDismissRequest = { },
+                modifier =
+                Modifier,
+                containerColor = AppColors.Red,
+            ) {
+                filterList.forEach { label ->
+                    DropdownMenuItem(
+                        onClick = {
+                        },
+                        text = { Text(text = label, style = AppTextStyles.textStyle14SPMedium) },
+                        modifier = Modifier,
+                    )
+                }
+            }
         }
+
+        FilterRow()
+
+        // Finical Report
+        FinancialReportCard()
+
+        // Transactions
+        TransactionsList(transactionsList)
     }
 }
 
 @Suppress("FunctionName")
 @Preview(showBackground = true)
 @Composable
-fun TransactionScreenPreview() {
+fun TransactionsSectionPreview() {
     BudgetTrackerTheme {
         val item =
             Transaction(
@@ -65,7 +87,7 @@ fun TransactionScreenPreview() {
                 ),
             )
         }
-        TransactionScreen(
+        TransactionsSection(
             listOf(
                 TransactionItems.DayNameItem("Today"),
                 TransactionItems.TransactionItem(transactionsList),
@@ -74,7 +96,6 @@ fun TransactionScreenPreview() {
                 TransactionItems.DayNameItem("Week ago"),
                 TransactionItems.TransactionItem(transactionsList),
             ),
-            modifier = Modifier.padding(vertical = 10.dp),
-        ) {}
+        )
     }
 }

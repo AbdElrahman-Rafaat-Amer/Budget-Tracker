@@ -52,6 +52,11 @@ object AppTextStyles {
             lineHeight = 18.sp,
         )
 
+    val textStyle14SPMedium =
+        textStyle14SPNormal.copy(
+            fontWeight = FontWeight.Medium,
+        )
+
     val textStyle14SPNormalItalic =
         defaultTextStyle.copy(
             lineHeight = 17.sp,
