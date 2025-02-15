@@ -22,7 +22,7 @@ val LightColorScheme =
         onPrimary = AppColors.White,
         onSecondary = AppColors.Black,
         onBackground = AppColors.LightOnBackground,
-        onSurface = AppColors.LightOnBackground,
+        onSurface = AppColors.LightOnBackground
     )
 
 // Dark color scheme
@@ -36,7 +36,7 @@ val DarkColorScheme =
         onPrimary = AppColors.White,
         onSecondary = AppColors.Black,
         onBackground = AppColors.DarkOnBackground,
-        onSurface = AppColors.DarkOnBackground,
+        onSurface = AppColors.DarkOnBackground
     )
 
 @Suppress("FunctionName")
@@ -45,7 +45,7 @@ fun BudgetTrackerTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = false,
-    content: @Composable () -> Unit,
+    content: @Composable () -> Unit
 ) {
     val colorScheme =
         when {
@@ -61,6 +61,6 @@ fun BudgetTrackerTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = BTTypography,
-        content = content,
+        content = content
     )
 }

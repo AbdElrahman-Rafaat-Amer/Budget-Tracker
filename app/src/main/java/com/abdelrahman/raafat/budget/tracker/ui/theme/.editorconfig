@@ -1,0 +1,7 @@
+root = true
+
+[*.{gradle.kts,kt,kts,main.kts}]
+ij_kotlin_align_multiline_parameters = true
+ij_kotlin_align_multiline_parameters_in_calls = false
+ij_kotlin_allow_trailing_comma = false
+ij_kotlin_allow_trailing_comma_on_call_site = false
