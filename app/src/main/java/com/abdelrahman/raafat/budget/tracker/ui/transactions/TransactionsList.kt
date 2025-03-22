@@ -12,8 +12,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
+import com.abdelrahman.raafat.budget.tracker.ui.dashboard.transaction.PaymentMethod
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
+import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
 @Suppress("FunctionName")
 @OptIn(ExperimentalFoundationApi::class)
@@ -47,5 +51,44 @@ fun TransactionsList(transactionsList: List<TransactionItems>) {
                 }
             }
         }
+    }
+}
+
+@Suppress("FunctionName")
+@Preview(showBackground = true)
+@Composable
+private fun TransactionsListPreview() {
+    BudgetTrackerTheme {
+        val item =
+            Transaction(
+                name = "Shopping",
+                description = "Buy some grocery",
+                date = System.currentTimeMillis(),
+                amount = 10.0,
+                isExpense = true,
+                paymentMethod = PaymentMethod.CASH,
+                category = Category.UTILITIES,
+            )
+
+        val transactionsList =
+            (1..10).map { index ->
+                item.copy(
+                    name = item.name + index,
+                    description = item.description + index,
+                    date = item.date - index * 10000,
+                    amount = item.amount * index,
+                    isExpense = index % 2 == 0,
+                )
+            }
+        TransactionsList(
+            listOf(
+                TransactionItems.DayNameItem("Today"),
+                TransactionItems.TransactionItem(transactionsList),
+                TransactionItems.DayNameItem("Yesterday"),
+                TransactionItems.TransactionItem(transactionsList),
+                TransactionItems.DayNameItem("Week ago"),
+                TransactionItems.TransactionItem(transactionsList),
+            ),
+        )
     }
 }

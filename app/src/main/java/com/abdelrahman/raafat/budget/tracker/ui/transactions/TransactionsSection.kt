@@ -2,32 +2,26 @@ package com.abdelrahman.raafat.budget.tracker.ui.transactions
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.transaction.PaymentMethod
-import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
-import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
 @Suppress("FunctionName")
 @Composable
-fun TransactionsSection(transactionsList: List<TransactionItems>) {
+fun TransactionsSection(
+    transactionsList: List<TransactionItems>,
+    onFinancialReportCardClicked: () -> Unit,
+) {
     Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-
         FilterRow()
 
         // Finical Report
-        FinancialReportCard()
+        FinancialReportCard {
+            onFinancialReportCardClicked()
+        }
 
         // Transactions
         TransactionsList(transactionsList)
@@ -71,6 +65,6 @@ fun TransactionsSectionPreview() {
                 TransactionItems.DayNameItem("Week ago"),
                 TransactionItems.TransactionItem(transactionsList),
             ),
-        )
+        ) {}
     }
 }

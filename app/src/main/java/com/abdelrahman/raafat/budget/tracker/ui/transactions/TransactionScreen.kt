@@ -32,7 +32,12 @@ fun TransactionScreen(
         if (transactionsList.isEmpty()) {
             EmptyTransactionsSection()
         } else {
-            TransactionsSection(transactionsList)
+            TransactionsSection(
+                transactionsList = transactionsList,
+                onFinancialReportCardClicked = {
+                    // TODO handle when FinancialReportCardClicked
+                },
+            )
         }
     }
 }
