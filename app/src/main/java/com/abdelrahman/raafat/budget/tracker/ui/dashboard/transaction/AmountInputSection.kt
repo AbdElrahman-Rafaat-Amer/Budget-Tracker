@@ -16,6 +16,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.text.isDigitsOnly
 import com.abdelrahman.raafat.budget.tracker.R
 import com.abdelrahman.raafat.budget.tracker.ui.custom.transparentTextFieldColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
@@ -43,9 +44,9 @@ fun AmountInputSection(amount: MutableState<String>) {
         )
     TextField(
         value = amount.value,
-        onValueChange = {
-            if (it.length <= maxChars) {
-                amount.value = it
+        onValueChange = { newValue ->
+            if (newValue.isDigitsOnly() && newValue.length <= maxChars) {
+                amount.value = newValue
             }
         },
         textStyle = textStyle,
