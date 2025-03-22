@@ -16,7 +16,8 @@ object AppColors {
     val PrimaryDark = Color(0xA35B18D3) // Example darker variant for dark mode
     val LightLavender = Color(0xFFEEE5FF)
     val BorderColor = Color(0xFFEFEEEE)
-    val BottomNavigationColor = Color(0xFFFCFCFC)
+    val Alabaster = Color(0xFFFCFCFC)
+    val BottomNavigationColor = Alabaster
 
     val GreenPrimary = Color(0xFF00796B) // Green for primary (finance color)
     val BluePrimary = Color(0xFF1976D2) // Blue for primary (finance color)

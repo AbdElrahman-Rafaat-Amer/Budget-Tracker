@@ -2,9 +2,8 @@ package com.abdelrahman.raafat.budget.tracker.ui.transactions
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -14,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.transaction.PaymentMethod
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
@@ -23,15 +23,19 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TransactionsList(transactionsList: List<TransactionItems>) {
-    LazyColumn {
+    LazyColumn(
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = Modifier
+            .background(Color.White)
+            .padding(16.dp)
+    ) {
         transactionsList.forEach { item ->
             when (item) {
                 is TransactionItems.TransactionItem -> {
-                    items(item.transactions) {
-                        Spacer(Modifier.height(10.dp))
+                    items(item.transactions) { transaction ->
                         TransactionDetailsWidget(
-                            it,
-                            modifier = Modifier.padding(vertical = 5.dp, horizontal = 10.dp),
+                            transaction,
+                            modifier = Modifier.padding(4.dp),
                         )
                     }
                 }
@@ -43,9 +47,10 @@ fun TransactionsList(transactionsList: List<TransactionItems>) {
                             style = AppTextStyles.textStyle18SPSemiBold,
                             modifier =
                                 Modifier
+                                    .zIndex(2f)
                                     .fillMaxWidth()
                                     .background(Color.White)
-                                    .padding(8.dp),
+                                    .padding(vertical = 8.dp),
                         )
                     }
                 }

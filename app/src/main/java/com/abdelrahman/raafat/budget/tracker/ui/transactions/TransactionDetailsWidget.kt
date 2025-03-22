@@ -32,8 +32,8 @@ fun TransactionDetailsWidget(
 ) {
     Card(
         shape = MaterialTheme.shapes.medium.copy(CornerSize(20.dp)),
-        colors = CardDefaults.cardColors(containerColor = AppColors.White),
-        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+        colors = CardDefaults.cardColors(containerColor = AppColors.Alabaster),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
         modifier = modifier.fillMaxWidth(),
     ) {
         Row(
@@ -42,10 +42,10 @@ fun TransactionDetailsWidget(
             modifier =
                 Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 17.dp, horizontal = 20.dp),
+                    .padding(vertical = 12.dp, horizontal = 16.dp),
         ) {
             // Title & Desc
-            Column(verticalArrangement = Arrangement.spacedBy(13.dp)) {
+            Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 Text(
                     text = transactionItem.name,
                     style = AppTextStyles.textStyle16SPMedium,
@@ -61,7 +61,7 @@ fun TransactionDetailsWidget(
 
             // Price & Time
             Column(
-                verticalArrangement = Arrangement.spacedBy(13.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
                 horizontalAlignment = Alignment.End,
             ) {
                 val (priceColor, pricePrefix) = if (transactionItem.isExpense) AppColors.Red to "- " else AppColors.Green to "+ "
@@ -93,18 +93,7 @@ private fun TransactionDetailsWidgetPreview() {
     BudgetTrackerTheme {
         Column(
             verticalArrangement = Arrangement.spacedBy(13.dp),
-//            modifier = Modifier.padding(20.dp)
         ) {
-//            TransactionDetailsWidget(
-//                TransactionItem(
-//                    name = "Shopping",
-//                    description = "Buy some grocery",
-//                    date = System.currentTimeMillis(),
-//                    price = 5120.0,
-//                    isExpense = true
-//                )
-//            )
-
             TransactionDetailsWidget(
                 Transaction(
                     name = "Salary",
