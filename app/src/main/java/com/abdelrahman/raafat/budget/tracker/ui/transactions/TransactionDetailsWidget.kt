@@ -1,5 +1,6 @@
 package com.abdelrahman.raafat.budget.tracker.ui.transactions
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -31,9 +32,10 @@ fun TransactionDetailsWidget(
     modifier: Modifier = Modifier,
 ) {
     Card(
-        shape = MaterialTheme.shapes.medium.copy(CornerSize(20.dp)),
-        colors = CardDefaults.cardColors(containerColor = AppColors.Alabaster),
+        shape = MaterialTheme.shapes.medium.copy(CornerSize(12.dp)),
+        colors = CardDefaults.cardColors(containerColor = AppColors.White),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
+        border = BorderStroke(width = 1.dp, color = AppColors.BorderColor),
         modifier = modifier.fillMaxWidth(),
     ) {
         Row(

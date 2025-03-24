@@ -1,8 +1,14 @@
 package com.abdelrahman.raafat.budget.tracker.ui.transactions
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
@@ -12,11 +18,17 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 @Suppress("FunctionName")
 @Composable
 fun TransactionsSection(
+    modifier: Modifier = Modifier,
     transactionsList: List<TransactionItems>,
     onFinancialReportCardClicked: () -> Unit,
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        FilterRow()
+    Column(
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        FilterRow(
+            modifier = Modifier.fillMaxWidth()
+        )
 
         // Finical Report
         FinancialReportCard {
@@ -57,7 +69,8 @@ fun TransactionsSectionPreview() {
             )
         }
         TransactionsSection(
-            listOf(
+            modifier = Modifier.padding(16.dp),
+            transactionsList = listOf(
                 TransactionItems.DayNameItem("Today"),
                 TransactionItems.TransactionItem(transactionsList),
                 TransactionItems.DayNameItem("Yesterday"),

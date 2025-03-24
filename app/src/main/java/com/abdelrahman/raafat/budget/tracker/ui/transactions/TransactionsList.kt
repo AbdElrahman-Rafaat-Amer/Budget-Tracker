@@ -3,7 +3,9 @@ package com.abdelrahman.raafat.budget.tracker.ui.transactions
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -16,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.transaction.PaymentMethod
+import com.abdelrahman.raafat.budget.tracker.ui.theme.AppColors
 import com.abdelrahman.raafat.budget.tracker.ui.theme.AppTextStyles
 import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 
@@ -24,10 +27,7 @@ import com.abdelrahman.raafat.budget.tracker.ui.theme.BudgetTrackerTheme
 @Composable
 fun TransactionsList(transactionsList: List<TransactionItems>) {
     LazyColumn(
-        verticalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = Modifier
-            .background(Color.White)
-            .padding(16.dp)
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         transactionsList.forEach { item ->
             when (item) {
@@ -49,7 +49,7 @@ fun TransactionsList(transactionsList: List<TransactionItems>) {
                                 Modifier
                                     .zIndex(2f)
                                     .fillMaxWidth()
-                                    .background(Color.White)
+                                    .background(AppColors.LightPrimary)
                                     .padding(vertical = 8.dp),
                         )
                     }

@@ -58,14 +58,14 @@ object AppColors {
     // High Contrast Colors (for buttons icons)
     val Green = Color(0xFF0CBF71)
     val OceanBlue = Color(0xFF008EE4)
-    val LightPrimary = Color(0xFFD5EDFF)
+    val LightPrimary = Color(0xFFFAFAFA)
 
     // Text Colors
     val LightText = Color(0xFF5D5D5D)
 
     // Category Colors
     val BillsUtilitiesColor = OceanBlue
-    val FoodColor = LightPrimary
+    val FoodColor = Color(0xFFD5EDFF)
     val PersonalColor = Color(0xFFFEE274)
     val HealthcareColor = Color(0xFFF0B035)
     val EducationColor = Green
