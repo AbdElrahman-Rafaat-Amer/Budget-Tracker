@@ -1,14 +1,11 @@
 package com.abdelrahman.raafat.budget.tracker.ui.transactions
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.abdelrahman.raafat.budget.tracker.ui.dashboard.item.Category
@@ -21,13 +18,19 @@ fun TransactionsSection(
     modifier: Modifier = Modifier,
     transactionsList: List<TransactionItems>,
     onFinancialReportCardClicked: () -> Unit,
+    onTimeFilterSelected: (selectedOption: TransactionFilter) -> Unit,
+    onFilterClicked: () -> Unit,
 ) {
     Column(
         modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(16.dp)
+        verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         FilterRow(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            onFilterClicked = onFilterClicked,
+            onTimeFilterSelected = {
+                onTimeFilterSelected(it)
+            },
         )
 
         // Finical Report
@@ -70,14 +73,18 @@ fun TransactionsSectionPreview() {
         }
         TransactionsSection(
             modifier = Modifier.padding(16.dp),
-            transactionsList = listOf(
-                TransactionItems.DayNameItem("Today"),
-                TransactionItems.TransactionItem(transactionsList),
-                TransactionItems.DayNameItem("Yesterday"),
-                TransactionItems.TransactionItem(transactionsList),
-                TransactionItems.DayNameItem("Week ago"),
-                TransactionItems.TransactionItem(transactionsList),
-            ),
-        ) {}
+            transactionsList =
+                listOf(
+                    TransactionItems.DayNameItem("Today"),
+                    TransactionItems.TransactionItem(transactionsList),
+                    TransactionItems.DayNameItem("Yesterday"),
+                    TransactionItems.TransactionItem(transactionsList),
+                    TransactionItems.DayNameItem("Week ago"),
+                    TransactionItems.TransactionItem(transactionsList),
+                ),
+            onFinancialReportCardClicked = {},
+            onTimeFilterSelected = {},
+            onFilterClicked = {},
+        )
     }
 }

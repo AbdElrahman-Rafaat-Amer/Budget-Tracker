@@ -28,8 +28,19 @@ fun BottomNavGraph(
         }
         composable(BTBottomNavItem.Transaction.route) {
             val transactions = viewModel.transactionItems.collectAsState()
-            TransactionScreen(transactions.value) {
-            }
+            TransactionScreen(
+                transactionsList = transactions.value,
+                onBackButtonClicked = {},
+                onFinancialReportCardClicked = {
+                    // TODO handle when FinancialReportCardClicked
+                },
+                onTimeFilterSelected = {
+                    // TODO handle when time filter, Update the data based on the time selected
+                },
+                onFilterClicked = {
+                    // TODO handle when filter clicked, show filter bottom sheet
+                },
+            )
         }
         composable(BTBottomNavItem.Budget.route) {
             BudgetScreen()

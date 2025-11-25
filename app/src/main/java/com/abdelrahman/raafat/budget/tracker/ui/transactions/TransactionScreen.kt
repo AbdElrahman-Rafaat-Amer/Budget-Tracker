@@ -20,6 +20,9 @@ fun TransactionScreen(
     transactionsList: List<TransactionItems>,
     modifier: Modifier = Modifier,
     onBackButtonClicked: () -> Unit,
+    onFinancialReportCardClicked: () -> Unit,
+    onTimeFilterSelected: (selectedOption: TransactionFilter) -> Unit,
+    onFilterClicked: () -> Unit,
 ) {
     BTBaseScreen(
         title = stringResource(R.string.transactions),
@@ -34,9 +37,11 @@ fun TransactionScreen(
         } else {
             TransactionsSection(
                 transactionsList = transactionsList,
-                onFinancialReportCardClicked = {
-                    // TODO handle when FinancialReportCardClicked
+                onFinancialReportCardClicked = onFinancialReportCardClicked,
+                onTimeFilterSelected = {
+                    onTimeFilterSelected(it)
                 },
+                onFilterClicked = onFilterClicked,
             )
         }
     }
@@ -80,6 +85,10 @@ fun TransactionScreenPreview() {
                 TransactionItems.TransactionItem(transactionsList),
             ),
             modifier = Modifier.padding(vertical = 10.dp),
-        ) {}
+            onBackButtonClicked = {},
+            onFinancialReportCardClicked = {},
+            onTimeFilterSelected = {},
+            onFilterClicked = {},
+        )
     }
 }
